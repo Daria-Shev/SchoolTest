@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using SchoolTest.Helpers;
 using SchoolTest.Info;
+using SchoolTest.ProgramForms;
+
 
 
 namespace SchoolTest
@@ -20,6 +22,7 @@ namespace SchoolTest
         {
             InitializeComponent();
         }
+        ApiClass api;
 
         private void button3_Click(object sender, EventArgs e)
         {
@@ -37,33 +40,43 @@ namespace SchoolTest
             MessageString message = new MessageString();
             message = JsonHelpers.ReadFromJsonStream<MessageString>(Stream);
 
-            //label1.Text = message.message;
+            SchoolTest.ProgramForms.Message.MessageInfo(message.message);
+            if ((message.message == "Авторизація успішна"))
+            {
+
+
+                //Form ifrm = new FormAdd();
+                //ifrm.Show();
+                //this.Hide();
+            }
+   
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Exit();
+            api.exit();
 
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Exit();
+            api.exit();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            ApiClass api = new ApiClass();
+             api = new ApiClass();
             api.createClient();
         }
-        void Exit()
-        {
-            ApiClass api = new ApiClass();
-            api.url = new Uri("https://localhost:44382/logout");
-            var Stream = api.GetServerResult();
-            MessageString message = new MessageString();
-            message = JsonHelpers.ReadFromJsonStream<MessageString>(Stream);
-            //label1.Text = message.message;
-        }
+        //void Exit()
+        //{
+        //    ApiClass api = new ApiClass();
+        //    api.url = new Uri("https://localhost:44382/logout");
+        //    var Stream = api.GetServerResult();
+        //    MessageString message = new MessageString();
+        //    message = JsonHelpers.ReadFromJsonStream<MessageString>(Stream);
+        //    //label1.Text = message.message;
+        //    SchoolTest.ProgramForms.Message.MessageInfo(message.message);
+        //}
     }
 }

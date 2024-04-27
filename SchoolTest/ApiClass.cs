@@ -14,8 +14,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web;
 using SchoolTest.Info;
-
-
+using SchoolTest.Helpers;
 
 namespace SchoolTest
 {
@@ -68,6 +67,15 @@ namespace SchoolTest
             handler.CookieContainer = User.cookieContainer;
             User.ServerClient = new HttpClient(handler);
             User.ServerClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+        }
+
+        public void exit()
+        {
+            url = new Uri("https://localhost:44382/logout");
+            var Stream = GetServerResult();
+            MessageString message = new MessageString();
+            message = JsonHelpers.ReadFromJsonStream<MessageString>(Stream);
+            SchoolTest.ProgramForms.Message.MessageInfo(message.message);
         }
 
         public object ServerAuthorization()

@@ -12,6 +12,7 @@ namespace SchoolTest.Info
     {
         public static string cookie = null;
         public static string nicname;
+        public static string full_name;
         public static CookieContainer cookieContainer;
         public static HttpClient ServerClient;
     }
