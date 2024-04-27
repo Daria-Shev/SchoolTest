@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Reflection.Emit;
 using System.Text;
@@ -11,8 +12,8 @@ using System.Windows.Forms;
 using SchoolTest.Helpers;
 using SchoolTest.Info;
 using SchoolTest.ProgramForms;
-
-
+using SchoolTest.ProgramForms.Student;
+using SchoolTest.ProgramForms.Teacher;
 
 namespace SchoolTest
 {
@@ -43,13 +44,34 @@ namespace SchoolTest
             SchoolTest.ProgramForms.Message.MessageInfo(message.message);
             if ((message.message == "Авторизація успішна"))
             {
+                Form ifrm = new studentHome();
+                getInfo(nicname);
+                if (User.user_account_type.StartsWith("teacher"))
+                {
+                    ifrm = new teacherHome();
+                }
 
-
-                //Form ifrm = new FormAdd();
-                //ifrm.Show();
-                //this.Hide();
+                ifrm.Show();
+                this.Hide();
             }
    
+        }
+        private void getInfo(string nicname)
+        {
+            ApiClass authApi = new ApiClass();
+
+            authApi.path = "InfoUser";
+            authApi.query.Add("nickname", nicname);
+            //authApi.query.Add("password", password);
+            authApi.uriCreate();
+
+            var Stream = authApi.ServerAuthorization();
+
+            var info = JsonHelpers.ReadFromJsonStream(new { nickname = "", user_account_type = "", full_name = "" }, Stream);
+            User.nickname = info.nickname;
+            User.user_account_type = info.user_account_type;
+            User.full_name = info.full_name;
+
         }
 
         private void button1_Click(object sender, EventArgs e)

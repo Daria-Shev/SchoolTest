@@ -51,5 +51,14 @@ namespace SchoolTest.Helpers
             }
             return data;
         }
+        public static T ReadFromJsonStream<T>(T template, object stream)
+        {
+            using (var reader = new StreamReader((Stream)stream))
+            using (var jsonReader = new JsonTextReader(reader))
+            {
+                var serializer = new JsonSerializer();
+                return serializer.Deserialize<T>(jsonReader);
+            }
+        }
     }
 }

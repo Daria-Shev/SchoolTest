@@ -61,6 +61,18 @@
     <Compile Include="Info\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="ProgramForms\Message.cs" />
+    <Compile Include="ProgramForms\Student\studentHome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProgramForms\Student\studentHome.Designer.cs">
+      <DependentUpon>studentHome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProgramForms\Teacher\teacherHome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProgramForms\Teacher\teacherHome.Designer.cs">
+      <DependentUpon>teacherHome.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
