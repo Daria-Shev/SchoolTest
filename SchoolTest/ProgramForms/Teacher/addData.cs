@@ -10,16 +10,23 @@ using System.Windows.Forms;
 
 namespace SchoolTest.ProgramForms.Teacher
 {
-    public partial class teacherHome : Form
+    public partial class addData : Form
     {
-        public teacherHome()
+        public addData()
         {
             InitializeComponent();
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void button8_Click(object sender, EventArgs e)
         {
-            Form ifrm = new addData();      
+            Form ifrm = new teacherHome();
+            ifrm.Show();
+            this.Close();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Form ifrm = new add_subject();
             ifrm.Show();
             this.Close();
         }

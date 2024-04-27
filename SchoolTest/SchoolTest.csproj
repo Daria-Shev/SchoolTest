@@ -67,6 +67,18 @@
     <Compile Include="ProgramForms\Student\studentHome.Designer.cs">
       <DependentUpon>studentHome.cs</DependentUpon>
     </Compile>
+    <Compile Include="ProgramForms\Teacher\addData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProgramForms\Teacher\addData.Designer.cs">
+      <DependentUpon>addData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProgramForms\Teacher\add_subject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProgramForms\Teacher\add_subject.Designer.cs">
+      <DependentUpon>add_subject.cs</DependentUpon>
+    </Compile>
     <Compile Include="ProgramForms\Teacher\teacherHome.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,6 +88,18 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProgramForms\Student\studentHome.resx">
+      <DependentUpon>studentHome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProgramForms\Teacher\addData.resx">
+      <DependentUpon>addData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProgramForms\Teacher\add_subject.resx">
+      <DependentUpon>add_subject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProgramForms\Teacher\teacherHome.resx">
+      <DependentUpon>teacherHome.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
