@@ -31,28 +31,38 @@
             System.Windows.Forms.Label subject_nameLabel;
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.buttonSave = new System.Windows.Forms.Button();
-            this.subject = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.class_number = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.subject_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button1 = new System.Windows.Forms.Button();
             this.subject_nameTextBox = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
+            this.subject_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.subject_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.subject_class_number = new System.Windows.Forms.DataGridViewTextBoxColumn();
             subject_nameLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // subject_nameLabel
+            // 
+            subject_nameLabel.AutoSize = true;
+            subject_nameLabel.Location = new System.Drawing.Point(102, 60);
+            subject_nameLabel.Name = "subject_nameLabel";
+            subject_nameLabel.Size = new System.Drawing.Size(55, 13);
+            subject_nameLabel.TabIndex = 10;
+            subject_nameLabel.Text = "Предмет:";
             // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToOrderColumns = true;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.subject,
-            this.class_number,
-            this.subject_id});
-            this.dataGridView1.Location = new System.Drawing.Point(57, 132);
+            this.subject_id,
+            this.subject_name,
+            this.subject_class_number});
+            this.dataGridView1.Location = new System.Drawing.Point(52, 132);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(352, 150);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // buttonSave
             // 
@@ -63,21 +73,6 @@
             this.buttonSave.Text = "Додати";
             this.buttonSave.UseVisualStyleBackColor = true;
             // 
-            // subject
-            // 
-            this.subject.HeaderText = "Назва предмета";
-            this.subject.Name = "subject";
-            // 
-            // class_number
-            // 
-            this.class_number.HeaderText = "Клас";
-            this.class_number.Name = "class_number";
-            // 
-            // subject_id
-            // 
-            this.subject_id.HeaderText = "id";
-            this.subject_id.Name = "subject_id";
-            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(275, 103);
@@ -86,15 +81,6 @@
             this.button1.TabIndex = 9;
             this.button1.Text = "Оновити";
             this.button1.UseVisualStyleBackColor = true;
-            // 
-            // subject_nameLabel
-            // 
-            subject_nameLabel.AutoSize = true;
-            subject_nameLabel.Location = new System.Drawing.Point(102, 60);
-            subject_nameLabel.Name = "subject_nameLabel";
-            subject_nameLabel.Size = new System.Drawing.Size(55, 13);
-            subject_nameLabel.TabIndex = 10;
-            subject_nameLabel.Text = "Предмет:";
             // 
             // subject_nameTextBox
             // 
@@ -111,6 +97,25 @@
             this.button2.TabIndex = 12;
             this.button2.Text = "Видалити";
             this.button2.UseVisualStyleBackColor = true;
+            // 
+            // subject_id
+            // 
+            this.subject_id.DataPropertyName = "subject_id";
+            this.subject_id.HeaderText = "subject_id";
+            this.subject_id.Name = "subject_id";
+            this.subject_id.Visible = false;
+            // 
+            // subject_name
+            // 
+            this.subject_name.DataPropertyName = "subject_name";
+            this.subject_name.HeaderText = "Назва предмета";
+            this.subject_name.Name = "subject_name";
+            // 
+            // subject_class_number
+            // 
+            this.subject_class_number.DataPropertyName = "subject_class_number";
+            this.subject_class_number.HeaderText = "Клас";
+            this.subject_class_number.Name = "subject_class_number";
             // 
             // add_subject
             // 
@@ -136,11 +141,11 @@
 
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button buttonSave;
-        private System.Windows.Forms.DataGridViewTextBoxColumn subject;
-        private System.Windows.Forms.DataGridViewTextBoxColumn class_number;
-        private System.Windows.Forms.DataGridViewTextBoxColumn subject_id;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox subject_nameTextBox;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn subject_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn subject_name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn subject_class_number;
     }
 }

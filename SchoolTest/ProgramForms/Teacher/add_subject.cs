@@ -17,9 +17,22 @@ namespace SchoolTest.ProgramForms.Teacher
         public add_subject()
         {
             InitializeComponent();
-            Table();
 
         }
+        //даные в таблицу перенос  DataSource
+        //private void Table()
+        //{
+        //    ApiClass authApi = new ApiClass();
+
+        //    authApi.path = "subject_table";
+        //    authApi.uriCreate();
+
+        //    var Stream = authApi.ServerAuthorization();
+
+        //    var info = JsonHelpers.ReadFromJsonStream<string>(Stream);
+        //    dataGridView1.DataSource = JsonConvert.DeserializeObject(info, typeof(DataTable)) as DataTable;
+        //}
+
         private void Table()
         {
             ApiClass authApi = new ApiClass();
@@ -34,6 +47,12 @@ namespace SchoolTest.ProgramForms.Teacher
         }
 
         private void add_subject_Load(object sender, EventArgs e)
+        {
+            Table();
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
