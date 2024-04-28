@@ -79,6 +79,12 @@
     <Compile Include="ProgramForms\Teacher\add_subject.Designer.cs">
       <DependentUpon>add_subject.cs</DependentUpon>
     </Compile>
+    <Compile Include="ProgramForms\Teacher\add_subject_show.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProgramForms\Teacher\add_subject_show.Designer.cs">
+      <DependentUpon>add_subject_show.cs</DependentUpon>
+    </Compile>
     <Compile Include="ProgramForms\Teacher\teacherHome.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,6 +103,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ProgramForms\Teacher\add_subject.resx">
       <DependentUpon>add_subject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProgramForms\Teacher\add_subject_show.resx">
+      <DependentUpon>add_subject_show.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProgramForms\Teacher\teacherHome.resx">
       <DependentUpon>teacherHome.cs</DependentUpon>

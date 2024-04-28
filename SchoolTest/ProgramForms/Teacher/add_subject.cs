@@ -20,19 +20,6 @@ namespace SchoolTest.ProgramForms.Teacher
 
         }
         //даные в таблицу перенос  DataSource
-        //private void Table()
-        //{
-        //    ApiClass authApi = new ApiClass();
-
-        //    authApi.path = "subject_table";
-        //    authApi.uriCreate();
-
-        //    var Stream = authApi.ServerAuthorization();
-
-        //    var info = JsonHelpers.ReadFromJsonStream<string>(Stream);
-        //    dataGridView1.DataSource = JsonConvert.DeserializeObject(info, typeof(DataTable)) as DataTable;
-        //}
-
         private void Table()
         {
             ApiClass authApi = new ApiClass();
@@ -55,6 +42,22 @@ namespace SchoolTest.ProgramForms.Teacher
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void buttonBack_Click(object sender, EventArgs e)
+        {
+            Form ifrm = new addData();
+            ifrm.Show();
+            this.Close();
+        }
+
+
+
+        private void buttonAdd_Click(object sender, EventArgs e)
+        {
+            Form ifrm = new add_subject_show();
+            ifrm.ShowDialog();
+            //this.Close();
         }
     }
 }
