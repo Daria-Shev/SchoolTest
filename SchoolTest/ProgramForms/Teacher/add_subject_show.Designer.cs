@@ -78,6 +78,7 @@
             this.buttonBack.TabIndex = 17;
             this.buttonBack.Text = "Назад";
             this.buttonBack.UseVisualStyleBackColor = true;
+            this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
             // 
             // buttonAdd
             // 
@@ -102,6 +103,7 @@
             this.Controls.Add(this.subject_nameTextBox);
             this.Name = "add_subject_show";
             this.Text = "add_subject_Show";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.add_subject_show_FormClosing);
             this.Load += new System.EventHandler(this.add_subject_show_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

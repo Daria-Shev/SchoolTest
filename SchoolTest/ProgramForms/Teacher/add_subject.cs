@@ -20,7 +20,7 @@ namespace SchoolTest.ProgramForms.Teacher
 
         }
         //даные в таблицу перенос  DataSource
-        private void Table()
+        public void Table()
         {
             ApiClass authApi = new ApiClass();
 
@@ -36,8 +36,28 @@ namespace SchoolTest.ProgramForms.Teacher
         private void add_subject_Load(object sender, EventArgs e)
         {
             Table();
+            combo_Load();
+            comboBox1.Text = "";
 
         }
+        private void combo_Load()
+        {
+            List<KeyValuePair<string, string>> items = new List<KeyValuePair<string, string>>();
+
+            // Перебираем колонки DataGridView
+            for (int columnIndex = 1; columnIndex < dataGridView1.Columns.Count; columnIndex++)
+            {
+                // Получаем колонку
+                DataGridViewColumn column = dataGridView1.Columns[columnIndex];
+
+                // Добавляем пару ключ-значение в список
+                items.Add(new KeyValuePair<string, string>(column.DataPropertyName, column.HeaderText));
+            }
+            comboBox1.DataSource = new BindingSource(items, null);
+            comboBox1.DisplayMember = "Value"; // Отображаемый текст
+            comboBox1.ValueMember = "Key"; // Значение
+        }
+
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -55,25 +75,16 @@ namespace SchoolTest.ProgramForms.Teacher
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            var data = new { id = 0, subject_name = "", class_number = "" };
+            var data = new { id = "0", subject_name = "", class_number = "" };
             Form ifrm = new add_subject_show(data);
             ifrm.ShowDialog();
             //this.Close();
 
-
-
-
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            var data = data_dedicated();
-            Form ifrm = new add_subject_show(data);
-            ifrm.ShowDialog();
-        }
         private object data_dedicated()
         {
-            int id= 0;
+            string id= "0";
             string subject_name="";
             string class_number ="";
             // Проверяем, есть ли выделенные ряды
@@ -83,7 +94,7 @@ namespace SchoolTest.ProgramForms.Teacher
                 DataGridViewRow selectedRow = dataGridView1.SelectedRows[0];
 
                 // Получаем значения из нужных ячеек в выбранном ряду
-                 id = int.Parse(selectedRow.Cells["subject_id"].Value.ToString());
+                 id =selectedRow.Cells["subject_id"].Value.ToString();
                  subject_name = selectedRow.Cells["subject_name"].Value.ToString();
                  class_number = selectedRow.Cells["subject_class_number"].Value.ToString();
                 // Продолжайте для других столбцов по аналогии...
@@ -94,9 +105,93 @@ namespace SchoolTest.ProgramForms.Teacher
             return data;
         }
 
-        private void buttonUpdate_Click(object sender, EventArgs e)
+        private void buttonDelete_Click(object sender, EventArgs e)
         {
-            Table();
+            Delete_date();
+        }
+        private void Delete_date()
+        {
+
+        }
+
+        private void dataGridView1_DoubleClick(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count != 1)
+            {
+                return;
+            }
+            var data = data_dedicated();
+            
+            Form ifrm = new add_subject_show(data);
+            ifrm.ShowDialog();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = string.Format("subject_name LIKE '%{0}%'", textBox1.Text, "OR subject_class_number LIKE '%{0}%'", textBox1.Text);
+        }
+
+        private void comboBox1_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = "";
+
+            //comboBox2.DataSource = null;
+            //comboBox2.Text = "";
+            //comboBox2_SelectedIndexChanged(sender, e);
+
+            // Получаем выбранное значение из comboBox1
+            string selectedColumnName = comboBox1.SelectedValue.ToString();
+
+            // Получаем уникальные значения из выбранной колонки в DataGridView
+            HashSet<string> uniqueValues = new HashSet<string>();
+
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                // Получаем значение ячейки из выбранной колонки
+                string cellValue = row.Cells[selectedColumnName].Value?.ToString();
+
+                // Добавляем значение в HashSet, если оно не пустое
+                if (!string.IsNullOrEmpty(cellValue))
+                {
+                    uniqueValues.Add(cellValue);
+                }
+            }
+
+            // Заполняем comboBox2 уникальными значениями
+            comboBox2.DataSource = new BindingSource(uniqueValues.ToList(), null);
+            comboBox2.Text = "";
+            comboBox2_SelectedIndexChanged(sender, e);
+            //Table();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //Table();
+            comboBox1.Text = "";
+            comboBox2.Text = "";
+            comboBox2.DataSource = null;
+            textBox1.Text = "";
+            //comboBox2_SelectedIndexChanged(sender, e);
+            (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = "";
+
+        }
+
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //if (comboBox1.Text == "")
+            //{
+            //    return;
+            //}
+            string filteredText = comboBox2.Text.Replace("'", "''");
+            try
+            {
+                (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = $"{comboBox1.SelectedValue} LIKE '%{filteredText}%'";
+
+            }
+            catch { }
+
+
         }
     }
 }
