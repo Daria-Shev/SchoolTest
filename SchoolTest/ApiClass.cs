@@ -33,7 +33,7 @@ namespace SchoolTest
             uriBuilder.Host = address;
             uriBuilder.Port = port;
             uriBuilder.Path = path;
-            uriBuilder.Query = query.ToString();
+            uriBuilder.Query = HttpUtility.UrlDecode(query.ToString());
             url = uriBuilder.Uri;
         }
 

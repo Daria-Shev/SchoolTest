@@ -9,6 +9,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using System.Windows.Forms;
 
 namespace SchoolTest.ProgramForms.Teacher
@@ -35,8 +36,10 @@ namespace SchoolTest.ProgramForms.Teacher
             authApi.path = "subject_add";
             authApi.query.Add("subject_name", subject_name);
             authApi.query.Add("subject_class_number", class_number);
+            //authApi.query = HttpUtility.UrlDecode(authApi.query.ToString());
             authApi.uriCreate();
 
+           
             var Stream = authApi.ServerAuthorization();
 
             MessageString message = new MessageString();
