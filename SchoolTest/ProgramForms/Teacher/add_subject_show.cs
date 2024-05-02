@@ -15,14 +15,16 @@ namespace SchoolTest.ProgramForms.Teacher
 {
     public partial class add_subject_show : Form
     {
-        public add_subject_show()
+        object data;
+        public add_subject_show(object data)
         {
             InitializeComponent();
+            this.data = data;
         }
-
+        
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-
+            server_add();
         }
         private void server_add()
         {
@@ -32,7 +34,7 @@ namespace SchoolTest.ProgramForms.Teacher
 
             authApi.path = "subject_add";
             authApi.query.Add("subject_name", subject_name);
-            authApi.query.Add("class_number", class_number);
+            authApi.query.Add("subject_class_number", class_number);
             authApi.uriCreate();
 
             var Stream = authApi.ServerAuthorization();
@@ -41,7 +43,14 @@ namespace SchoolTest.ProgramForms.Teacher
             message = JsonHelpers.ReadFromJsonStream<MessageString>(Stream);
 
             Message.MessageInfo(message.message);
-            
+
+        }
+
+        private void add_subject_show_Load(object sender, EventArgs e)
+        {
+            var dataTable = (dynamic)data;
+            subject_nameTextBox.Text = dataTable.subject_name;
+            ClassTextBox.Text = dataTable.class_number;
         }
     }
 }

@@ -48,16 +48,27 @@ namespace WebSerCore.Controllers.addData
 
             try
             {
-                // Используйте параметризованный запрос, чтобы избежать SQL-инъекций
-                string sqlExpression = @"MERGE INTO [test].[dbo].[subject] 
-                    USING (VALUES (@subject_id, @subject_name, @subject_class_number))
-                    ON subject_id = @subject_id
-                    WHEN MATCHED THEN
-                        UPDATE SET subject_name = @subject_name,
-                                   subject_class_number = @subject_class_number
-                    WHEN NOT MATCHED THEN
-                        INSERT (subject_name, subject_class_number) 
-                        VALUES (@subject_name, @subject_class_number);
+
+                //string sqlExpression = @"MERGE INTO [test].[dbo].[subject] 
+                //    USING (VALUES (@subject_id, @subject_name, @subject_class_number))
+                //    ON subject_id = @subject_id
+                //    WHEN MATCHED THEN
+                //        UPDATE SET subject_name = @subject_name,
+                //                   subject_class_number = @subject_class_number
+                //    WHEN NOT MATCHED THEN
+                //        INSERT (subject_name, subject_class_number) 
+                //        VALUES (@subject_name, @subject_class_number);
+                //   ";
+                string sqlExpression = @"MERGE INTO [test].[dbo].[subject] AS target
+                        USING (VALUES (@subject_id, @subject_name, @subject_class_number)) 
+                        AS source (subject_id, subject_name, subject_class_number)
+                        ON target.subject_id = source.subject_id
+                        WHEN MATCHED THEN
+                            UPDATE SET target.subject_name = source.subject_name,
+                                       target.subject_class_number = source.subject_class_number
+                        WHEN NOT MATCHED THEN
+                            INSERT (subject_name, subject_class_number) 
+                            VALUES (source.subject_name, source.subject_class_number);
                    ";
 
                 using (SqlCommand sqlCommand = new SqlCommand(sqlExpression, bd.connection))
@@ -72,14 +83,16 @@ namespace WebSerCore.Controllers.addData
             }
             catch 
             {
-                return Results.BadRequest(new { Message = "Виникла помилка" });
+                return BadRequest(new { Message = "Виникла помилка" });
             }
                         
 
 
             bd.closeBD();
+
             var message = new Message { message = "Операція успішна" };
-            return Results.Ok(message);
+            return Ok(message);
+
         }
 
     }

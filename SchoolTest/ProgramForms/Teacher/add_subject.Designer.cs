@@ -34,8 +34,9 @@
             this.subject_class_number = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.buttonDelete = new System.Windows.Forms.Button();
             this.buttonBack = new System.Windows.Forms.Button();
+            this.buttonUpdate = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -48,7 +49,7 @@
             this.subject_id,
             this.subject_name,
             this.subject_class_number});
-            this.dataGridView1.Location = new System.Drawing.Point(29, 82);
+            this.dataGridView1.Location = new System.Drawing.Point(50, 77);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(352, 150);
@@ -60,6 +61,7 @@
             this.subject_id.DataPropertyName = "subject_id";
             this.subject_id.HeaderText = "subject_id";
             this.subject_id.Name = "subject_id";
+            this.subject_id.ReadOnly = true;
             this.subject_id.Visible = false;
             // 
             // subject_name
@@ -67,12 +69,14 @@
             this.subject_name.DataPropertyName = "subject_name";
             this.subject_name.HeaderText = "Назва предмета";
             this.subject_name.Name = "subject_name";
+            this.subject_name.ReadOnly = true;
             // 
             // subject_class_number
             // 
             this.subject_class_number.DataPropertyName = "subject_class_number";
             this.subject_class_number.HeaderText = "Клас";
             this.subject_class_number.Name = "subject_class_number";
+            this.subject_class_number.ReadOnly = true;
             // 
             // buttonAdd
             // 
@@ -92,19 +96,20 @@
             this.button1.TabIndex = 9;
             this.button1.Text = "Редагувати";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // buttonDelete
             // 
-            this.button2.Location = new System.Drawing.Point(191, 22);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 12;
-            this.button2.Text = "Видалити";
-            this.button2.UseVisualStyleBackColor = true;
+            this.buttonDelete.Location = new System.Drawing.Point(191, 22);
+            this.buttonDelete.Name = "buttonDelete";
+            this.buttonDelete.Size = new System.Drawing.Size(75, 23);
+            this.buttonDelete.TabIndex = 12;
+            this.buttonDelete.Text = "Видалити";
+            this.buttonDelete.UseVisualStyleBackColor = true;
             // 
             // buttonBack
             // 
-            this.buttonBack.Location = new System.Drawing.Point(280, 22);
+            this.buttonBack.Location = new System.Drawing.Point(353, 22);
             this.buttonBack.Name = "buttonBack";
             this.buttonBack.Size = new System.Drawing.Size(75, 23);
             this.buttonBack.TabIndex = 13;
@@ -112,13 +117,24 @@
             this.buttonBack.UseVisualStyleBackColor = true;
             this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
             // 
+            // buttonUpdate
+            // 
+            this.buttonUpdate.Location = new System.Drawing.Point(272, 22);
+            this.buttonUpdate.Name = "buttonUpdate";
+            this.buttonUpdate.Size = new System.Drawing.Size(75, 23);
+            this.buttonUpdate.TabIndex = 14;
+            this.buttonUpdate.Text = "Оновити";
+            this.buttonUpdate.UseVisualStyleBackColor = true;
+            this.buttonUpdate.Click += new System.EventHandler(this.buttonUpdate_Click);
+            // 
             // add_subject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(701, 340);
+            this.ClientSize = new System.Drawing.Size(474, 255);
+            this.Controls.Add(this.buttonUpdate);
             this.Controls.Add(this.buttonBack);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.dataGridView1);
@@ -135,10 +151,11 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button buttonDelete;
         private System.Windows.Forms.DataGridViewTextBoxColumn subject_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn subject_name;
         private System.Windows.Forms.DataGridViewTextBoxColumn subject_class_number;
         private System.Windows.Forms.Button buttonBack;
+        private System.Windows.Forms.Button buttonUpdate;
     }
 }

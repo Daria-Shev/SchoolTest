@@ -47,13 +47,6 @@
             subject_nameLabel.TabIndex = 12;
             subject_nameLabel.Text = "Предмет:";
             // 
-            // subject_nameTextBox
-            // 
-            this.subject_nameTextBox.Location = new System.Drawing.Point(95, 63);
-            this.subject_nameTextBox.Name = "subject_nameTextBox";
-            this.subject_nameTextBox.Size = new System.Drawing.Size(100, 20);
-            this.subject_nameTextBox.TabIndex = 13;
-            // 
             // label1
             // 
             label1.AutoSize = true;
@@ -62,6 +55,13 @@
             label1.Size = new System.Drawing.Size(35, 13);
             label1.TabIndex = 14;
             label1.Text = "Клас:";
+            // 
+            // subject_nameTextBox
+            // 
+            this.subject_nameTextBox.Location = new System.Drawing.Point(95, 63);
+            this.subject_nameTextBox.Name = "subject_nameTextBox";
+            this.subject_nameTextBox.Size = new System.Drawing.Size(100, 20);
+            this.subject_nameTextBox.TabIndex = 13;
             // 
             // ClassTextBox
             // 
@@ -102,6 +102,7 @@
             this.Controls.Add(this.subject_nameTextBox);
             this.Name = "add_subject_show";
             this.Text = "add_subject_Show";
+            this.Load += new System.EventHandler(this.add_subject_show_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
