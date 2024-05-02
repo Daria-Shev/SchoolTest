@@ -48,17 +48,6 @@ namespace WebSerCore.Controllers.addData
 
             try
             {
-
-                //string sqlExpression = @"MERGE INTO [test].[dbo].[subject] 
-                //    USING (VALUES (@subject_id, @subject_name, @subject_class_number))
-                //    ON subject_id = @subject_id
-                //    WHEN MATCHED THEN
-                //        UPDATE SET subject_name = @subject_name,
-                //                   subject_class_number = @subject_class_number
-                //    WHEN NOT MATCHED THEN
-                //        INSERT (subject_name, subject_class_number) 
-                //        VALUES (@subject_name, @subject_class_number);
-                //   ";
                 string sqlExpression = @"MERGE INTO [test].[dbo].[subject] AS target
                         USING (VALUES (@subject_id, @subject_name, @subject_class_number)) 
                         AS source (subject_id, subject_name, subject_class_number)
@@ -86,6 +75,39 @@ namespace WebSerCore.Controllers.addData
                 return BadRequest(new { Message = "Виникла помилка" });
             }
                         
+
+
+            bd.closeBD();
+
+            var message = new Message { message = "Операція успішна" };
+            return Ok(message);
+
+        }
+        [HttpGet, Route("subject_delete")]
+        [Authorize(Roles = "teacher")]
+        public object subject_delete(int subject_id)
+        {
+            BD bd = new BD();
+            bd.connectionBD();
+
+            try
+            {
+                string sqlExpression = @"DELETE FROM [test].[dbo].[subject]
+                    WHERE [subject_id] = @subject_id;
+                   ";
+
+                using (SqlCommand sqlCommand = new SqlCommand(sqlExpression, bd.connection))
+                {
+
+                    sqlCommand.Parameters.AddWithValue("@subject_id", subject_id);
+                    sqlCommand.ExecuteNonQuery();
+                }
+            }
+            catch
+            {
+                return BadRequest(new { Message = "Виникла помилка" });
+            }
+
 
 
             bd.closeBD();

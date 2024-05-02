@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using SchoolTest.Helpers;
+using SchoolTest.Info;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -107,12 +108,50 @@ namespace SchoolTest.ProgramForms.Teacher
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            Delete_date();
+            string id = "0";
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = dataGridView1.SelectedRows[0];
+                id = selectedRow.Cells["subject_id"].Value.ToString();
+            }
+            if (check_id(id))
+            {
+                return;
+            }
+            Delete_date(id);
+            Table();
         }
-        private void Delete_date()
+        private void Delete_date( string id)
         {
 
+
+
+            ApiClass authApi = new ApiClass();
+
+            authApi.path = "subject_delete";
+            authApi.query.Add("subject_id", id);
+
+            authApi.uriCreate();
+
+
+            var Stream = authApi.ServerAuthorization();
+
+            MessageString message = new MessageString();
+            message = JsonHelpers.ReadFromJsonStream<MessageString>(Stream);
+
+            Message.MessageInfo(message.message);
         }
+        private bool check_id(string id)
+        {
+            if (id == "0")
+            {
+                Message.MessageInfo("Ви не обрали запис");
+                return true;
+            }
+            return false;
+            
+        }
+
 
         private void dataGridView1_DoubleClick(object sender, EventArgs e)
         {
