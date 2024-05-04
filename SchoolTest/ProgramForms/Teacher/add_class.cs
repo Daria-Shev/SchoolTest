@@ -13,33 +13,18 @@ using System.Windows.Forms;
 
 namespace SchoolTest.ProgramForms.Teacher
 {
-    public partial class add_subject : Form
+    public partial class add_class : Form
     {
-        public add_subject()
+        public add_class()
         {
             InitializeComponent();
-
-        }
-        //даные в таблицу перенос  DataSource
-        public void Table()
-        {
-            ApiClass authApi = new ApiClass();
-
-            authApi.path = "subject_table";
-            authApi.uriCreate();
-
-            var Stream = authApi.ServerAuthorization();
-
-            var info = JsonHelpers.ReadFromJsonStream<string>(Stream);
-            dataGridView1.DataSource = JsonConvert.DeserializeObject(info, typeof(DataTable)) as DataTable;
         }
 
-        private void add_subject_Load(object sender, EventArgs e)
+        private void add_clas_Load(object sender, EventArgs e)
         {
             Table();
             combo_Load();
             comboBox1.Text = "";
-
         }
         private void combo_Load()
         {
@@ -58,11 +43,17 @@ namespace SchoolTest.ProgramForms.Teacher
             comboBox1.DisplayMember = "Value"; // Отображаемый текст
             comboBox1.ValueMember = "Key"; // Значение
         }
-
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        public void Table()
         {
+            ApiClass authApi = new ApiClass();
 
+            authApi.path = "class_table";
+            authApi.uriCreate();
+
+            var Stream = authApi.ServerAuthorization();
+
+            var info = JsonHelpers.ReadFromJsonStream<string>(Stream);
+            dataGridView1.DataSource = JsonConvert.DeserializeObject(info, typeof(DataTable)) as DataTable;
         }
 
         private void buttonBack_Click(object sender, EventArgs e)
@@ -72,46 +63,13 @@ namespace SchoolTest.ProgramForms.Teacher
             this.Close();
         }
 
-
-
-        private void buttonAdd_Click(object sender, EventArgs e)
-        {
-            var data = new { id = "0", subject_name = "", class_number = "" };
-            Form ifrm = new add_subject_show(data);
-            ifrm.ShowDialog();
-
-        }
-
-        private object data_dedicated()
-        {
-            string id= "0";
-            string subject_name="";
-            string class_number ="";
-            // Проверяем, есть ли выделенные ряды
-            if (dataGridView1.SelectedRows.Count > 0)
-            {
-                // Получаем первый выбранный ряд (можно добавить логику для обработки нескольких выбранных рядов)
-                DataGridViewRow selectedRow = dataGridView1.SelectedRows[0];
-
-                // Получаем значения из нужных ячеек в выбранном ряду
-                 id =selectedRow.Cells["subject_id"].Value.ToString();
-                 subject_name = selectedRow.Cells["subject_name"].Value.ToString();
-                 class_number = selectedRow.Cells["subject_class_number"].Value.ToString();
-                // Продолжайте для других столбцов по аналогии...
-
-                // Передаем значения в другую форму или обрабатываем их здесь
-            }
-            var data = new { id, subject_name, class_number };
-            return data;
-        }
-
         private void buttonDelete_Click(object sender, EventArgs e)
         {
             string id = "0";
             if (dataGridView1.SelectedRows.Count > 0)
             {
                 DataGridViewRow selectedRow = dataGridView1.SelectedRows[0];
-                id = selectedRow.Cells["subject_id"].Value.ToString();
+                id = selectedRow.Cells["class_id"].Value.ToString();
             }
             if (check_id(id))
             {
@@ -120,21 +78,16 @@ namespace SchoolTest.ProgramForms.Teacher
             Delete_date(id);
             Table();
         }
-        private void Delete_date( string id)
+        private void Delete_date(string id)
         {
             ApiClass authApi = new ApiClass();
 
-            authApi.path = "subject_delete";
-            authApi.query.Add("subject_id", id);
-
+            authApi.path = "class_delete";
+            authApi.query.Add("class_id", id);
             authApi.uriCreate();
-
-
             var Stream = authApi.ServerAuthorization();
-
             MessageString message = new MessageString();
             message = JsonHelpers.ReadFromJsonStream<MessageString>(Stream);
-
             Message.MessageInfo(message.message);
         }
         private bool check_id(string id)
@@ -145,25 +98,7 @@ namespace SchoolTest.ProgramForms.Teacher
                 return true;
             }
             return false;
-            
-        }
 
-
-        private void dataGridView1_DoubleClick(object sender, EventArgs e)
-        {
-            if (dataGridView1.SelectedRows.Count != 1)
-            {
-                return;
-            }
-            var data = data_dedicated();
-            
-            Form ifrm = new add_subject_show(data);
-            ifrm.ShowDialog();
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-            (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = string.Format("subject_name LIKE '%{0}%'", textBox1.Text, "OR subject_class_number LIKE '%{0}%'", textBox1.Text);
         }
 
         private void comboBox1_SelectionChangeCommitted(object sender, EventArgs e)
@@ -189,25 +124,14 @@ namespace SchoolTest.ProgramForms.Teacher
             comboBox2_SelectedIndexChanged(sender, e);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            //Table();
-            comboBox1.Text = "";
-            comboBox2.Text = "";
-            comboBox2.DataSource = null;
-            textBox1.Text = "";
-            //comboBox2_SelectedIndexChanged(sender, e);
-            (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = "";
+            (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = string.Format("class_name LIKE '%{0}%'", textBox1.Text, "OR class_number LIKE '%{0}%'", textBox1.Text);
 
         }
 
-
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //if (comboBox1.Text == "")
-            //{
-            //    return;
-            //}
             string filteredText = comboBox2.Text.Replace("'", "''");
             try
             {
@@ -215,7 +139,54 @@ namespace SchoolTest.ProgramForms.Teacher
 
             }
             catch { }
+        }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            comboBox1.Text = "";
+            comboBox2.Text = "";
+            comboBox2.DataSource = null;
+            textBox1.Text = "";
+            (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = "";
+        }
+
+        private void buttonAdd_Click(object sender, EventArgs e)
+        {
+            var data = new { id = "0", class_name = "", class_number = "" };
+            Form ifrm = new add_class_show(data);
+            ifrm.ShowDialog();
+        }
+
+        private void dataGridView1_DoubleClick(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count != 1)
+            {
+                return;
+            }
+            var data = data_dedicated();
+
+            Form ifrm = new add_class_show(data);
+            ifrm.ShowDialog();
+        }
+
+        private object data_dedicated()
+        {
+            string id = "0";
+            string class_name = "";
+            string class_number = "";
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = dataGridView1.SelectedRows[0];
+                id = selectedRow.Cells["class_id"].Value.ToString();
+                class_name = selectedRow.Cells["class_name"].Value.ToString();
+                class_number = selectedRow.Cells["class_number"].Value.ToString();
+            }
+            var data = new { id, class_name, class_number };
+            return data;
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
         }
     }

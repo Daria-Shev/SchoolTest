@@ -91,6 +91,25 @@ namespace SchoolTest
             var streamContent = authenticationResponse.Content.ReadAsStreamAsync().Result;
             return streamContent;
         }
+        //public object ServerAuthorization(string jsonData)
+        //{
+        //    // Создаем HTTPContent для отправки данных на сервер
+        //    HttpContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+
+        //    // Отправляем POST запрос на сервер с данными JSON
+        //    HttpResponseMessage authenticationResponse = User.ServerClient.GetAsync(url, content).Result;
+
+        //    //HttpResponseMessage authenticationResponse = User.ServerClient.GetAsync(url).Result;
+        //    var responseCookies = User.cookieContainer.GetCookies(url).Cast<Cookie>();
+        //    var cookie = responseCookies.FirstOrDefault(x => x.Name == ".AspNetCore.Cookies");
+
+        //    if (cookie != null)
+        //    {
+        //        User.cookie = cookie.Name + "=" + cookie.Value;
+        //    }
+        //    var streamContent = authenticationResponse.Content.ReadAsStreamAsync().Result;
+        //    return streamContent;
+        //}
 
     }
 

@@ -73,6 +73,18 @@
     <Compile Include="ProgramForms\Teacher\addData.Designer.cs">
       <DependentUpon>addData.cs</DependentUpon>
     </Compile>
+    <Compile Include="ProgramForms\Teacher\add_class.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProgramForms\Teacher\add_class.Designer.cs">
+      <DependentUpon>add_class.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProgramForms\Teacher\add_class_show.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProgramForms\Teacher\add_class_show.Designer.cs">
+      <DependentUpon>add_class_show.cs</DependentUpon>
+    </Compile>
     <Compile Include="ProgramForms\Teacher\add_subject.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,6 +96,18 @@
     </Compile>
     <Compile Include="ProgramForms\Teacher\add_subject_show.Designer.cs">
       <DependentUpon>add_subject_show.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProgramForms\Teacher\add_user.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProgramForms\Teacher\add_user.Designer.cs">
+      <DependentUpon>add_user.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProgramForms\Teacher\add_user_show.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProgramForms\Teacher\add_user_show.Designer.cs">
+      <DependentUpon>add_user_show.cs</DependentUpon>
     </Compile>
     <Compile Include="ProgramForms\Teacher\teacherHome.cs">
       <SubType>Form</SubType>
@@ -101,11 +125,23 @@
     <EmbeddedResource Include="ProgramForms\Teacher\addData.resx">
       <DependentUpon>addData.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ProgramForms\Teacher\add_class.resx">
+      <DependentUpon>add_class.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProgramForms\Teacher\add_class_show.resx">
+      <DependentUpon>add_class_show.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ProgramForms\Teacher\add_subject.resx">
       <DependentUpon>add_subject.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProgramForms\Teacher\add_subject_show.resx">
       <DependentUpon>add_subject_show.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProgramForms\Teacher\add_user.resx">
+      <DependentUpon>add_user.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProgramForms\Teacher\add_user_show.resx">
+      <DependentUpon>add_user_show.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProgramForms\Teacher\teacherHome.resx">
       <DependentUpon>teacherHome.cs</DependentUpon>

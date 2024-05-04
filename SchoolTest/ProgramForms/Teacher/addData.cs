@@ -30,5 +30,19 @@ namespace SchoolTest.ProgramForms.Teacher
             ifrm.Show();
             this.Close();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Form ifrm = new add_user();
+            ifrm.Show();
+            this.Close();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            Form ifrm = new add_class();
+            ifrm.Show();
+            this.Close();
+        }
     }
 }

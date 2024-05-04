@@ -64,20 +64,19 @@ namespace SchoolTest.ProgramForms.Teacher
             add_subject form1Instance = Application.OpenForms.OfType<add_subject>().FirstOrDefault();
             if (form1Instance != null)
             {
-                // Вызываем функцию SomeFunction() на форме Form1
                 form1Instance.Table();
             }
-            //Form ifrm = new add_subject();
-            //ifrm.Shown += (senderObj, args) => {
-            //    ((add_subject)ifrm).Table(); // Вызываем метод Table() после отображения формы
-            //};
-            //ifrm.Table();
             this.Close();
         }
 
         private void add_subject_show_FormClosing(object sender, FormClosingEventArgs e)
         {
 
+        }
+
+        private void add_subject_show_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            buttonBack_Click(sender, e);
         }
     }
 }

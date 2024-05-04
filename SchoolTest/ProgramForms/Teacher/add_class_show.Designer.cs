@@ -1,6 +1,6 @@
 ﻿namespace SchoolTest.ProgramForms.Teacher
 {
-    partial class add_subject_show
+    partial class add_class_show
     {
         /// <summary>
         /// Required designer variable.
@@ -28,56 +28,56 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.Label subject_nameLabel;
-            System.Windows.Forms.Label label1;
-            this.subject_nameTextBox = new System.Windows.Forms.TextBox();
-            this.ClassTextBox = new System.Windows.Forms.TextBox();
+            System.Windows.Forms.Label class_nameLabel;
+            System.Windows.Forms.Label class_numberLabel;
+            this.class_nameTextBox = new System.Windows.Forms.TextBox();
+            this.class_numberTextBox = new System.Windows.Forms.TextBox();
             this.buttonBack = new System.Windows.Forms.Button();
             this.buttonAdd = new System.Windows.Forms.Button();
-            subject_nameLabel = new System.Windows.Forms.Label();
-            label1 = new System.Windows.Forms.Label();
+            class_nameLabel = new System.Windows.Forms.Label();
+            class_numberLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // subject_nameLabel
+            // class_nameLabel
             // 
-            subject_nameLabel.AutoSize = true;
-            subject_nameLabel.Location = new System.Drawing.Point(34, 66);
-            subject_nameLabel.Name = "subject_nameLabel";
-            subject_nameLabel.Size = new System.Drawing.Size(55, 13);
-            subject_nameLabel.TabIndex = 12;
-            subject_nameLabel.Text = "Предмет:";
+            class_nameLabel.AutoSize = true;
+            class_nameLabel.Location = new System.Drawing.Point(35, 43);
+            class_nameLabel.Name = "class_nameLabel";
+            class_nameLabel.Size = new System.Drawing.Size(75, 13);
+            class_nameLabel.TabIndex = 7;
+            class_nameLabel.Text = "Назва класа:";
             // 
-            // label1
+            // class_nameTextBox
             // 
-            label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(34, 92);
-            label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(35, 13);
-            label1.TabIndex = 14;
-            label1.Text = "Клас:";
+            this.class_nameTextBox.Location = new System.Drawing.Point(113, 40);
+            this.class_nameTextBox.Name = "class_nameTextBox";
+            this.class_nameTextBox.Size = new System.Drawing.Size(100, 20);
+            this.class_nameTextBox.TabIndex = 8;
             // 
-            // subject_nameTextBox
+            // class_numberLabel
             // 
-            this.subject_nameTextBox.Location = new System.Drawing.Point(95, 63);
-            this.subject_nameTextBox.Name = "subject_nameTextBox";
-            this.subject_nameTextBox.Size = new System.Drawing.Size(100, 20);
-            this.subject_nameTextBox.TabIndex = 13;
+            class_numberLabel.AutoSize = true;
+            class_numberLabel.Location = new System.Drawing.Point(35, 69);
+            class_numberLabel.Name = "class_numberLabel";
+            class_numberLabel.Size = new System.Drawing.Size(35, 13);
+            class_numberLabel.TabIndex = 9;
+            class_numberLabel.Text = "Клас:";
             // 
-            // ClassTextBox
+            // class_numberTextBox
             // 
-            this.ClassTextBox.Location = new System.Drawing.Point(95, 89);
-            this.ClassTextBox.Name = "ClassTextBox";
-            this.ClassTextBox.Size = new System.Drawing.Size(100, 20);
-            this.ClassTextBox.TabIndex = 15;
+            this.class_numberTextBox.Location = new System.Drawing.Point(113, 66);
+            this.class_numberTextBox.Name = "class_numberTextBox";
+            this.class_numberTextBox.Size = new System.Drawing.Size(100, 20);
+            this.class_numberTextBox.TabIndex = 10;
             // 
             // buttonBack
             // 
             this.buttonBack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(252)))), ((int)(((byte)(222)))));
             this.buttonBack.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonBack.Location = new System.Drawing.Point(130, 129);
+            this.buttonBack.Location = new System.Drawing.Point(128, 98);
             this.buttonBack.Name = "buttonBack";
             this.buttonBack.Size = new System.Drawing.Size(75, 23);
-            this.buttonBack.TabIndex = 17;
+            this.buttonBack.TabIndex = 19;
             this.buttonBack.Text = "Назад";
             this.buttonBack.UseVisualStyleBackColor = false;
             this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
@@ -86,30 +86,29 @@
             // 
             this.buttonAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(252)))), ((int)(((byte)(222)))));
             this.buttonAdd.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonAdd.Location = new System.Drawing.Point(37, 129);
+            this.buttonAdd.Location = new System.Drawing.Point(35, 98);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(75, 23);
-            this.buttonAdd.TabIndex = 16;
+            this.buttonAdd.TabIndex = 18;
             this.buttonAdd.Text = "Зберегти";
             this.buttonAdd.UseVisualStyleBackColor = false;
             this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
-            // add_subject_show
+            // add_class_show
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(248, 193);
+            this.ClientSize = new System.Drawing.Size(249, 161);
             this.Controls.Add(this.buttonBack);
             this.Controls.Add(this.buttonAdd);
-            this.Controls.Add(label1);
-            this.Controls.Add(this.ClassTextBox);
-            this.Controls.Add(subject_nameLabel);
-            this.Controls.Add(this.subject_nameTextBox);
-            this.Name = "add_subject_show";
-            this.Text = "add_subject_Show";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.add_subject_show_FormClosing);
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.add_subject_show_FormClosed);
-            this.Load += new System.EventHandler(this.add_subject_show_Load);
+            this.Controls.Add(class_nameLabel);
+            this.Controls.Add(this.class_nameTextBox);
+            this.Controls.Add(class_numberLabel);
+            this.Controls.Add(this.class_numberTextBox);
+            this.Name = "add_class_show";
+            this.Text = "add_class_show";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.add_class_show_FormClosed);
+            this.Load += new System.EventHandler(this.add_class_show_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -117,8 +116,8 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox subject_nameTextBox;
-        private System.Windows.Forms.TextBox ClassTextBox;
+        private System.Windows.Forms.TextBox class_nameTextBox;
+        private System.Windows.Forms.TextBox class_numberTextBox;
         private System.Windows.Forms.Button buttonBack;
         private System.Windows.Forms.Button buttonAdd;
     }

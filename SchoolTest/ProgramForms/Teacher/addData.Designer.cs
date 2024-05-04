@@ -53,7 +53,7 @@
             // button7
             // 
             this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button7.Location = new System.Drawing.Point(70, 387);
+            this.button7.Location = new System.Drawing.Point(70, 334);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(192, 47);
             this.button7.TabIndex = 21;
@@ -63,12 +63,13 @@
             // button6
             // 
             this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button6.Location = new System.Drawing.Point(70, 334);
+            this.button6.Location = new System.Drawing.Point(70, 387);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(192, 47);
             this.button6.TabIndex = 20;
             this.button6.Text = "Клас";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // button5
             // 
@@ -131,6 +132,7 @@
             this.button4.TabIndex = 14;
             this.button4.Text = "Користувач";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // addData
             // 
