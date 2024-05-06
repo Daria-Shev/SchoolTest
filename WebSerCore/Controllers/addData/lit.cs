@@ -7,30 +7,32 @@ using Newtonsoft.Json;
 using System;
 using System.Data.SqlClient;
 using System.Net.Mail;
-
 namespace WebSerCore.Controllers.addData
 {
-    public class theme : Controller
+    public class lit : Controller
     {
-        public class themeData
+        private class tableData
         {
             public int theme_id { get; set; }
-            public string theme_name { get; set; }
-            public int subject_id { get; set; }
+            public string literature_name { get; set; }
+            public string literature_link { get; set; }
+            public int literature_id { get; set; }
         }
 
         //даные в таблицу перенос  DataSource
-        [HttpGet, Route("theme_table")]
+        [HttpGet, Route("lit_table")]
         [Authorize(Roles = "teacher")]
-        public object theme_table()
+        public object lit_table()
         {
             BD bd = new BD();
             bd.connectionBD();
 
 
             // Используйте параметризованный запрос, чтобы избежать SQL-инъекций
-            string sqlExpression = @"SELECT dbo.theme.theme_id, dbo.subject.subject_id, dbo.theme.theme_name, dbo.subject.subject_name
-                         FROM dbo.theme INNER JOIN
+            string sqlExpression = @"SELECT        dbo.recommended_literature.literature_id, dbo.subject.subject_id, dbo.theme.theme_id, dbo.recommended_literature.literature_name, dbo.recommended_literature.literature_link, dbo.theme.theme_name, 
+                         dbo.subject.subject_name
+                         FROM    dbo.recommended_literature INNER JOIN
+                         dbo.theme ON dbo.recommended_literature.theme_id = dbo.theme.theme_id INNER JOIN
                          dbo.subject ON dbo.theme.subject_id = dbo.subject.subject_id";
 
             // Создаем SqlDataAdapter и передаем ему SQL-выражение и подключение
@@ -49,23 +51,23 @@ namespace WebSerCore.Controllers.addData
 
         }
 
-        [HttpGet, Route("theme_delete")]
+        [HttpGet, Route("lit_delete")]
         [Authorize(Roles = "teacher")]
-        public object theme_delete(int theme_id)
+        public object lit_delete(int literature_id)
         {
             BD bd = new BD();
             bd.connectionBD();
 
             try
             {
-                string sqlExpression = @"DELETE FROM [test].[dbo].[theme]
-                    WHERE [theme_id] = @theme_id;
+                string sqlExpression = @"DELETE FROM [test].[dbo].[recommended_literature]
+                    WHERE [literature_id] = @literature_id;
                    ";
 
                 using (SqlCommand sqlCommand = new SqlCommand(sqlExpression, bd.connection))
                 {
 
-                    sqlCommand.Parameters.AddWithValue("@theme_id", theme_id);
+                    sqlCommand.Parameters.AddWithValue("@literature_id", literature_id);
                     sqlCommand.ExecuteNonQuery();
                 }
             }
@@ -78,12 +80,12 @@ namespace WebSerCore.Controllers.addData
             return Ok(message);
         }
 
-        [HttpGet, Route("theme_add")]
+        [HttpGet, Route("lit_add")]
         [Authorize(Roles = "teacher")]
-        public object theme_add(string jsonData)
+        public object lit_add(string jsonData)
         {
             // Десериализуем JSON строку в объект класса
-            var classData = JsonConvert.DeserializeObject<themeData>(jsonData);
+            var classData = JsonConvert.DeserializeObject<tableData>(jsonData);
 
 
             BD bd = new BD();
@@ -91,24 +93,27 @@ namespace WebSerCore.Controllers.addData
 
             try
             {
-                string sqlExpression = @"MERGE INTO [test].[dbo].[theme] AS target
-                        USING (VALUES (@theme_id, @theme_name, @subject_id)) 
-                        AS source (theme_id, theme_name, subject_id)
-                        ON target.theme_id = source.theme_id
+                string sqlExpression = @"MERGE INTO [test].[dbo].[recommended_literature] AS target
+                        USING (VALUES (@literature_id, @literature_name, @literature_link, @theme_id)) 
+                        AS source (literature_id, literature_name, literature_link, theme_id)
+                        ON target.literature_id = source.literature_id
                         WHEN MATCHED THEN
-                            UPDATE SET target.theme_name = source.theme_name,
-                                       target.subject_id = source.subject_id
+                            UPDATE SET target.literature_name = source.literature_name,
+                                       target.literature_link = source.literature_link,
+                                       target.theme_id = source.theme_id
                         WHEN NOT MATCHED THEN
-                            INSERT (theme_name, subject_id) 
-                            VALUES (source.theme_name, source.subject_id);
+                            INSERT (literature_name, literature_link, theme_id) 
+                            VALUES (source.literature_name, source.literature_link, source.theme_id);
                    ";
+
 
                 using (SqlCommand sqlCommand = new SqlCommand(sqlExpression, bd.connection))
                 {
 
+                    sqlCommand.Parameters.AddWithValue("@literature_id", classData.literature_id);
+                    sqlCommand.Parameters.AddWithValue("@literature_name", classData.literature_name);
+                    sqlCommand.Parameters.AddWithValue("@literature_link", classData.literature_link);
                     sqlCommand.Parameters.AddWithValue("@theme_id", classData.theme_id);
-                    sqlCommand.Parameters.AddWithValue("@theme_name", classData.theme_name);
-                    sqlCommand.Parameters.AddWithValue("@subject_id", classData.subject_id);
 
                     sqlCommand.ExecuteNonQuery();
                 }
@@ -122,21 +127,5 @@ namespace WebSerCore.Controllers.addData
             return Ok(message);
 
         }
-
-        [HttpGet, Route("theme_list")]
-        [Authorize(Roles = "teacher")]
-        public object theme_list()
-        {
-            BD bd = new BD();
-            bd.connectionBD();
-            string sqlExpression = "SELECT TOP (1000) [theme_id] ,[theme_name], [subject_id] FROM [test].[dbo].[theme]";
-            SqlDataAdapter adapter = new SqlDataAdapter(sqlExpression, bd.connection);
-            DataTable dataTable = new DataTable();
-            adapter.Fill(dataTable);
-            string json = JsonConvert.SerializeObject(dataTable);
-            bd.closeBD();
-            return json;
-        }
-
     }
 }

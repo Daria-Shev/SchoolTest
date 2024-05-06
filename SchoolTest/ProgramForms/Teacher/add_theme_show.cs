@@ -81,8 +81,6 @@ namespace SchoolTest.ProgramForms.Teacher
         }
         private void server_add()
         {
-            //string class_name = class_nameTextBox.Text;
-            //string class_number = class_numberTextBox.Text;
             ApiClass authApi = new ApiClass();
 
             authApi.path = "theme_add";
