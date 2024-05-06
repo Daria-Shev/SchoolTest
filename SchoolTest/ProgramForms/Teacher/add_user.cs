@@ -37,13 +37,22 @@ namespace SchoolTest.ProgramForms.Teacher
         {
             ApiClass authApi = new ApiClass();
 
-            authApi.path = "user_table";
+            authApi.path = "user_table_teacher";
             authApi.uriCreate();
 
             var Stream = authApi.ServerAuthorization();
 
             var info = JsonHelpers.ReadFromJsonStream<string>(Stream);
-            dataGridView1.DataSource = JsonConvert.DeserializeObject(info, typeof(DataTable)) as DataTable;
+            dataGridView_teacher.DataSource = JsonConvert.DeserializeObject(info, typeof(DataTable)) as DataTable;
+            
+
+            authApi.path = "user_table_student";
+            authApi.uriCreate();
+
+            Stream = authApi.ServerAuthorization();
+
+            info = JsonHelpers.ReadFromJsonStream<string>(Stream);
+            dataGridView_student.DataSource = JsonConvert.DeserializeObject(info, typeof(DataTable)) as DataTable;
         }
 
         private void combo_Load()
@@ -51,10 +60,10 @@ namespace SchoolTest.ProgramForms.Teacher
             List<KeyValuePair<string, string>> items = new List<KeyValuePair<string, string>>();
 
             // Перебираем колонки DataGridView
-            for (int columnIndex = 1; columnIndex < dataGridView1.Columns.Count; columnIndex++)
+            for (int columnIndex = 1; columnIndex < dataGridView_teacher.Columns.Count; columnIndex++)
             {
                 // Получаем колонку
-                DataGridViewColumn column = dataGridView1.Columns[columnIndex];
+                DataGridViewColumn column = dataGridView_teacher.Columns[columnIndex];
 
                 // Добавляем пару ключ-значение в список
                 items.Add(new KeyValuePair<string, string>(column.DataPropertyName, column.HeaderText));

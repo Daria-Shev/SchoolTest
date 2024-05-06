@@ -71,6 +71,108 @@
             this.panelTeacher.SuspendLayout();
             this.SuspendLayout();
             // 
+            // class_idLabel
+            // 
+            class_idLabel.AutoSize = true;
+            class_idLabel.Location = new System.Drawing.Point(5, 63);
+            class_idLabel.Name = "class_idLabel";
+            class_idLabel.Size = new System.Drawing.Size(35, 13);
+            class_idLabel.TabIndex = 22;
+            class_idLabel.Text = "Клас:";
+            // 
+            // user_account_idLabel2
+            // 
+            user_account_idLabel2.AutoSize = true;
+            user_account_idLabel2.Location = new System.Drawing.Point(5, 126);
+            user_account_idLabel2.Name = "user_account_idLabel2";
+            user_account_idLabel2.Size = new System.Drawing.Size(83, 13);
+            user_account_idLabel2.TabIndex = 16;
+            user_account_idLabel2.Text = "user account id:";
+            user_account_idLabel2.Visible = false;
+            // 
+            // parent_emailLabel
+            // 
+            parent_emailLabel.AutoSize = true;
+            parent_emailLabel.Location = new System.Drawing.Point(5, 37);
+            parent_emailLabel.Name = "parent_emailLabel";
+            parent_emailLabel.Size = new System.Drawing.Size(83, 13);
+            parent_emailLabel.TabIndex = 20;
+            parent_emailLabel.Text = "Пошта батьків:";
+            // 
+            // student_emailLabel
+            // 
+            student_emailLabel.AutoSize = true;
+            student_emailLabel.Location = new System.Drawing.Point(5, 11);
+            student_emailLabel.Name = "student_emailLabel";
+            student_emailLabel.Size = new System.Drawing.Size(70, 13);
+            student_emailLabel.TabIndex = 18;
+            student_emailLabel.Text = "Пошта учнів:";
+            // 
+            // email_addressLabel
+            // 
+            email_addressLabel.AutoSize = true;
+            email_addressLabel.Location = new System.Drawing.Point(2, 11);
+            email_addressLabel.Name = "email_addressLabel";
+            email_addressLabel.Size = new System.Drawing.Size(43, 13);
+            email_addressLabel.TabIndex = 13;
+            email_addressLabel.Text = "Пошта:";
+            // 
+            // user_account_idLabel1
+            // 
+            user_account_idLabel1.AutoSize = true;
+            user_account_idLabel1.Location = new System.Drawing.Point(9, 33);
+            user_account_idLabel1.Name = "user_account_idLabel1";
+            user_account_idLabel1.Size = new System.Drawing.Size(83, 13);
+            user_account_idLabel1.TabIndex = 11;
+            user_account_idLabel1.Text = "user account id:";
+            user_account_idLabel1.Visible = false;
+            // 
+            // nicknameLabel
+            // 
+            nicknameLabel.AutoSize = true;
+            nicknameLabel.Location = new System.Drawing.Point(40, 95);
+            nicknameLabel.Name = "nicknameLabel";
+            nicknameLabel.Size = new System.Drawing.Size(52, 13);
+            nicknameLabel.TabIndex = 30;
+            nicknameLabel.Text = "Нікнейм:";
+            // 
+            // passwordLabel
+            // 
+            passwordLabel.AutoSize = true;
+            passwordLabel.Location = new System.Drawing.Point(40, 121);
+            passwordLabel.Name = "passwordLabel";
+            passwordLabel.Size = new System.Drawing.Size(48, 13);
+            passwordLabel.TabIndex = 32;
+            passwordLabel.Text = "Пароль:";
+            // 
+            // user_account_typeLabel
+            // 
+            user_account_typeLabel.AutoSize = true;
+            user_account_typeLabel.Location = new System.Drawing.Point(40, 147);
+            user_account_typeLabel.Name = "user_account_typeLabel";
+            user_account_typeLabel.Size = new System.Drawing.Size(95, 13);
+            user_account_typeLabel.TabIndex = 34;
+            user_account_typeLabel.Text = "Тип користувача:";
+            // 
+            // full_nameLabel
+            // 
+            full_nameLabel.AutoSize = true;
+            full_nameLabel.Location = new System.Drawing.Point(40, 173);
+            full_nameLabel.Name = "full_nameLabel";
+            full_nameLabel.Size = new System.Drawing.Size(32, 13);
+            full_nameLabel.TabIndex = 36;
+            full_nameLabel.Text = "ФІО:";
+            // 
+            // user_account_idLabel
+            // 
+            user_account_idLabel.AutoSize = true;
+            user_account_idLabel.Location = new System.Drawing.Point(39, 39);
+            user_account_idLabel.Name = "user_account_idLabel";
+            user_account_idLabel.Size = new System.Drawing.Size(83, 13);
+            user_account_idLabel.TabIndex = 28;
+            user_account_idLabel.Text = "user account id:";
+            user_account_idLabel.Visible = false;
+            // 
             // buttonBack
             // 
             this.buttonBack.Location = new System.Drawing.Point(177, 196);
@@ -79,6 +181,7 @@
             this.buttonBack.TabIndex = 23;
             this.buttonBack.Text = "Назад";
             this.buttonBack.UseVisualStyleBackColor = true;
+            this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
             // 
             // buttonAdd
             // 
@@ -123,25 +226,6 @@
             this.class_idTextBox.TabIndex = 23;
             this.class_idTextBox.Visible = false;
             // 
-            // class_idLabel
-            // 
-            class_idLabel.AutoSize = true;
-            class_idLabel.Location = new System.Drawing.Point(5, 63);
-            class_idLabel.Name = "class_idLabel";
-            class_idLabel.Size = new System.Drawing.Size(35, 13);
-            class_idLabel.TabIndex = 22;
-            class_idLabel.Text = "Клас:";
-            // 
-            // user_account_idLabel2
-            // 
-            user_account_idLabel2.AutoSize = true;
-            user_account_idLabel2.Location = new System.Drawing.Point(5, 126);
-            user_account_idLabel2.Name = "user_account_idLabel2";
-            user_account_idLabel2.Size = new System.Drawing.Size(83, 13);
-            user_account_idLabel2.TabIndex = 16;
-            user_account_idLabel2.Text = "user account id:";
-            user_account_idLabel2.Visible = false;
-            // 
             // parent_emailTextBox
             // 
             this.parent_emailTextBox.Location = new System.Drawing.Point(94, 34);
@@ -156,24 +240,6 @@
             this.user_account_idTextBox2.Size = new System.Drawing.Size(100, 20);
             this.user_account_idTextBox2.TabIndex = 17;
             this.user_account_idTextBox2.Visible = false;
-            // 
-            // parent_emailLabel
-            // 
-            parent_emailLabel.AutoSize = true;
-            parent_emailLabel.Location = new System.Drawing.Point(5, 37);
-            parent_emailLabel.Name = "parent_emailLabel";
-            parent_emailLabel.Size = new System.Drawing.Size(83, 13);
-            parent_emailLabel.TabIndex = 20;
-            parent_emailLabel.Text = "Пошта батьків:";
-            // 
-            // student_emailLabel
-            // 
-            student_emailLabel.AutoSize = true;
-            student_emailLabel.Location = new System.Drawing.Point(5, 11);
-            student_emailLabel.Name = "student_emailLabel";
-            student_emailLabel.Size = new System.Drawing.Size(70, 13);
-            student_emailLabel.TabIndex = 18;
-            student_emailLabel.Text = "Пошта учнів:";
             // 
             // student_emailTextBox
             // 
@@ -200,15 +266,6 @@
             this.email_addressTextBox.Size = new System.Drawing.Size(226, 20);
             this.email_addressTextBox.TabIndex = 14;
             // 
-            // email_addressLabel
-            // 
-            email_addressLabel.AutoSize = true;
-            email_addressLabel.Location = new System.Drawing.Point(2, 11);
-            email_addressLabel.Name = "email_addressLabel";
-            email_addressLabel.Size = new System.Drawing.Size(43, 13);
-            email_addressLabel.TabIndex = 13;
-            email_addressLabel.Text = "Пошта:";
-            // 
             // user_account_idTextBox1
             // 
             this.user_account_idTextBox1.Location = new System.Drawing.Point(98, 30);
@@ -216,16 +273,6 @@
             this.user_account_idTextBox1.Size = new System.Drawing.Size(102, 20);
             this.user_account_idTextBox1.TabIndex = 12;
             this.user_account_idTextBox1.Visible = false;
-            // 
-            // user_account_idLabel1
-            // 
-            user_account_idLabel1.AutoSize = true;
-            user_account_idLabel1.Location = new System.Drawing.Point(9, 33);
-            user_account_idLabel1.Name = "user_account_idLabel1";
-            user_account_idLabel1.Size = new System.Drawing.Size(83, 13);
-            user_account_idLabel1.TabIndex = 11;
-            user_account_idLabel1.Text = "user account id:";
-            user_account_idLabel1.Visible = false;
             // 
             // comboBox1
             // 
@@ -239,30 +286,12 @@
             this.comboBox1.TabIndex = 38;
             this.comboBox1.Text = "Учень";
             // 
-            // nicknameLabel
-            // 
-            nicknameLabel.AutoSize = true;
-            nicknameLabel.Location = new System.Drawing.Point(40, 95);
-            nicknameLabel.Name = "nicknameLabel";
-            nicknameLabel.Size = new System.Drawing.Size(52, 13);
-            nicknameLabel.TabIndex = 30;
-            nicknameLabel.Text = "Нікнейм:";
-            // 
             // nicknameTextBox
             // 
             this.nicknameTextBox.Location = new System.Drawing.Point(141, 92);
             this.nicknameTextBox.Name = "nicknameTextBox";
             this.nicknameTextBox.Size = new System.Drawing.Size(121, 20);
             this.nicknameTextBox.TabIndex = 31;
-            // 
-            // passwordLabel
-            // 
-            passwordLabel.AutoSize = true;
-            passwordLabel.Location = new System.Drawing.Point(40, 121);
-            passwordLabel.Name = "passwordLabel";
-            passwordLabel.Size = new System.Drawing.Size(48, 13);
-            passwordLabel.TabIndex = 32;
-            passwordLabel.Text = "Пароль:";
             // 
             // passwordTextBox
             // 
@@ -271,30 +300,12 @@
             this.passwordTextBox.Size = new System.Drawing.Size(121, 20);
             this.passwordTextBox.TabIndex = 33;
             // 
-            // user_account_typeLabel
-            // 
-            user_account_typeLabel.AutoSize = true;
-            user_account_typeLabel.Location = new System.Drawing.Point(40, 147);
-            user_account_typeLabel.Name = "user_account_typeLabel";
-            user_account_typeLabel.Size = new System.Drawing.Size(95, 13);
-            user_account_typeLabel.TabIndex = 34;
-            user_account_typeLabel.Text = "Тип користувача:";
-            // 
             // user_account_typeTextBox
             // 
             this.user_account_typeTextBox.Location = new System.Drawing.Point(162, 144);
             this.user_account_typeTextBox.Name = "user_account_typeTextBox";
             this.user_account_typeTextBox.Size = new System.Drawing.Size(100, 20);
             this.user_account_typeTextBox.TabIndex = 35;
-            // 
-            // full_nameLabel
-            // 
-            full_nameLabel.AutoSize = true;
-            full_nameLabel.Location = new System.Drawing.Point(40, 173);
-            full_nameLabel.Name = "full_nameLabel";
-            full_nameLabel.Size = new System.Drawing.Size(32, 13);
-            full_nameLabel.TabIndex = 36;
-            full_nameLabel.Text = "ФІО:";
             // 
             // full_nameTextBox
             // 
@@ -310,16 +321,6 @@
             this.user_account_idTextBox.Size = new System.Drawing.Size(100, 20);
             this.user_account_idTextBox.TabIndex = 29;
             this.user_account_idTextBox.Visible = false;
-            // 
-            // user_account_idLabel
-            // 
-            user_account_idLabel.AutoSize = true;
-            user_account_idLabel.Location = new System.Drawing.Point(39, 39);
-            user_account_idLabel.Name = "user_account_idLabel";
-            user_account_idLabel.Size = new System.Drawing.Size(83, 13);
-            user_account_idLabel.TabIndex = 28;
-            user_account_idLabel.Text = "user account id:";
-            user_account_idLabel.Visible = false;
             // 
             // add_user_show
             // 
@@ -343,6 +344,7 @@
             this.Controls.Add(this.buttonAdd);
             this.Name = "add_user_show";
             this.Text = "add_user_show";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.add_user_show_FormClosed);
             this.panelStudent.ResumeLayout(false);
             this.panelStudent.PerformLayout();
             this.panelTeacher.ResumeLayout(false);

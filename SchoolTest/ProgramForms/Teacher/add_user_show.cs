@@ -16,5 +16,20 @@ namespace SchoolTest.ProgramForms.Teacher
         {
             InitializeComponent();
         }
+
+        private void buttonBack_Click(object sender, EventArgs e)
+        {
+            add_user form1Instance = Application.OpenForms.OfType<add_user>().FirstOrDefault();
+            if (form1Instance != null)
+            {
+                form1Instance.Table();
+            }
+            this.Close();
+        }
+
+        private void add_user_show_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            buttonBack_Click(sender, e);
+        }
     }
 }
