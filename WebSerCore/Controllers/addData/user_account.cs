@@ -18,7 +18,7 @@ namespace WebSerCore.Controllers.addData
             BD bd = new BD();
             bd.connectionBD();
             // Используйте параметризованный запрос, чтобы избежать SQL-инъекций
-            string sqlExpression = @"SELECT dbo.user_account.user_account_id, dbo.user_account.nickname, dbo.user_account.password, dbo.user_account.user_account_type, dbo.user_account.full_name, dbo.teacher.email_address
+            string sqlExpression = @"SELECT dbo.user_account.user_account_id, dbo.user_account.user_account_type, dbo.user_account.nickname, dbo.user_account.password,  dbo.user_account.full_name, dbo.teacher.email_address
                          FROM  dbo.user_account INNER JOIN
                          dbo.teacher ON dbo.user_account.user_account_id = dbo.teacher.user_account_id";
 
@@ -45,7 +45,7 @@ namespace WebSerCore.Controllers.addData
 
 
             // Используйте параметризованный запрос, чтобы избежать SQL-инъекций
-            string sqlExpression = @"SELECT        dbo.user_account.user_account_id, dbo.student.class_id, dbo.user_account.nickname, dbo.user_account.password, dbo.user_account.user_account_type, dbo.user_account.full_name, dbo.student.student_email, 
+            string sqlExpression = @"SELECT        dbo.user_account.user_account_id, dbo.student.class_id, dbo.user_account.user_account_type, dbo.user_account.nickname, dbo.user_account.password,  dbo.user_account.full_name, dbo.student.student_email, 
                          dbo.student.parent_email, dbo.class.class_name
                          FROM dbo.student INNER JOIN
                          dbo.user_account ON dbo.student.user_account_id = dbo.user_account.user_account_id INNER JOIN
@@ -65,6 +65,36 @@ namespace WebSerCore.Controllers.addData
             bd.closeBD();
             return json;
 
+        }
+
+
+        [HttpGet, Route("user_delete")]
+        [Authorize(Roles = "teacher")]
+        public object user_delete(int user_id)
+        {
+            BD bd = new BD();
+            bd.connectionBD();
+
+            try
+            {
+                string sqlExpression = @"DELETE FROM [test].[dbo].[user_account]
+                    WHERE [user_account_id] = @user_id;
+                   ";
+
+                using (SqlCommand sqlCommand = new SqlCommand(sqlExpression, bd.connection))
+                {
+
+                    sqlCommand.Parameters.AddWithValue("@user_account_id", user_id);
+                    sqlCommand.ExecuteNonQuery();
+                }
+            }
+            catch
+            {
+                return BadRequest(new { Message = "Виникла помилка" });
+            }
+            bd.closeBD();
+            var message = new Message { message = "Операція успішна" };
+            return Ok(message);
         }
 
     }

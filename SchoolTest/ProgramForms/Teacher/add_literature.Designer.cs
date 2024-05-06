@@ -98,6 +98,7 @@
             this.button1.TabIndex = 61;
             this.button1.Text = "Відміна";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // textBox1
             // 
@@ -158,6 +159,7 @@
             this.buttonDelete.TabIndex = 55;
             this.buttonDelete.Text = "Видалити";
             this.buttonDelete.UseVisualStyleBackColor = false;
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
             // buttonAdd
             // 

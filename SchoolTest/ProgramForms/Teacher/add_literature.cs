@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using SchoolTest.Helpers;
+using SchoolTest.Info;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -145,6 +146,53 @@ namespace SchoolTest.ProgramForms.Teacher
 
             Form ifrm = new add_literature_show(data);
             ifrm.ShowDialog();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            comboBox1.Text = "";
+            comboBox2.Text = "";
+            comboBox2.DataSource = null;
+            textBox1.Text = "";
+            (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = "";
+        }
+
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+            string id = "0";
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = dataGridView1.SelectedRows[0];
+                id = selectedRow.Cells["literature_id"].Value.ToString();
+            }
+            if (check_id(id))
+            {
+                return;
+            }
+            Delete_date(id);
+            Table();
+        }
+        private void Delete_date(string id)
+        {
+            ApiClass authApi = new ApiClass();
+
+            authApi.path = "lit_delete";
+            authApi.query.Add("literature_id", id);
+            authApi.uriCreate();
+            var Stream = authApi.ServerAuthorization();
+            MessageString message = new MessageString();
+            message = JsonHelpers.ReadFromJsonStream<MessageString>(Stream);
+            Message.MessageInfo(message.message);
+        }
+        private bool check_id(string id)
+        {
+            if (id == "0")
+            {
+                Message.MessageInfo("Ви не обрали запис");
+                return true;
+            }
+            return false;
+
         }
     }
 }

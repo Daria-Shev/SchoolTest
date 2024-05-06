@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using SchoolTest.Helpers;
+using SchoolTest.Info;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -58,16 +59,29 @@ namespace SchoolTest.ProgramForms.Teacher
         private void combo_Load()
         {
             List<KeyValuePair<string, string>> items = new List<KeyValuePair<string, string>>();
-
-            // Перебираем колонки DataGridView
-            for (int columnIndex = 1; columnIndex < dataGridView_teacher.Columns.Count; columnIndex++)
+            if (tabControl1.SelectedTab.Name == "tabPageTeacher")
             {
-                // Получаем колонку
-                DataGridViewColumn column = dataGridView_teacher.Columns[columnIndex];
+                for (int columnIndex = 2; columnIndex < dataGridView_teacher.Columns.Count; columnIndex++)
+                {
+                    // Получаем колонку
+                    DataGridViewColumn column = dataGridView_teacher.Columns[columnIndex];
 
-                // Добавляем пару ключ-значение в список
-                items.Add(new KeyValuePair<string, string>(column.DataPropertyName, column.HeaderText));
+                    // Добавляем пару ключ-значение в список
+                    items.Add(new KeyValuePair<string, string>(column.DataPropertyName, column.HeaderText));
+                }
             }
+            else
+            {
+                for (int columnIndex = 3; columnIndex < dataGridView_student.Columns.Count; columnIndex++)
+                {
+                    // Получаем колонку
+                    DataGridViewColumn column = dataGridView_student.Columns[columnIndex];
+
+                    // Добавляем пару ключ-значение в список
+                    items.Add(new KeyValuePair<string, string>(column.DataPropertyName, column.HeaderText));
+                }
+            }
+            // Перебираем колонки DataGridView
             comboBox1.DataSource = new BindingSource(items, null);
             comboBox1.DisplayMember = "Value"; // Отображаемый текст
             comboBox1.ValueMember = "Key"; // Значение
@@ -75,6 +89,142 @@ namespace SchoolTest.ProgramForms.Teacher
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
+            if (tabControl1.SelectedTab.Name == "tabPageTeacher")
+            {
+                (dataGridView_teacher.DataSource as DataTable).DefaultView.RowFilter = string.Format("nickname LIKE '%{0}%' OR password LIKE '%{0}%' OR full_name LIKE '%{0}%' OR email_address LIKE '%{0}%'", textBox1.Text);
+            }
+            else
+            {
+                (dataGridView_student.DataSource as DataTable).DefaultView.RowFilter = string.Format("nickname LIKE '%{0}%' OR password LIKE '%{0}%' OR full_name LIKE '%{0}%' OR student_email LIKE '%{0}%' OR parent_email LIKE '%{0}%' OR class_name LIKE '%{0}%'", textBox1.Text);
+            }
+
+        }
+
+        private void comboBox1_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            string selectedColumnName = comboBox1.SelectedValue.ToString();
+            (dataGridView_teacher.DataSource as DataTable).DefaultView.RowFilter = "";
+            (dataGridView_student.DataSource as DataTable).DefaultView.RowFilter = "";
+            HashSet<string> uniqueValues = new HashSet<string>();
+
+
+            if (tabControl1.SelectedTab.Name == "tabPageTeacher")
+            {
+                selectedColumnName += "_teacher";
+                foreach (DataGridViewRow row in dataGridView_teacher.Rows)
+                {
+                    // Получаем значение ячейки из выбранной колонки
+                    string cellValue = row.Cells[selectedColumnName].Value?.ToString();
+                    // Добавляем значение в HashSet, если оно не пустое
+                    if (!string.IsNullOrEmpty(cellValue))
+                    {
+                        uniqueValues.Add(cellValue);
+                    }
+                }
+            }
+            else
+            {
+                selectedColumnName += "_student";
+                foreach (DataGridViewRow row in dataGridView_student.Rows)
+                {
+                    // Получаем значение ячейки из выбранной колонки
+                    string cellValue = row.Cells[selectedColumnName].Value?.ToString();
+                    // Добавляем значение в HashSet, если оно не пустое
+                    if (!string.IsNullOrEmpty(cellValue))
+                    {
+                        uniqueValues.Add(cellValue);
+                    }
+                }
+            }
+            
+            // Заполняем comboBox2 уникальными значениями
+            comboBox2.DataSource = new BindingSource(uniqueValues.ToList(), null);
+            comboBox2.Text = "";
+            comboBox2_SelectedIndexChanged(sender, e);
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string filteredText = comboBox2.Text.Replace("'", "''");
+            try
+            {
+                if (tabControl1.SelectedTab.Name == "tabPageTeacher")
+                {
+                    (dataGridView_teacher.DataSource as DataTable).DefaultView.RowFilter = $"{comboBox1.SelectedValue} LIKE '%{filteredText}%'";
+                }
+                else
+                {
+                    (dataGridView_student.DataSource as DataTable).DefaultView.RowFilter = $"{comboBox1.SelectedValue} LIKE '%{filteredText}%'";
+                }
+            }
+            catch { }
+
+        }
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            combo_Load();
+            comboBox1.Text = "";
+            comboBox2.Text = "";
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            comboBox1.Text = "";
+            comboBox2.Text = "";
+            comboBox2.DataSource = null;
+            textBox1.Text = "";
+            (dataGridView_teacher.DataSource as DataTable).DefaultView.RowFilter = "";
+            (dataGridView_student.DataSource as DataTable).DefaultView.RowFilter = "";
+        }
+
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+            string id = "0";
+            if (tabControl1.SelectedTab.Name == "tabPageTeacher")
+            {
+                if (dataGridView_teacher.SelectedRows.Count > 0)
+                {
+                    DataGridViewRow selectedRow = dataGridView_teacher.SelectedRows[0];
+                    id = selectedRow.Cells["user_account_id_teacher"].Value.ToString();
+                }
+            }
+            else
+            {
+                if (dataGridView_student.SelectedRows.Count > 0)
+                {
+                    DataGridViewRow selectedRow = dataGridView_student.SelectedRows[0];
+                    id = selectedRow.Cells["user_account_id_student"].Value.ToString();
+                }
+            }
+            if (check_id(id))
+            {
+                return;
+            }
+            Delete_date(id);
+            Table();
+        }
+        private void Delete_date(string id)
+        {
+
+            ApiClass authApi = new ApiClass();
+            authApi.path = "user_delete";
+            authApi.query.Add("user_id", id);
+            authApi.uriCreate();
+            var Stream = authApi.ServerAuthorization();
+            MessageString message = new MessageString();
+            message = JsonHelpers.ReadFromJsonStream<MessageString>(Stream);
+            Message.MessageInfo(message.message);
+        }
+        private bool check_id(string id)
+        {
+            if (id == "0")
+            {
+                Message.MessageInfo("Ви не обрали запис");
+                return true;
+            }
+            return false;
 
         }
     }
