@@ -163,7 +163,7 @@ namespace SchoolTest.ProgramForms.Teacher
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = string.Format("subject_name LIKE '%{0}%'", textBox1.Text, "OR subject_class_number LIKE '%{0}%'", textBox1.Text);
+            (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = string.Format("subject_name LIKE '%{0}%' OR subject_class_number LIKE '%{0}%'", textBox1.Text);
         }
 
         private void comboBox1_SelectionChangeCommitted(object sender, EventArgs e)

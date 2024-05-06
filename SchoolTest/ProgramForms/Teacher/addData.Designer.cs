@@ -59,6 +59,7 @@
             this.button7.TabIndex = 21;
             this.button7.Text = "Додаткова література";
             this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // button6
             // 
@@ -80,6 +81,7 @@
             this.button5.TabIndex = 19;
             this.button5.Text = "Тема";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button3
             // 

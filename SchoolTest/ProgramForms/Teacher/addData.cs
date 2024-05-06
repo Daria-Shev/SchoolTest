@@ -44,5 +44,19 @@ namespace SchoolTest.ProgramForms.Teacher
             ifrm.Show();
             this.Close();
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Form ifrm = new add_theme();
+            ifrm.Show();
+            this.Close();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            Form ifrm = new add_literature();
+            ifrm.Show();
+            this.Close();
+        }
     }
 }

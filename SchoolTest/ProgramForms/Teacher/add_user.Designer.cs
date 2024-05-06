@@ -41,6 +41,12 @@
             this.buttonDelete = new System.Windows.Forms.Button();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.user_account_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nickname = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.password = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.user_account_type = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.full_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.email_address = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageTeacher = new System.Windows.Forms.TabPage();
             this.tabPageStudent = new System.Windows.Forms.TabPage();
@@ -54,12 +60,6 @@
             this.parent_email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.class_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.class_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.user_account_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nickname = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.password = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.user_account_type = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.full_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.email_address = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPageTeacher.SuspendLayout();
@@ -120,6 +120,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(119, 20);
             this.textBox1.TabIndex = 34;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label3
             // 
@@ -203,6 +204,50 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(627, 282);
             this.dataGridView1.TabIndex = 27;
+            // 
+            // user_account_id
+            // 
+            this.user_account_id.DataPropertyName = "user_account_id";
+            this.user_account_id.HeaderText = "user_account_id";
+            this.user_account_id.Name = "user_account_id";
+            this.user_account_id.ReadOnly = true;
+            this.user_account_id.Visible = false;
+            // 
+            // nickname
+            // 
+            this.nickname.DataPropertyName = "nickname";
+            this.nickname.HeaderText = "Нікнейм";
+            this.nickname.Name = "nickname";
+            this.nickname.ReadOnly = true;
+            // 
+            // password
+            // 
+            this.password.DataPropertyName = "password";
+            this.password.HeaderText = "Пароль";
+            this.password.Name = "password";
+            this.password.ReadOnly = true;
+            // 
+            // user_account_type
+            // 
+            this.user_account_type.DataPropertyName = "user_account_type";
+            this.user_account_type.HeaderText = "user_account_type";
+            this.user_account_type.Name = "user_account_type";
+            this.user_account_type.ReadOnly = true;
+            this.user_account_type.Visible = false;
+            // 
+            // full_name
+            // 
+            this.full_name.DataPropertyName = "full_name";
+            this.full_name.HeaderText = "ФІО";
+            this.full_name.Name = "full_name";
+            this.full_name.ReadOnly = true;
+            // 
+            // email_address
+            // 
+            this.email_address.DataPropertyName = "email_address";
+            this.email_address.HeaderText = "Пошта";
+            this.email_address.Name = "email_address";
+            this.email_address.ReadOnly = true;
             // 
             // tabControl1
             // 
@@ -324,50 +369,6 @@
             this.class_name.HeaderText = "Клас";
             this.class_name.Name = "class_name";
             this.class_name.ReadOnly = true;
-            // 
-            // user_account_id
-            // 
-            this.user_account_id.DataPropertyName = "user_account_id";
-            this.user_account_id.HeaderText = "user_account_id";
-            this.user_account_id.Name = "user_account_id";
-            this.user_account_id.ReadOnly = true;
-            this.user_account_id.Visible = false;
-            // 
-            // nickname
-            // 
-            this.nickname.DataPropertyName = "nickname";
-            this.nickname.HeaderText = "Нікнейм";
-            this.nickname.Name = "nickname";
-            this.nickname.ReadOnly = true;
-            // 
-            // password
-            // 
-            this.password.DataPropertyName = "password";
-            this.password.HeaderText = "Пароль";
-            this.password.Name = "password";
-            this.password.ReadOnly = true;
-            // 
-            // user_account_type
-            // 
-            this.user_account_type.DataPropertyName = "user_account_type";
-            this.user_account_type.HeaderText = "user_account_type";
-            this.user_account_type.Name = "user_account_type";
-            this.user_account_type.ReadOnly = true;
-            this.user_account_type.Visible = false;
-            // 
-            // full_name
-            // 
-            this.full_name.DataPropertyName = "full_name";
-            this.full_name.HeaderText = "ФІО";
-            this.full_name.Name = "full_name";
-            this.full_name.ReadOnly = true;
-            // 
-            // email_address
-            // 
-            this.email_address.DataPropertyName = "email_address";
-            this.email_address.HeaderText = "Пошта";
-            this.email_address.Name = "email_address";
-            this.email_address.ReadOnly = true;
             // 
             // add_user
             // 

@@ -13,14 +13,14 @@ using System.Windows.Forms;
 
 namespace SchoolTest.ProgramForms.Teacher
 {
-    public partial class add_class : Form
+    public partial class add_theme : Form
     {
-        public add_class()
+        public add_theme()
         {
             InitializeComponent();
         }
 
-        private void add_clas_Load(object sender, EventArgs e)
+        private void add_theme_Load(object sender, EventArgs e)
         {
             Table();
             combo_Load();
@@ -31,7 +31,7 @@ namespace SchoolTest.ProgramForms.Teacher
             List<KeyValuePair<string, string>> items = new List<KeyValuePair<string, string>>();
 
             // Перебираем колонки DataGridView
-            for (int columnIndex = 1; columnIndex < dataGridView1.Columns.Count; columnIndex++)
+            for (int columnIndex = 2; columnIndex < dataGridView1.Columns.Count; columnIndex++)
             {
                 // Получаем колонку
                 DataGridViewColumn column = dataGridView1.Columns[columnIndex];
@@ -47,7 +47,7 @@ namespace SchoolTest.ProgramForms.Teacher
         {
             ApiClass authApi = new ApiClass();
 
-            authApi.path = "class_table";
+            authApi.path = "theme_table";
             authApi.uriCreate();
 
             var Stream = authApi.ServerAuthorization();
@@ -56,49 +56,12 @@ namespace SchoolTest.ProgramForms.Teacher
             dataGridView1.DataSource = JsonConvert.DeserializeObject(info, typeof(DataTable)) as DataTable;
         }
 
+
         private void buttonBack_Click(object sender, EventArgs e)
         {
             Form ifrm = new addData();
             ifrm.Show();
             this.Close();
-        }
-
-        private void buttonDelete_Click(object sender, EventArgs e)
-        {
-            string id = "0";
-            if (dataGridView1.SelectedRows.Count > 0)
-            {
-                DataGridViewRow selectedRow = dataGridView1.SelectedRows[0];
-                id = selectedRow.Cells["class_id"].Value.ToString();
-            }
-            if (check_id(id))
-            {
-                return;
-            }
-            Delete_date(id);
-            Table();
-        }
-        private void Delete_date(string id)
-        {
-            ApiClass authApi = new ApiClass();
-
-            authApi.path = "class_delete";
-            authApi.query.Add("class_id", id);
-            authApi.uriCreate();
-            var Stream = authApi.ServerAuthorization();
-            MessageString message = new MessageString();
-            message = JsonHelpers.ReadFromJsonStream<MessageString>(Stream);
-            Message.MessageInfo(message.message);
-        }
-        private bool check_id(string id)
-        {
-            if (id == "0")
-            {
-                Message.MessageInfo("Ви не обрали запис");
-                return true;
-            }
-            return false;
-
         }
 
         private void comboBox1_SelectionChangeCommitted(object sender, EventArgs e)
@@ -124,21 +87,19 @@ namespace SchoolTest.ProgramForms.Teacher
             comboBox2_SelectedIndexChanged(sender, e);
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-            (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = string.Format("class_name LIKE '%{0}%' OR class_number LIKE '%{0}%'", textBox1.Text);
-
-        }
-
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
             string filteredText = comboBox2.Text.Replace("'", "''");
             try
             {
                 (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = $"{comboBox1.SelectedValue} LIKE '%{filteredText}%'";
-
             }
             catch { }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = string.Format("theme_name LIKE '%{0}%' OR subject_name LIKE '%{0}%'", textBox1.Text);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -150,13 +111,6 @@ namespace SchoolTest.ProgramForms.Teacher
             (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = "";
         }
 
-        private void buttonAdd_Click(object sender, EventArgs e)
-        {
-            var data = new { id = "0", class_name = "", class_number = "" };
-            Form ifrm = new add_class_show(data);
-            ifrm.ShowDialog();
-        }
-
         private void dataGridView1_DoubleClick(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count != 1)
@@ -165,28 +119,75 @@ namespace SchoolTest.ProgramForms.Teacher
             }
             var data = data_dedicated();
 
-            Form ifrm = new add_class_show(data);
+            Form ifrm = new add_theme_show(data);
             ifrm.ShowDialog();
         }
 
         private object data_dedicated()
         {
-            string id = "0";
-            string class_name = "";
-            string class_number = "";
+            string theme_id = "0";
+            string subject_id = "0";
+            string theme_name = "";
+            string subject_name = "";
             if (dataGridView1.SelectedRows.Count > 0)
             {
                 DataGridViewRow selectedRow = dataGridView1.SelectedRows[0];
-                id = selectedRow.Cells["class_id"].Value.ToString();
-                class_name = selectedRow.Cells["class_name"].Value.ToString();
-                class_number = selectedRow.Cells["class_number"].Value.ToString();
+                theme_id = selectedRow.Cells["theme_id"].Value.ToString();
+                subject_id = selectedRow.Cells["subject_id"].Value.ToString();
+                theme_name = selectedRow.Cells["theme_name"].Value.ToString();
+                subject_name = selectedRow.Cells["subject_name"].Value.ToString();
+
             }
-            var data = new { id, class_name, class_number };
+            var data = new { theme_id, subject_id, theme_name, subject_name };
             return data;
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void buttonAdd_Click(object sender, EventArgs e)
         {
+            string theme_id = "0";
+            string subject_id = "0";
+            string theme_name = "";
+            string subject_name = "";
+            var data = new { theme_id, subject_id, theme_name, subject_name };
+            Form ifrm = new add_theme_show(data);
+            ifrm.ShowDialog();
+        }
+
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+            string id = "0";
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = dataGridView1.SelectedRows[0];
+                id = selectedRow.Cells["theme_id"].Value.ToString();
+            }
+            if (check_id(id))
+            {
+                return;
+            }
+            Delete_date(id);
+            Table();
+        }
+        private void Delete_date(string id)
+        {
+            ApiClass authApi = new ApiClass();
+
+            authApi.path = "theme_delete";
+            authApi.query.Add("theme_id", id);
+            authApi.uriCreate();
+            var Stream = authApi.ServerAuthorization();
+            MessageString message = new MessageString();
+            message = JsonHelpers.ReadFromJsonStream<MessageString>(Stream);
+            Message.MessageInfo(message.message);
+        }
+        private bool check_id(string id)
+        {
+            if (id == "0")
+            {
+                Message.MessageInfo("Ви не обрали запис");
+                return true;
+            }
+            return false;
 
         }
     }

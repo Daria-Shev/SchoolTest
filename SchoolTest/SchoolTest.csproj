@@ -85,6 +85,12 @@
     <Compile Include="ProgramForms\Teacher\add_class_show.Designer.cs">
       <DependentUpon>add_class_show.cs</DependentUpon>
     </Compile>
+    <Compile Include="ProgramForms\Teacher\add_literature.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProgramForms\Teacher\add_literature.Designer.cs">
+      <DependentUpon>add_literature.cs</DependentUpon>
+    </Compile>
     <Compile Include="ProgramForms\Teacher\add_subject.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +102,18 @@
     </Compile>
     <Compile Include="ProgramForms\Teacher\add_subject_show.Designer.cs">
       <DependentUpon>add_subject_show.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProgramForms\Teacher\add_theme.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProgramForms\Teacher\add_theme.Designer.cs">
+      <DependentUpon>add_theme.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProgramForms\Teacher\add_theme_show.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProgramForms\Teacher\add_theme_show.Designer.cs">
+      <DependentUpon>add_theme_show.cs</DependentUpon>
     </Compile>
     <Compile Include="ProgramForms\Teacher\add_user.cs">
       <SubType>Form</SubType>
@@ -136,6 +154,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ProgramForms\Teacher\add_subject_show.resx">
       <DependentUpon>add_subject_show.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProgramForms\Teacher\add_theme.resx">
+      <DependentUpon>add_theme.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProgramForms\Teacher\add_theme_show.resx">
+      <DependentUpon>add_theme_show.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProgramForms\Teacher\add_user.resx">
       <DependentUpon>add_user.cs</DependentUpon>

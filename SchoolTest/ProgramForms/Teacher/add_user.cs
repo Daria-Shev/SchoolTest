@@ -64,6 +64,9 @@ namespace SchoolTest.ProgramForms.Teacher
             comboBox1.ValueMember = "Key"; // Значение
         }
 
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
 
+        }
     }
 }

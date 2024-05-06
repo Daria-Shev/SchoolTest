@@ -116,6 +116,32 @@ namespace WebSerCore.Controllers.addData
             return Ok(message);
 
         }
+        [HttpGet, Route("subject_list")]
+        [Authorize(Roles = "teacher")]
+        public object subject_list()
+        {
+            BD bd = new BD();
+            bd.connectionBD();
+
+
+            // Используйте параметризованный запрос, чтобы избежать SQL-инъекций
+            string sqlExpression = "SELECT dbo.subject.subject_id, dbo.subject.subject_name FROM subject";
+
+            // Создаем SqlDataAdapter и передаем ему SQL-выражение и подключение
+            SqlDataAdapter adapter = new SqlDataAdapter(sqlExpression, bd.connection);
+
+            DataTable dataTable = new DataTable();
+
+            // Заполняем DataTable данными из запроса
+            adapter.Fill(dataTable);
+
+            // Преобразование DataTable в JSON строку
+            string json = JsonConvert.SerializeObject(dataTable);
+
+            bd.closeBD();
+            return json;
+
+        }
 
     }
 }
