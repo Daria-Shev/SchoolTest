@@ -77,6 +77,7 @@ namespace SchoolTest
         private void button1_Click(object sender, EventArgs e)
         {
             api.exit();
+            this.Close();
 
         }
 

@@ -18,8 +18,33 @@ namespace WebSerCore.Controllers.addData
             public string class_name { get; set; }
             public int class_number { get; set; }
         }
+        [HttpGet, Route("class_list")]
+        [Authorize(Roles = "teacher")]
+        public object class_list()
+        {
+            BD bd = new BD();
+            bd.connectionBD();
 
-        //даные в таблицу перенос  DataSource
+
+            // Используйте параметризованный запрос, чтобы избежать SQL-инъекций
+            string sqlExpression = "SELECT dbo.class.class_id, dbo.class.class_name FROM class";
+
+            // Создаем SqlDataAdapter и передаем ему SQL-выражение и подключение
+            SqlDataAdapter adapter = new SqlDataAdapter(sqlExpression, bd.connection);
+
+            DataTable dataTable = new DataTable();
+
+            // Заполняем DataTable данными из запроса
+            adapter.Fill(dataTable);
+
+            // Преобразование DataTable в JSON строку
+            string json = JsonConvert.SerializeObject(dataTable);
+
+            bd.closeBD();
+            return json;
+
+        }
+
         [HttpGet, Route("class_table")]
         [Authorize(Roles = "teacher")]
         public object class_table()

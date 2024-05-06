@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -226,6 +227,98 @@ namespace SchoolTest.ProgramForms.Teacher
             }
             return false;
 
+        }
+
+        private void buttonAdd_Click(object sender, EventArgs e)
+        {
+            string user_account_id = "0";
+            string nickname = "";
+            string password = "";
+            string user_account_type = "";
+            string full_name = "";
+            var data = new object();
+            if (tabControl1.SelectedTab.Name == "tabPageTeacher")
+            {
+                user_account_type = "teacher";
+                string email_address = "";
+                data = new { user_account_id, nickname, password, user_account_type, full_name, email_address };
+
+            }
+            else
+            {
+                user_account_type = "student";
+                string student_email = "";
+                string parent_email = "";
+                string class_id = "0";
+                data = new { user_account_id, nickname, password, user_account_type, full_name, student_email, parent_email, class_id };
+            }
+            Form ifrm = new add_user_show(data);
+            ifrm.ShowDialog();
+        }
+
+        private void dataGridView_teacher_DoubleClick(object sender, EventArgs e)
+        {
+            if (tabControl1.SelectedTab.Name == "tabPageTeacher" && dataGridView_teacher.SelectedRows.Count != 1)
+            {
+                return;
+            }
+            var data = data_dedicated();
+
+            Form ifrm = new add_user_show(data);
+            ifrm.ShowDialog();
+        }
+
+        private void dataGridView_student_DoubleClick(object sender, EventArgs e)
+        {
+            if (tabControl1.SelectedTab.Name == "tabPageStudent" && dataGridView_student.SelectedRows.Count != 1)
+            {
+                return;
+            }
+            var data = data_dedicated();
+
+            Form ifrm = new add_user_show(data);
+            ifrm.ShowDialog();
+        }
+        private object data_dedicated()
+        {
+            var data = new object();
+            string user_account_id = "0";
+            string nickname = "";
+            string password = "";
+            string user_account_type = "";
+            string full_name = "";
+            string student_email = "";
+            string parent_email = "";
+            string class_id = "0";
+            string email_address = "";
+            DataGridViewRow selectedRow=null;
+
+            if (tabControl1.SelectedTab.Name == "tabPageTeacher" && dataGridView_teacher.SelectedRows.Count > 0)
+            {
+                selectedRow = dataGridView_teacher.SelectedRows[0];
+                user_account_id = selectedRow.Cells["user_account_id_teacher"].Value.ToString();
+                nickname = selectedRow.Cells["nickname_teacher"].Value.ToString();
+                password = selectedRow.Cells["password_teacher"].Value.ToString();
+                user_account_type = selectedRow.Cells["user_account_type_teacher"].Value.ToString();
+                full_name = selectedRow.Cells["full_name_teacher"].Value.ToString();
+                email_address = selectedRow.Cells["email_address_teacher"].Value.ToString();
+                data = new { user_account_id, nickname, password, user_account_type, full_name, email_address };
+
+            }
+            if (tabControl1.SelectedTab.Name == "tabPageStudent" && dataGridView_student.SelectedRows.Count > 0)
+            {
+                selectedRow = dataGridView_student.SelectedRows[0];
+                user_account_id = selectedRow.Cells["user_account_id_student"].Value.ToString();
+                nickname = selectedRow.Cells["nickname_student"].Value.ToString();
+                password = selectedRow.Cells["password_student"].Value.ToString();
+                user_account_type = selectedRow.Cells["user_account_type_student"].Value.ToString();
+                full_name = selectedRow.Cells["full_name_student"].Value.ToString();
+                student_email = selectedRow.Cells["student_email_student"].Value.ToString();
+                parent_email = selectedRow.Cells["parent_email_student"].Value.ToString();
+                class_id = selectedRow.Cells["class_id"].Value.ToString();
+                data = new { user_account_id, nickname, password, user_account_type, full_name, student_email, parent_email, class_id };
+            }
+            return data;
         }
     }
 }

@@ -58,6 +58,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Helpers\JsonHelpers.cs" />
+    <Compile Include="Helpers\type_item.cs" />
     <Compile Include="Info\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="ProgramForms\Message.cs" />

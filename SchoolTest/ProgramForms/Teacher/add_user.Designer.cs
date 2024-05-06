@@ -188,6 +188,7 @@
             this.buttonAdd.TabIndex = 28;
             this.buttonAdd.Text = "Додати";
             this.buttonAdd.UseVisualStyleBackColor = false;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
             // dataGridView_teacher
             // 
@@ -208,6 +209,7 @@
             this.dataGridView_teacher.ReadOnly = true;
             this.dataGridView_teacher.Size = new System.Drawing.Size(627, 282);
             this.dataGridView_teacher.TabIndex = 27;
+            this.dataGridView_teacher.DoubleClick += new System.EventHandler(this.dataGridView_teacher_DoubleClick);
             // 
             // tabControl1
             // 
@@ -264,6 +266,7 @@
             this.dataGridView_student.ReadOnly = true;
             this.dataGridView_student.Size = new System.Drawing.Size(646, 282);
             this.dataGridView_student.TabIndex = 28;
+            this.dataGridView_student.DoubleClick += new System.EventHandler(this.dataGridView_student_DoubleClick);
             // 
             // user_account_id_teacher
             // 
