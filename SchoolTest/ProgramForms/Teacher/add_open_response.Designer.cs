@@ -28,19 +28,43 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.Label correct_responseLabel;
+            this.correct_responseTextBox = new System.Windows.Forms.TextBox();
+            correct_responseLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // add_response
+            // correct_responseLabel
+            // 
+            correct_responseLabel.AutoSize = true;
+            correct_responseLabel.Location = new System.Drawing.Point(28, 42);
+            correct_responseLabel.Name = "correct_responseLabel";
+            correct_responseLabel.Size = new System.Drawing.Size(57, 13);
+            correct_responseLabel.TabIndex = 4;
+            correct_responseLabel.Text = "Відповідь:";
+            // 
+            // correct_responseTextBox
+            // 
+            this.correct_responseTextBox.Location = new System.Drawing.Point(102, 39);
+            this.correct_responseTextBox.Name = "correct_responseTextBox";
+            this.correct_responseTextBox.Size = new System.Drawing.Size(195, 20);
+            this.correct_responseTextBox.TabIndex = 5;
+            // 
+            // add_open_response
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Name = "add_response";
+            this.ClientSize = new System.Drawing.Size(334, 103);
+            this.Controls.Add(correct_responseLabel);
+            this.Controls.Add(this.correct_responseTextBox);
+            this.Name = "add_open_response";
             this.Text = "add_response";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
+
+        private System.Windows.Forms.TextBox correct_responseTextBox;
     }
 }

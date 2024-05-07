@@ -32,7 +32,7 @@ namespace SchoolTest.ProgramForms.Teacher
             List<KeyValuePair<string, string>> items = new List<KeyValuePair<string, string>>();
 
             // Перебираем колонки DataGridView
-            for (int columnIndex = 5; columnIndex < dataGridView1.Columns.Count; columnIndex++)
+            for (int columnIndex = 4; columnIndex < dataGridView1.Columns.Count; columnIndex++)
             {
                 // Получаем колонку
                 DataGridViewColumn column = dataGridView1.Columns[columnIndex];
@@ -57,6 +57,21 @@ namespace SchoolTest.ProgramForms.Teacher
 
             var info = JsonHelpers.ReadFromJsonStream<string>(Stream);
             dataGridView1.DataSource = JsonConvert.DeserializeObject(info, typeof(DataTable)) as DataTable;
+
+
+            // Получаем исходный DataTable из DataSource
+            DataTable originalDataTable = (dataGridView1.DataSource as DataTable);
+
+            // Группируем строки по question_id и выбираем первую строку из каждой группы
+            var distinctRows = originalDataTable.AsEnumerable()
+                                                .GroupBy(row => row.Field<Int64>("question_id"))
+                                                .Select(group => group.First())
+                                                .CopyToDataTable();
+
+            // Применяем отфильтрованный DataTable к DataSource
+            dataGridView1.DataSource = distinctRows;
+
+
         }
         public void TableType()
         {
@@ -202,11 +217,10 @@ namespace SchoolTest.ProgramForms.Teacher
             string question_id = "0";
             string theme_id = "0";
             string subject_id = "0";
-            string response_id = "0";
             string question_text = "";
             string points = "";
             string response_type = "";
-            var data = new { question_id, theme_id, subject_id, response_id, question_text, points, response_type };
+            var data = new { question_id, theme_id, subject_id, question_text, points, response_type };
             Form ifrm = new add_question_show(data);
             ifrm.ShowDialog();
         }
@@ -227,7 +241,6 @@ namespace SchoolTest.ProgramForms.Teacher
             string question_id = "0";
             string theme_id = "0";
             string subject_id = "0";
-            string response_id = "0";
             string question_text = "";
             string points = "";
             string response_type = "";
@@ -237,12 +250,11 @@ namespace SchoolTest.ProgramForms.Teacher
                 question_id = selectedRow.Cells["question_id"].Value.ToString();
                 theme_id = selectedRow.Cells["theme_id"].Value.ToString();
                 subject_id = selectedRow.Cells["subject_id"].Value.ToString();
-                response_id = selectedRow.Cells["response_id"].Value.ToString();
                 question_text = selectedRow.Cells["question_text"].Value.ToString();
                 points = selectedRow.Cells["points"].Value.ToString();
                 response_type = selectedRow.Cells["response_type"].Value.ToString();
             }
-            var data = new { question_id, theme_id, subject_id, response_id, question_text, points, response_type };
+            var data = new { question_id, theme_id, subject_id, question_text, points, response_type };
             return data;
         }
 

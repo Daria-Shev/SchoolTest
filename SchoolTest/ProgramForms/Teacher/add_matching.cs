@@ -10,11 +10,15 @@ using System.Windows.Forms;
 
 namespace SchoolTest.ProgramForms.Teacher
 {
-    public partial class matching : Form
+    public partial class add_matching : Form
     {
-        public matching()
+        object data;
+        string id;
+        public add_matching(object data)
         {
             InitializeComponent();
+            this.data = data;
         }
+
     }
 }

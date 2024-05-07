@@ -12,9 +12,12 @@ namespace SchoolTest.ProgramForms.Teacher
 {
     public partial class add_answer_options : Form
     {
-        public add_answer_options()
+        object data;
+        string id;
+        public add_answer_options(object data)
         {
             InitializeComponent();
+            this.data = data;
         }
     }
 }

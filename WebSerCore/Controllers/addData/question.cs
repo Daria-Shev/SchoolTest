@@ -18,11 +18,11 @@ namespace WebSerCore.Controllers.addData
         {
             BD bd = new BD();
             bd.connectionBD();
+
             string sqlExpression = @"SELECT
                                     dbo.subject.subject_id,
                                     dbo.theme.theme_id,
                                     dbo.question.question_id,
-                                    dbo.response.response_id,
                                     dbo.response.response_type,
                                     dbo.subject.subject_name,
                                     dbo.theme.theme_name,
@@ -40,6 +40,8 @@ namespace WebSerCore.Controllers.addData
                                     INNER JOIN dbo.theme ON dbo.subject.subject_id = dbo.theme.subject_id
                                     INNER JOIN dbo.question ON dbo.theme.theme_id = dbo.question.theme_id
                                     INNER JOIN dbo.response ON dbo.question.question_id = dbo.response.question_id;
+
+
                                 ";
 
             // Создаем SqlDataAdapter и передаем ему SQL-выражение и подключение

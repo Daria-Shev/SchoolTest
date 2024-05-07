@@ -164,11 +164,11 @@
     <Compile Include="ProgramForms\Teacher\add_user_show.Designer.cs">
       <DependentUpon>add_user_show.cs</DependentUpon>
     </Compile>
-    <Compile Include="ProgramForms\Teacher\matching.cs">
+    <Compile Include="ProgramForms\Teacher\add_matching.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ProgramForms\Teacher\matching.Designer.cs">
-      <DependentUpon>matching.cs</DependentUpon>
+    <Compile Include="ProgramForms\Teacher\add_matching.Designer.cs">
+      <DependentUpon>add_matching.cs</DependentUpon>
     </Compile>
     <Compile Include="ProgramForms\Teacher\teacherHome.cs">
       <SubType>Form</SubType>
@@ -185,6 +185,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ProgramForms\Teacher\addData.resx">
       <DependentUpon>addData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProgramForms\Teacher\add_answer_options.resx">
+      <DependentUpon>add_answer_options.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProgramForms\Teacher\add_class.resx">
       <DependentUpon>add_class.cs</DependentUpon>
@@ -207,6 +210,9 @@
     <EmbeddedResource Include="ProgramForms\Teacher\add_open_response.resx">
       <DependentUpon>add_open_response.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ProgramForms\Teacher\add_sequence.resx">
+      <DependentUpon>add_sequence.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ProgramForms\Teacher\add_subject.resx">
       <DependentUpon>add_subject.cs</DependentUpon>
     </EmbeddedResource>
@@ -224,6 +230,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ProgramForms\Teacher\add_user_show.resx">
       <DependentUpon>add_user_show.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProgramForms\Teacher\add_matching.resx">
+      <DependentUpon>add_matching.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProgramForms\Teacher\teacherHome.resx">
       <DependentUpon>teacherHome.cs</DependentUpon>

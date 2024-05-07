@@ -12,9 +12,12 @@ namespace SchoolTest.ProgramForms.Teacher
 {
     public partial class add_sequence : Form
     {
-        public add_sequence()
+        object data;
+        string id;
+        public add_sequence(object data)
         {
             InitializeComponent();
+            this.data = data;
         }
     }
 }

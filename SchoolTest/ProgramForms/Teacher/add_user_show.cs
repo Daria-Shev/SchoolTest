@@ -40,24 +40,26 @@ namespace SchoolTest.ProgramForms.Teacher
 
 
             combo_box_type();
-            comboBox_type.SelectedIndex = 0;
+            //comboBox_type.SelectedIndex = 0;
             combo_box_class();
 
 
             //// Находим соответствующий элемент в списке ComboBox по заданному значению
             //var itemToSelect = comboBox_type.Items.Cast<DataRowView>().FirstOrDefault(item => item["Value"].ToString() == dataTable.user_account_type);
-            var itemToSelect = comboBox_type.Items.Cast<type_item>().FirstOrDefault(item => item.Value == dataTable.user_account_type);
+            //var itemToSelect = comboBox_type.Items.Cast<type_item>().FirstOrDefault(item => item.Value == dataTable.user_account_type);
 
-            // Если такой элемент найден, выбираем его
-            if (itemToSelect != null)
-            {
-                comboBox_type.SelectedItem = itemToSelect;
-            }
+            //// Если такой элемент найден, выбираем его
+            //if (itemToSelect != null)
+            //{
+            //    comboBox_type.SelectedItem = itemToSelect;
+            //}
             if (dataTable.user_account_type.StartsWith("teacher"))
             {
                 panelTeacher.Visible = true;
                 panelStudent.Visible = false;
                 email_addressTextBox.Text = dataTable.email_address;
+                comboBox_type.SelectedIndex = 0;
+
             }
             else
             {
@@ -70,7 +72,9 @@ namespace SchoolTest.ProgramForms.Teacher
                 {
                     comboBox_class.SelectedItem = itemToSelect2;
                 }
-            }       
+                comboBox_type.SelectedIndex = 1;
+
+            }
             id = dataTable.user_account_id;
         }
         private void combo_box_type()

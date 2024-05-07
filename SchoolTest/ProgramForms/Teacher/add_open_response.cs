@@ -12,9 +12,12 @@ namespace SchoolTest.ProgramForms.Teacher
 {
     public partial class add_open_response : Form
     {
-        public add_open_response()
+        object data;
+        string id;
+        public add_open_response(object data)
         {
             InitializeComponent();
+            this.data = data;
         }
     }
 }

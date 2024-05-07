@@ -42,7 +42,6 @@
             this.buttonAdd = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.question_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.response_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.theme_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.subject_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.question_text = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -186,7 +185,6 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.question_id,
-            this.response_id,
             this.theme_id,
             this.subject_id,
             this.question_text,
@@ -210,14 +208,6 @@
             this.question_id.Name = "question_id";
             this.question_id.ReadOnly = true;
             this.question_id.Visible = false;
-            // 
-            // response_id
-            // 
-            this.response_id.DataPropertyName = "response_id";
-            this.response_id.HeaderText = "response_id";
-            this.response_id.Name = "response_id";
-            this.response_id.ReadOnly = true;
-            this.response_id.Visible = false;
             // 
             // theme_id
             // 
@@ -325,7 +315,6 @@
         private System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn question_id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn response_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn theme_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn subject_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn question_text;

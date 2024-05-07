@@ -194,5 +194,10 @@ namespace SchoolTest.ProgramForms.Teacher
             return false;
 
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
