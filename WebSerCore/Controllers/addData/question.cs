@@ -18,19 +18,12 @@ namespace WebSerCore.Controllers.addData
         {
             BD bd = new BD();
             bd.connectionBD();
-
-
-            // Используйте параметризованный запрос, чтобы избежать SQL-инъекций
-            //string sqlExpression = @"SELECT        dbo.subject.subject_id, dbo.response.response_type, dbo.theme.theme_id, dbo.question.question_id, dbo.response.response_id, dbo.subject.subject_name, dbo.theme.theme_name, dbo.question.question_text, dbo.question.points                         
-            //             FROM dbo.subject INNER JOIN
-            //             dbo.theme ON dbo.subject.subject_id = dbo.theme.subject_id INNER JOIN
-            //             dbo.question ON dbo.theme.theme_id = dbo.question.theme_id INNER JOIN
-            //             dbo.response ON dbo.question.question_id = dbo.response.question_id";
             string sqlExpression = @"SELECT
                                     dbo.subject.subject_id,
                                     dbo.theme.theme_id,
                                     dbo.question.question_id,
                                     dbo.response.response_id,
+                                    dbo.response.response_type,
                                     dbo.subject.subject_name,
                                     dbo.theme.theme_name,
                                     dbo.question.question_text,

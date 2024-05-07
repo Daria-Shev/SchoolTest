@@ -196,5 +196,56 @@ namespace SchoolTest.ProgramForms.Teacher
         //    // Перемещаем колонку в конец списка колонок
         //    dataGridView1.Columns[columnIndex].DisplayIndex = dataGridView1.Columns.Count - 1;
         }
+
+        private void buttonAdd_Click(object sender, EventArgs e)
+        {
+            string question_id = "0";
+            string theme_id = "0";
+            string subject_id = "0";
+            string response_id = "0";
+            string question_text = "";
+            string points = "";
+            string response_type = "";
+            var data = new { question_id, theme_id, subject_id, response_id, question_text, points, response_type };
+            Form ifrm = new add_question_show(data);
+            ifrm.ShowDialog();
+        }
+
+        private void dataGridView1_DoubleClick(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count != 1)
+            {
+                return;
+            }
+            var data = data_dedicated();
+
+            Form ifrm = new add_question_show(data);
+            ifrm.ShowDialog();
+        }
+        private object data_dedicated()
+        {
+            string question_id = "0";
+            string theme_id = "0";
+            string subject_id = "0";
+            string response_id = "0";
+            string question_text = "";
+            string points = "";
+            string response_type = "";
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = dataGridView1.SelectedRows[0];
+                question_id = selectedRow.Cells["question_id"].Value.ToString();
+                theme_id = selectedRow.Cells["theme_id"].Value.ToString();
+                subject_id = selectedRow.Cells["subject_id"].Value.ToString();
+                response_id = selectedRow.Cells["response_id"].Value.ToString();
+                question_text = selectedRow.Cells["question_text"].Value.ToString();
+                points = selectedRow.Cells["points"].Value.ToString();
+                response_type = selectedRow.Cells["response_type"].Value.ToString();
+            }
+            var data = new { question_id, theme_id, subject_id, response_id, question_text, points, response_type };
+            return data;
+        }
+
+    
     }
 }

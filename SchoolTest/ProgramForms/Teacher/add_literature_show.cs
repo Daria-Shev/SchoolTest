@@ -110,12 +110,8 @@ namespace SchoolTest.ProgramForms.Teacher
         }
         private void combo_box_query(string id_subject)
         {
-            // Предположим, что у вас есть DataTable, связанный с comboBox_theme
             DataTable dataTable = (comboBox_theme.DataSource as DataTable);
-
-            // Применяем фильтр к представлению таблицы
             dataTable.DefaultView.RowFilter = $"subject_id = '{id_subject}'";
-
         }
 
         private void buttonAdd_Click(object sender, EventArgs e)

@@ -175,6 +175,7 @@
             this.buttonAdd.TabIndex = 67;
             this.buttonAdd.Text = "Додати";
             this.buttonAdd.UseVisualStyleBackColor = false;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
             // dataGridView1
             // 
@@ -200,6 +201,7 @@
             this.dataGridView1.Size = new System.Drawing.Size(719, 279);
             this.dataGridView1.TabIndex = 66;
             this.dataGridView1.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dataGridView1_DataBindingComplete);
+            this.dataGridView1.DoubleClick += new System.EventHandler(this.dataGridView1_DoubleClick);
             // 
             // question_id
             // 
