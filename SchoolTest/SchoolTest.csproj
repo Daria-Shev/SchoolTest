@@ -98,6 +98,18 @@
     <Compile Include="ProgramForms\Teacher\add_literature_show.Designer.cs">
       <DependentUpon>add_literature_show.cs</DependentUpon>
     </Compile>
+    <Compile Include="ProgramForms\Teacher\add_question.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProgramForms\Teacher\add_question.Designer.cs">
+      <DependentUpon>add_question.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProgramForms\Teacher\add_question_show.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProgramForms\Teacher\add_question_show.Designer.cs">
+      <DependentUpon>add_question_show.cs</DependentUpon>
+    </Compile>
     <Compile Include="ProgramForms\Teacher\add_subject.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -161,6 +173,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ProgramForms\Teacher\add_literature_show.resx">
       <DependentUpon>add_literature_show.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProgramForms\Teacher\add_question.resx">
+      <DependentUpon>add_question.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProgramForms\Teacher\add_subject.resx">
       <DependentUpon>add_subject.cs</DependentUpon>

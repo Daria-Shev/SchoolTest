@@ -58,5 +58,12 @@ namespace SchoolTest.ProgramForms.Teacher
             ifrm.Show();
             this.Close();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Form ifrm = new add_question();
+            ifrm.Show();
+            this.Close();
+        }
     }
 }
