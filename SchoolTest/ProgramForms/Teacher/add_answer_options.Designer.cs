@@ -46,14 +46,14 @@
             option_numberLabel.AutoSize = true;
             option_numberLabel.Location = new System.Drawing.Point(12, 28);
             option_numberLabel.Name = "option_numberLabel";
-            option_numberLabel.Size = new System.Drawing.Size(89, 13);
+            option_numberLabel.Size = new System.Drawing.Size(44, 13);
             option_numberLabel.TabIndex = 8;
-            option_numberLabel.Text = "Номер варіанту:";
+            option_numberLabel.Text = "Номер:";
             // 
             // correct_optionLabel
             // 
             correct_optionLabel.AutoSize = true;
-            correct_optionLabel.Location = new System.Drawing.Point(6, 57);
+            correct_optionLabel.Location = new System.Drawing.Point(116, 25);
             correct_optionLabel.Name = "correct_optionLabel";
             correct_optionLabel.Size = new System.Drawing.Size(112, 13);
             correct_optionLabel.TabIndex = 10;
@@ -62,7 +62,7 @@
             // option_textLabel
             // 
             option_textLabel.AutoSize = true;
-            option_textLabel.Location = new System.Drawing.Point(57, 83);
+            option_textLabel.Location = new System.Drawing.Point(12, 52);
             option_textLabel.Name = "option_textLabel";
             option_textLabel.Size = new System.Drawing.Size(48, 13);
             option_textLabel.TabIndex = 12;
@@ -70,40 +70,42 @@
             // 
             // option_numberTextBox
             // 
-            this.option_numberTextBox.Location = new System.Drawing.Point(101, 25);
+            this.option_numberTextBox.Location = new System.Drawing.Point(62, 25);
             this.option_numberTextBox.Name = "option_numberTextBox";
-            this.option_numberTextBox.Size = new System.Drawing.Size(200, 20);
+            this.option_numberTextBox.Size = new System.Drawing.Size(47, 20);
             this.option_numberTextBox.TabIndex = 9;
             // 
             // option_textTextBox
             // 
-            this.option_textTextBox.Location = new System.Drawing.Point(124, 80);
+            this.option_textTextBox.Location = new System.Drawing.Point(62, 49);
             this.option_textTextBox.Multiline = true;
             this.option_textTextBox.Name = "option_textTextBox";
-            this.option_textTextBox.Size = new System.Drawing.Size(200, 74);
+            this.option_textTextBox.Size = new System.Drawing.Size(213, 74);
             this.option_textTextBox.TabIndex = 13;
             // 
             // buttonBack
             // 
             this.buttonBack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(252)))), ((int)(((byte)(222)))));
             this.buttonBack.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonBack.Location = new System.Drawing.Point(165, 160);
+            this.buttonBack.Location = new System.Drawing.Point(153, 138);
             this.buttonBack.Name = "buttonBack";
             this.buttonBack.Size = new System.Drawing.Size(75, 23);
             this.buttonBack.TabIndex = 44;
             this.buttonBack.Text = "Назад";
             this.buttonBack.UseVisualStyleBackColor = false;
+            this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
             // 
             // buttonAdd
             // 
             this.buttonAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(252)))), ((int)(((byte)(222)))));
             this.buttonAdd.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonAdd.Location = new System.Drawing.Point(78, 160);
+            this.buttonAdd.Location = new System.Drawing.Point(66, 138);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(75, 23);
             this.buttonAdd.TabIndex = 43;
             this.buttonAdd.Text = "Зберегти";
             this.buttonAdd.UseVisualStyleBackColor = false;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
             // comboBox1
             // 
@@ -111,7 +113,7 @@
             this.comboBox1.Items.AddRange(new object[] {
             "Так",
             "Ні"});
-            this.comboBox1.Location = new System.Drawing.Point(124, 54);
+            this.comboBox1.Location = new System.Drawing.Point(228, 25);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(47, 21);
             this.comboBox1.TabIndex = 45;
@@ -120,7 +122,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(339, 275);
+            this.ClientSize = new System.Drawing.Size(293, 180);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.buttonBack);
             this.Controls.Add(this.buttonAdd);
@@ -131,6 +133,8 @@
             this.Controls.Add(this.option_textTextBox);
             this.Name = "add_answer_options";
             this.Text = "add_answer_options";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.add_answer_options_FormClosed);
+            this.Load += new System.EventHandler(this.add_answer_options_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
