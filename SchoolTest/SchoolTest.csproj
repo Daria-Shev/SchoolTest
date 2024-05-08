@@ -140,6 +140,18 @@
     <Compile Include="ProgramForms\Teacher\add_subject_show.Designer.cs">
       <DependentUpon>add_subject_show.cs</DependentUpon>
     </Compile>
+    <Compile Include="ProgramForms\Teacher\add_test.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProgramForms\Teacher\add_test.Designer.cs">
+      <DependentUpon>add_test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProgramForms\Teacher\add_test_show.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProgramForms\Teacher\add_test_show.Designer.cs">
+      <DependentUpon>add_test_show.cs</DependentUpon>
+    </Compile>
     <Compile Include="ProgramForms\Teacher\add_theme.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -218,6 +230,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ProgramForms\Teacher\add_subject_show.resx">
       <DependentUpon>add_subject_show.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProgramForms\Teacher\add_test.resx">
+      <DependentUpon>add_test.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProgramForms\Teacher\add_theme.resx">
       <DependentUpon>add_theme.cs</DependentUpon>
