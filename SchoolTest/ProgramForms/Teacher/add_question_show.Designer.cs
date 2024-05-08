@@ -54,10 +54,6 @@
             this.buttonAdd = new System.Windows.Forms.Button();
             this.comboBox_subject = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sequence_number = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sequence_text = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.response_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.question_id_response = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.correct_response = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -66,6 +62,11 @@
             this.option_number = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.correct_option = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.option_text = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button2 = new System.Windows.Forms.Button();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sequence_number = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sequence_text = new System.Windows.Forms.DataGridViewTextBoxColumn();
             theme_idLabel = new System.Windows.Forms.Label();
             question_textLabel = new System.Windows.Forms.Label();
             pointsLabel = new System.Windows.Forms.Label();
@@ -336,6 +337,7 @@
             this.buttonAdd.TabIndex = 41;
             this.buttonAdd.Text = "Зберегти";
             this.buttonAdd.UseVisualStyleBackColor = false;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
             // comboBox_subject
             // 
@@ -352,45 +354,13 @@
             // 
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(252)))), ((int)(((byte)(222)))));
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Location = new System.Drawing.Point(557, 211);
+            this.button1.Location = new System.Drawing.Point(488, 211);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(136, 23);
             this.button1.TabIndex = 45;
             this.button1.Text = "Додати відповідь";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "response_id";
-            this.dataGridViewTextBoxColumn2.HeaderText = "response_id";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Visible = false;
-            // 
-            // Column2
-            // 
-            this.Column2.DataPropertyName = "question_id";
-            this.Column2.HeaderText = "question_id";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Visible = false;
-            // 
-            // sequence_number
-            // 
-            this.sequence_number.DataPropertyName = "sequence_number";
-            this.sequence_number.HeaderText = "Номер";
-            this.sequence_number.Name = "sequence_number";
-            this.sequence_number.ReadOnly = true;
-            this.sequence_number.Width = 50;
-            // 
-            // sequence_text
-            // 
-            this.sequence_text.DataPropertyName = "sequence_text";
-            this.sequence_text.HeaderText = "Текст послідовності";
-            this.sequence_text.Name = "sequence_text";
-            this.sequence_text.ReadOnly = true;
-            this.sequence_text.Width = 400;
             // 
             // response_id
             // 
@@ -456,11 +426,56 @@
             this.option_text.ReadOnly = true;
             this.option_text.Width = 325;
             // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(252)))), ((int)(((byte)(222)))));
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button2.Location = new System.Drawing.Point(639, 211);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(136, 23);
+            this.button2.TabIndex = 46;
+            this.button2.Text = "Видалити відповідь";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "response_id";
+            this.dataGridViewTextBoxColumn2.HeaderText = "response_id";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Visible = false;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "question_id";
+            this.Column2.HeaderText = "question_id";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Visible = false;
+            // 
+            // sequence_number
+            // 
+            this.sequence_number.DataPropertyName = "sequence_number";
+            this.sequence_number.HeaderText = "Порядок";
+            this.sequence_number.Name = "sequence_number";
+            this.sequence_number.ReadOnly = true;
+            this.sequence_number.Width = 60;
+            // 
+            // sequence_text
+            // 
+            this.sequence_text.DataPropertyName = "sequence_text";
+            this.sequence_text.HeaderText = "Текст послідовності";
+            this.sequence_text.Name = "sequence_text";
+            this.sequence_text.ReadOnly = true;
+            this.sequence_text.Width = 390;
+            // 
             // add_question_show
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 243);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.panel_sequence);
             this.Controls.Add(this.panel_open_response);
             this.Controls.Add(this.panel_matching);
@@ -521,14 +536,15 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn response_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn question_id_response;
         private System.Windows.Forms.DataGridViewTextBoxColumn correct_response;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn sequence_number;
-        private System.Windows.Forms.DataGridViewTextBoxColumn sequence_text;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn option_number;
         private System.Windows.Forms.DataGridViewTextBoxColumn correct_option;
         private System.Windows.Forms.DataGridViewTextBoxColumn option_text;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sequence_number;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sequence_text;
     }
 }

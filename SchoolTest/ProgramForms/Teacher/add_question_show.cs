@@ -1,12 +1,14 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using SchoolTest.Helpers;
+using SchoolTest.Info;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -51,8 +53,8 @@ namespace SchoolTest.ProgramForms.Teacher
             {
                 comboBox_theme.SelectedItem = itemToSelect2;
             }
-            comboBox_type.SelectedIndex = 0;
             combo_box_type();
+            comboBox_type.SelectedIndex = 0;
             if (dataTable.response_type== "open_response")
             {
                 comboBox_type.SelectedIndex = 2;
@@ -63,11 +65,11 @@ namespace SchoolTest.ProgramForms.Teacher
             }
             if (dataTable.response_type == "sequence")
             {
-                comboBox_type.SelectedIndex = 0;
+                comboBox_type.SelectedIndex = 1;
             }
             if (dataTable.response_type == "matching")
             {
-                comboBox_type.SelectedIndex = 1;
+                comboBox_type.SelectedIndex = 0;
             }
             //var itemToSelect3 = comboBox_type.Items.Cast<type_item>().FirstOrDefault(item => item.Value == dataTable.response_type);
 
@@ -387,6 +389,98 @@ namespace SchoolTest.ProgramForms.Teacher
             var data = new { question_id, sequence_number, response_id, sequence_text, response_type };
             Form ifrm = new add_sequence(data);
             ifrm.ShowDialog();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string id_delete = "0";
+            if (comboBox_type.Text.StartsWith("Відкрита відповідь"))
+            {
+                if (dataGridView_open_response.SelectedRows.Count > 0)
+                {
+                    DataGridViewRow selectedRow = dataGridView_open_response.SelectedRows[0];
+                    id_delete = selectedRow.Cells["response_id"].Value.ToString();
+                }
+               
+            }
+            if (comboBox_type.Text.StartsWith("Послідовність"))
+            {
+                if (dataGridView_sequence.SelectedRows.Count > 0)
+                {
+                    DataGridViewRow selectedRow = dataGridView_sequence.SelectedRows[0];
+                    id_delete = selectedRow.Cells["response_id"].Value.ToString();
+                }
+               
+            }
+            if (comboBox_type.Text.StartsWith("Відповідність"))
+            {
+                if (dataGridView_matching.SelectedRows.Count > 0)
+                {
+                    DataGridViewRow selectedRow = dataGridView_matching.SelectedRows[0];
+                    id_delete = selectedRow.Cells["response_id"].Value.ToString();
+                }
+            }
+            if (comboBox_type.Text.StartsWith("Варіанти відповідей"))
+            {
+                if (dataGridView_answer_options.SelectedRows.Count > 0)
+                {
+                    DataGridViewRow selectedRow = dataGridView_answer_options.SelectedRows[0];
+                    id_delete = selectedRow.Cells["response_id"].Value.ToString();
+                }
+            }       
+            if (check_id(id_delete))
+            {
+                return;
+            }
+            Delete_date(id_delete);
+            Table();
+        }
+
+        private void Delete_date(string id_delete)
+        {
+            ApiClass authApi = new ApiClass();
+
+            authApi.path = "response_delete";
+            authApi.query.Add("response_id", id_delete);
+            authApi.uriCreate();
+            var Stream = authApi.ServerAuthorization();
+            MessageString message = new MessageString();
+            message = JsonHelpers.ReadFromJsonStream<MessageString>(Stream);
+            Message.MessageInfo(message.message);
+        }
+        private bool check_id(string id_delete)
+        {
+            if (id_delete == "0")
+            {
+                Message.MessageInfo("Ви не обрали запис");
+                return true;
+            }
+            return false;
+
+        }
+
+        private void buttonAdd_Click(object sender, EventArgs e)
+        {
+            ApiClass authApi = new ApiClass();
+
+            authApi.path = "question_add";
+
+            var classObject = new
+            {
+                question_id = id,
+                theme_id = comboBox_theme.SelectedValue,             
+                question_text = question_textTextBox.Text,
+                points = pointsTextBox.Text
+
+            };
+            var json = JsonConvert.SerializeObject(classObject);
+            authApi.query.Add("jsonData", json);
+            authApi.uriCreate();
+            var Stream = authApi.ServerAuthorization();
+            MessageString message = new MessageString();
+            message = JsonHelpers.ReadFromJsonStream<MessageString>(Stream);
+
+            Message.MessageInfo(message.message);
         }
     }
 }

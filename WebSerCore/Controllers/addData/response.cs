@@ -134,7 +134,7 @@ namespace WebSerCore.Controllers.addData
             target.question_id = source.question_id,
             target.response_type = source.response_type
     WHEN NOT MATCHED THEN
-        INSERT (response_id, question_id, response_type) 
+        INSERT ( question_id, response_type) 
         VALUES (source.response_id, source.question_id, source.response_type);
 ";
 

@@ -7,6 +7,8 @@ using Newtonsoft.Json;
 using System;
 using System.Data.SqlClient;
 using System.Net.Mail;
+using static WebSerCore.Controllers.addData.response;
+using static WebSerCore.Controllers.addData.theme;
 
 namespace WebSerCore.Controllers.addData
 {
@@ -87,7 +89,69 @@ namespace WebSerCore.Controllers.addData
             var message = new Message { message = "Операція успішна" };
             return Ok(message);
         }
+        public class questionData
+        {
+            public int theme_id { get; set; }
+            public string question_text { get; set; }
+            public int question_id { get; set; }
+            public int points { get; set; }
 
+        }
+        [HttpGet, Route("question_add")]
+        [Authorize(Roles = "teacher")]
+        public object question_add(string jsonData)
+        {
+            // Десериализуем JSON строку в объект класса
+            var classData = JsonConvert.DeserializeObject<questionData>(jsonData);
+
+
+            BD bd = new BD();
+            bd.connectionBD();
+
+            try
+            {
+                string sqlExpression = @"
+                MERGE INTO [test].[dbo].[question] AS target
+                USING (
+                    VALUES (
+                        @question_id,
+                        @theme_id,
+                        @question_text,
+                        @points
+                    )
+                ) AS source (question_id, theme_id, question_text, points)
+                ON target.question_id = source.question_id
+                WHEN MATCHED THEN
+                    UPDATE SET 
+                        target.theme_id = source.theme_id,
+                        target.question_text = source.question_text,
+                        target.points = source.points
+                WHEN NOT MATCHED THEN
+                    INSERT ( theme_id, question_text, points) 
+                    VALUES ( source.theme_id, source.question_text,source.points);
+                   ";
+
+                using (SqlCommand sqlCommand = new SqlCommand(sqlExpression, bd.connection))
+                {
+
+                    sqlCommand.Parameters.AddWithValue("@question_id", classData.question_id);
+                    sqlCommand.Parameters.AddWithValue("@theme_id", classData.theme_id);
+                    sqlCommand.Parameters.AddWithValue("@question_text", classData.question_text);
+                    sqlCommand.Parameters.AddWithValue("@points", classData.points);
+
+
+
+                    sqlCommand.ExecuteNonQuery();
+                }
+            }
+            catch
+            {
+                return BadRequest(new { Message = "Виникла помилка" });
+            }
+            bd.closeBD();
+            var message = new Message { message = "Операція успішна" };
+            return Ok(message);
+        }
 
 
     }
