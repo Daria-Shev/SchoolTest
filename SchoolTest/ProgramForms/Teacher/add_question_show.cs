@@ -51,7 +51,7 @@ namespace SchoolTest.ProgramForms.Teacher
             {
                 comboBox_theme.SelectedItem = itemToSelect2;
             }
-
+            comboBox_type.SelectedIndex = 0;
             combo_box_type();
             if (dataTable.response_type== "open_response")
             {
