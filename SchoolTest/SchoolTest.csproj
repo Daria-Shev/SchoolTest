@@ -234,6 +234,9 @@
     <EmbeddedResource Include="ProgramForms\Teacher\add_test.resx">
       <DependentUpon>add_test.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ProgramForms\Teacher\add_test_show.resx">
+      <DependentUpon>add_test_show.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ProgramForms\Teacher\add_theme.resx">
       <DependentUpon>add_theme.cs</DependentUpon>
     </EmbeddedResource>

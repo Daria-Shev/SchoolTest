@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using SchoolTest.Helpers;
+using SchoolTest.Info;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -109,6 +110,96 @@ namespace SchoolTest.ProgramForms.Teacher
             comboBox2.DataSource = null;
             textBox1.Text = "";
             (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = "";
+        }
+
+        private void buttonAdd_Click(object sender, EventArgs e)
+        {
+            string test_id = "0";
+            string theme_id = "0";
+            string subject_id = "0";
+            string test_name = "";
+            string execution_time = "";
+            string attempt_count = "";
+            string test_type = "";
+            string class_id = "0";
+            var data = new { test_id, theme_id, subject_id, test_name, execution_time, attempt_count, test_type, class_id };
+            Form ifrm = new add_test_show(data);
+            ifrm.ShowDialog();
+        }
+
+        private void dataGridView1_DoubleClick(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count != 1)
+            {
+                return;
+            }
+            var data = data_dedicated();
+
+            Form ifrm = new add_test_show(data);
+            ifrm.ShowDialog();
+        }
+        private object data_dedicated()
+        {
+            string test_id = "0";
+            string theme_id = "0";
+            string subject_id = "0";
+            string test_name = "";
+            string execution_time = "";
+            string attempt_count = "";
+            string test_type = "";
+            string class_id = "0";
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = dataGridView1.SelectedRows[0];
+                test_id = selectedRow.Cells["test_id"].Value.ToString();
+                theme_id = selectedRow.Cells["theme_id"].Value.ToString();
+                subject_id = selectedRow.Cells["subject_id"].Value.ToString();
+                test_name = selectedRow.Cells["test_name"].Value.ToString();
+                execution_time = selectedRow.Cells["execution_time"].Value.ToString();
+                attempt_count = selectedRow.Cells["attempt_count"].Value.ToString();
+                test_type = selectedRow.Cells["test_type"].Value.ToString();
+                class_id = selectedRow.Cells["class_id"].Value.ToString();
+            }
+            var data = new { test_id, theme_id, subject_id, test_name, execution_time, attempt_count, test_type, class_id };
+            return data;
+        }
+
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+            string id = "0";
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = dataGridView1.SelectedRows[0];
+                id = selectedRow.Cells["test_id"].Value.ToString();
+            }
+            if (check_id(id))
+            {
+                return;
+            }
+            Delete_date(id);
+            Table();
+        }
+        private void Delete_date(string id)
+        {
+            ApiClass authApi = new ApiClass();
+
+            authApi.path = "test_delete";
+            authApi.query.Add("test_id", id);
+            authApi.uriCreate();
+            var Stream = authApi.ServerAuthorization();
+            MessageString message = new MessageString();
+            message = JsonHelpers.ReadFromJsonStream<MessageString>(Stream);
+            Message.MessageInfo(message.message);
+        }
+        private bool check_id(string id)
+        {
+            if (id == "0")
+            {
+                Message.MessageInfo("Ви не обрали запис");
+                return true;
+            }
+            return false;
+
         }
     }
 }
