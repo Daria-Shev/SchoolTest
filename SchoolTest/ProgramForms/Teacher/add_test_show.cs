@@ -115,7 +115,7 @@ namespace SchoolTest.ProgramForms.Teacher
             authApi.path = "test_add";
             
             data_time= DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff");
-            teacher=User.nickname;
+            teacher=User.id;
 
             var classObject = new
             {
@@ -124,7 +124,7 @@ namespace SchoolTest.ProgramForms.Teacher
                 execution_time = execution_timeTextBox.Text,
                 attempt_count = attempt_countTextBox.Text,
                 test_type = comboBox_type.Text,
-                user_nickname = teacher,
+                user_account_id = teacher,
                 creation_date = data_time,
                 theme_id = comboBox_theme.SelectedValue,
 

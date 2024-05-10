@@ -124,12 +124,12 @@ namespace WebSerCore.Controllers.addData
         }
 
         [HttpGet, Route("theme_list")]
-        [Authorize(Roles = "teacher")]
+        [Authorize]
         public object theme_list()
         {
             BD bd = new BD();
             bd.connectionBD();
-            string sqlExpression = "SELECT TOP (1000) [theme_id] ,[theme_name], [subject_id] FROM [test].[dbo].[theme]";
+            string sqlExpression = "SELECT [theme_id] ,[theme_name], [subject_id] FROM [test].[dbo].[theme]";
             SqlDataAdapter adapter = new SqlDataAdapter(sqlExpression, bd.connection);
             DataTable dataTable = new DataTable();
             adapter.Fill(dataTable);

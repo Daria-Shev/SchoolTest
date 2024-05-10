@@ -80,7 +80,7 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(100, 20);
             this.textBox2.TabIndex = 22;
-            this.textBox2.Text = "0000";
+            this.textBox2.Text = "1234";
             // 
             // textBox1
             // 
@@ -88,7 +88,8 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 21;
-            this.textBox1.Text = "ShevD";
+            this.textBox1.Text = "KolomyetsSE";
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // Form1
             // 

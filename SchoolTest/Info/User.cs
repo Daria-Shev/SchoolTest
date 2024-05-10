@@ -12,6 +12,11 @@ namespace SchoolTest.Info
     {
         public static string cookie = null;
         public static string nickname;
+        public static string class_name;
+        public static string class_number;
+
+        public static string id;
+
         public static string full_name;
         public static string user_account_type;
         public static CookieContainer cookieContainer;

@@ -85,27 +85,25 @@ FROM            dbo.test INNER JOIN
             try
             {
                 string sqlExpression = @"
-                    MERGE INTO [test].[dbo].[test] AS target
-                    USING (
-                        SELECT 
-                            [user_account_id]
-                        FROM [test].[dbo].[user_account]
-                        WHERE [nickname] = @nickname
-                    ) AS user_account_id_data
-                    ON target.test_id = @test_id
-                    WHEN MATCHED THEN
-                        UPDATE SET target.class_id = @class_id,
-                                   target.test_name = @test_name,
-                                   target.theme_id = @theme_id,
-                                   target.creation_date = @creation_date,
-                                   target.execution_time = @execution_time,
-                                   target.attempt_count = @attempt_count,
-                                   target.user_account_id = user_account_id_data.user_account_id,
-                                   target.test_type = @test_type
-                    WHEN NOT MATCHED THEN
-                        INSERT (class_id, test_name, theme_id, creation_date, execution_time, attempt_count, user_account_id, test_type) 
-                        VALUES (@class_id, @test_name, @theme_id, @creation_date, @execution_time, @attempt_count, user_account_id_data.user_account_id, @test_type);
-                ";
+    MERGE INTO [test].[dbo].[recommended_literature] AS target
+    USING (
+        VALUES (@test_id, @class_id, @test_name, @theme_id, @creation_date, @execution_time, @attempt_count, @user_account_id, @test_type)
+    ) AS source (test_id, class_id, test_name, theme_id, creation_date, execution_time, attempt_count, user_account_id, test_type)
+    ON target.test_id = source.test_id
+    WHEN MATCHED THEN
+        UPDATE SET target.class_id = source.class_id,
+                   target.test_name = source.test_name,
+                   target.theme_id = source.theme_id,
+                   target.creation_date = source.creation_date,
+                   target.execution_time = source.execution_time,
+                   target.attempt_count = source.attempt_count,
+                   target.user_account_id = source.user_account_id,
+                   target.test_type = source.test_type
+    WHEN NOT MATCHED THEN
+        INSERT (class_id, test_name, theme_id, creation_date, execution_time, attempt_count, user_account_id, test_type) 
+        VALUES (source.class_id, source.test_name, source.theme_id, source.creation_date, source.execution_time, source.attempt_count, source.user_account_id, source.test_type);
+";
+
                 using (SqlCommand sqlCommand = new SqlCommand(sqlExpression, bd.connection))
                 {
 
@@ -113,7 +111,7 @@ FROM            dbo.test INNER JOIN
                     sqlCommand.Parameters.AddWithValue("@test_name", classData.test_name);
                     sqlCommand.Parameters.AddWithValue("@execution_time", classData.execution_time);
                     sqlCommand.Parameters.AddWithValue("@attempt_count", classData.attempt_count);
-                    sqlCommand.Parameters.AddWithValue("@user_nickname", classData.user_nickname);
+                    sqlCommand.Parameters.AddWithValue("@user_account_id", classData.user_account_id);
                     sqlCommand.Parameters.AddWithValue("@test_type", classData.test_type);
                     sqlCommand.Parameters.AddWithValue("@creation_date", classData.creation_date);
                     sqlCommand.ExecuteNonQuery();
@@ -137,7 +135,7 @@ FROM            dbo.test INNER JOIN
             public int attempt_count { get; set; }
             public int theme_id { get; set; }
 
-            public string user_nickname { get; set; }
+            public int user_account_id { get; set; }
 
             public string test_type { get; set; }
             public DateTime creation_date { get; set; }

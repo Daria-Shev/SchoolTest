@@ -10,19 +10,11 @@ using System.Windows.Forms;
 
 namespace SchoolTest.ProgramForms.Student
 {
-    public partial class studentHome : Form
+    public partial class literature_student : Form
     {
-        public studentHome()
+        public literature_student()
         {
             InitializeComponent();
-        }
-
-        private void button8_Click(object sender, EventArgs e)
-        {
-            ApiClass api=new ApiClass();
-
-            api.exit();
-            this.Close();
         }
     }
 }

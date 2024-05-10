@@ -64,13 +64,24 @@ namespace SchoolTest
             authApi.query.Add("nickname", nicname);
             //authApi.query.Add("password", password);
             authApi.uriCreate();
-
             var Stream = authApi.ServerAuthorization();
-
-            var info = JsonHelpers.ReadFromJsonStream(new { nickname = "", user_account_type = "", full_name = "" }, Stream);
+            var info = JsonHelpers.ReadFromJsonStream(new { nickname = "", user_account_type = "", full_name = "",  id = "" }, Stream);
             User.nickname = info.nickname;
             User.user_account_type = info.user_account_type;
             User.full_name = info.full_name;
+            User.id = info.id;
+            if (User.user_account_type.StartsWith("student"))
+            {
+                authApi = new ApiClass();
+                authApi.path = "InfoClass";
+                authApi.query.Add("id", User.id);
+                authApi.uriCreate();
+                Stream = authApi.ServerAuthorization();
+                var info2 = JsonHelpers.ReadFromJsonStream(new { class_name = "", class_number="" }, Stream);
+                User.class_name = info2.class_name;
+                User.class_number = info2.class_number;
+            }
+
 
         }
 
@@ -90,6 +101,11 @@ namespace SchoolTest
         {
              api = new ApiClass();
             api.createClient();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
         //void Exit()
         //{

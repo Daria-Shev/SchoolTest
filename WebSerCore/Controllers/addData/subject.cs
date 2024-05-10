@@ -117,7 +117,7 @@ namespace WebSerCore.Controllers.addData
 
         }
         [HttpGet, Route("subject_list")]
-        [Authorize(Roles = "teacher")]
+        [Authorize]
         public object subject_list()
         {
             BD bd = new BD();

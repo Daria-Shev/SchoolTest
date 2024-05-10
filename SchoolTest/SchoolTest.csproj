@@ -62,6 +62,18 @@
     <Compile Include="Info\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="ProgramForms\Message.cs" />
+    <Compile Include="ProgramForms\Student\literature_student.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProgramForms\Student\literature_student.Designer.cs">
+      <DependentUpon>literature_student.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProgramForms\Student\menuTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProgramForms\Student\menuTest.Designer.cs">
+      <DependentUpon>menuTest.cs</DependentUpon>
+    </Compile>
     <Compile Include="ProgramForms\Student\studentHome.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -191,6 +203,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProgramForms\Student\menuTest.resx">
+      <DependentUpon>menuTest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProgramForms\Student\studentHome.resx">
       <DependentUpon>studentHome.cs</DependentUpon>

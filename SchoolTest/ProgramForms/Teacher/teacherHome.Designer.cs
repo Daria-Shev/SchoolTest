@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.button4 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button4
@@ -42,11 +43,25 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
+            // button8
+            // 
+            this.button8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(252)))), ((int)(((byte)(222)))));
+            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button8.Location = new System.Drawing.Point(114, 205);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(192, 47);
+            this.button8.TabIndex = 32;
+            this.button8.Text = "Вихід";
+            this.button8.UseVisualStyleBackColor = false;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
             // teacherHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(456, 362);
+            this.Controls.Add(this.button8);
             this.Controls.Add(this.button4);
             this.Name = "teacherHome";
             this.Text = "teacherHome";
@@ -57,5 +72,6 @@
         #endregion
 
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button8;
     }
 }

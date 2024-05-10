@@ -23,5 +23,13 @@ namespace SchoolTest.ProgramForms.Teacher
             ifrm.Show();
             this.Close();
         }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            ApiClass api = new ApiClass();
+
+            api.exit();
+            this.Close();
+        }
     }
 }
