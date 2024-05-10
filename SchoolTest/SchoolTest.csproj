@@ -210,6 +210,9 @@
     <EmbeddedResource Include="ProgramForms\Student\studentHome.resx">
       <DependentUpon>studentHome.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ProgramForms\Student\student_literature.resx">
+      <DependentUpon>student_literature.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ProgramForms\Teacher\addData.resx">
       <DependentUpon>addData.cs</DependentUpon>
     </EmbeddedResource>

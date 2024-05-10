@@ -76,11 +76,43 @@ namespace WebSerCore.Controllers.Stydent
 
             bd.closeBD();
             return json;
+        }
+        [HttpGet, Route("literature_table_student")]
+        [Authorize]
+        public object literature_table_student(string subject_class_number)
+        {
+            BD bd = new BD();
+            bd.connectionBD();
 
+
+            // Используйте параметризованный запрос, чтобы избежать SQL-инъекций
+            string sqlExpression = @"
+SELECT dbo.recommended_literature.theme_id, dbo.recommended_literature.literature_name, dbo.recommended_literature.literature_link
+FROM dbo.recommended_literature
+INNER JOIN dbo.theme ON dbo.recommended_literature.theme_id = dbo.theme.theme_id
+WHERE dbo.recommended_literature.theme_id = @theme_id;
+";
+
+
+            // Создаем SqlDataAdapter и передаем ему SQL-выражение и подключение
+            SqlDataAdapter adapter = new SqlDataAdapter(sqlExpression, bd.connection);
+            adapter.SelectCommand.Parameters.AddWithValue("@subject_class_number", subject_class_number);
+
+
+            DataTable dataTable = new DataTable();
+
+            // Заполняем DataTable данными из запроса
+            adapter.Fill(dataTable);
+
+            // Преобразование DataTable в JSON строку
+            string json = JsonConvert.SerializeObject(dataTable);
+
+            bd.closeBD();
+            return json;
         }
 
         [HttpGet, Route("check_literature")]
-        [Authorize(Roles = "teacher")]
+        [Authorize(Roles = "student")]
         public object check_literature(string id_theme)
         {
             BD bd = new BD();
@@ -113,7 +145,7 @@ namespace WebSerCore.Controllers.Stydent
         }
 
         [HttpGet, Route("check_test")]
-        [Authorize(Roles = "teacher")]
+        [Authorize(Roles = "student")]
         public object check_test(string theme_id, string class_id)
         {
             BD bd = new BD();
@@ -148,7 +180,7 @@ namespace WebSerCore.Controllers.Stydent
             return Ok(message);
         }
         [HttpGet, Route("check_practice_test")]
-        [Authorize(Roles = "teacher")]
+        [Authorize(Roles = "student")]
         public object check_practice_test(string theme_id, string class_id)
         {
             BD bd = new BD();

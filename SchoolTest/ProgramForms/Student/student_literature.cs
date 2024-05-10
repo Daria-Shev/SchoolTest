@@ -16,5 +16,15 @@ namespace SchoolTest.ProgramForms.Student
         {
             InitializeComponent();
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void student_literature_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
