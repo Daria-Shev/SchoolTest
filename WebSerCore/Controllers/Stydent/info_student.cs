@@ -79,7 +79,7 @@ namespace WebSerCore.Controllers.Stydent
         }
         [HttpGet, Route("literature_table_student")]
         [Authorize]
-        public object literature_table_student(string subject_class_number)
+        public object literature_table_student(string theme_id)
         {
             BD bd = new BD();
             bd.connectionBD();
@@ -96,7 +96,7 @@ WHERE dbo.recommended_literature.theme_id = @theme_id;
 
             // Создаем SqlDataAdapter и передаем ему SQL-выражение и подключение
             SqlDataAdapter adapter = new SqlDataAdapter(sqlExpression, bd.connection);
-            adapter.SelectCommand.Parameters.AddWithValue("@subject_class_number", subject_class_number);
+            adapter.SelectCommand.Parameters.AddWithValue("@theme_id", theme_id);
 
 
             DataTable dataTable = new DataTable();
@@ -113,7 +113,7 @@ WHERE dbo.recommended_literature.theme_id = @theme_id;
 
         [HttpGet, Route("check_literature")]
         [Authorize(Roles = "student")]
-        public object check_literature(string id_theme)
+        public object check_literature(string theme_id)
         {
             BD bd = new BD();
             bd.connectionBD();
@@ -128,7 +128,7 @@ WHERE dbo.recommended_literature.theme_id = @theme_id;
                 using (SqlCommand sqlCommand = new SqlCommand(sqlExpression, bd.connection))
                 {
 
-                    sqlCommand.Parameters.AddWithValue("@theme_id", id_theme);
+                    sqlCommand.Parameters.AddWithValue("@theme_id", theme_id);
                     int count = Convert.ToInt32(sqlCommand.ExecuteScalar());
 
                     // Проверяем результат и отправляем сообщение в зависимости от него

@@ -39,7 +39,7 @@ namespace SchoolTest.ProgramForms.Student
             ApiClass authApi = new ApiClass();
 
             authApi.path = "subject_list_student";
-            authApi.query.Add("class_number", User.class_number);
+            authApi.query.Add("subject_class_number", User.class_number);
 
             authApi.uriCreate();
 
@@ -56,7 +56,7 @@ namespace SchoolTest.ProgramForms.Student
             ApiClass authApi = new ApiClass();
 
             authApi.path = "theme_list_student";
-            authApi.query.Add("class_number", User.class_number);
+            authApi.query.Add("subject_class_number", User.class_number);
             authApi.uriCreate();
 
             var Stream = authApi.ServerAuthorization();
@@ -114,7 +114,7 @@ namespace SchoolTest.ProgramForms.Student
                 return true;
             }
             Message.MessageInfo(message.message);
-            return true;
+            return false;
 
         }
         private void button_test_Click(object sender, EventArgs e)
@@ -130,7 +130,7 @@ namespace SchoolTest.ProgramForms.Student
             check_info();
             if (check_data("literature")) 
             {
-                Form ifrm = new student_literature();
+                Form ifrm = new student_literature(comboBox_theme.SelectedValue.ToString());
                 ifrm.ShowDialog();
             }
         }

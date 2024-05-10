@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SchoolTest.ProgramForms.Teacher;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -22,6 +23,13 @@ namespace SchoolTest.ProgramForms.Student
             ApiClass api=new ApiClass();
 
             api.exit();
+            this.Close();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Form ifrm = new menuTest();
+            ifrm.Show();
             this.Close();
         }
     }
