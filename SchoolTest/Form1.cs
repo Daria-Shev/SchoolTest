@@ -77,7 +77,8 @@ namespace SchoolTest
                 authApi.query.Add("id", User.id);
                 authApi.uriCreate();
                 Stream = authApi.ServerAuthorization();
-                var info2 = JsonHelpers.ReadFromJsonStream(new { class_name = "", class_number="" }, Stream);
+                var info2 = JsonHelpers.ReadFromJsonStream(new { class_id="", class_name = "", class_number="" }, Stream);
+                User.class_id = info2.class_id;
                 User.class_name = info2.class_name;
                 User.class_number = info2.class_number;
             }

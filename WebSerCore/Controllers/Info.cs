@@ -62,7 +62,7 @@ namespace WebSerCore.Controllers
 
 
             // Используйте параметризованный запрос, чтобы избежать SQL-инъекций
-            string sqlExpression = @"SELECT        dbo.student.user_account_id, dbo.class.class_name, dbo.class.class_number
+            string sqlExpression = @"SELECT        dbo.student.user_account_id, dbo.class.class_id, dbo.class.class_name, dbo.class.class_number
                          FROM    dbo.class INNER JOIN
                          dbo.student ON dbo.class.class_id = dbo.student.class_id INNER JOIN
                          dbo.user_account ON dbo.student.user_account_id = dbo.user_account.user_account_id 
@@ -82,6 +82,7 @@ namespace WebSerCore.Controllers
                     {
                         obj = new
                         {
+                            class_id= reader["class_id"].ToString(),
                             class_name = reader["class_name"].ToString(),
                             class_number = reader["class_number"].ToString(),
 

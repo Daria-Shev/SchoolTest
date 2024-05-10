@@ -96,17 +96,7 @@ namespace SchoolTest.ProgramForms.Teacher
 
         private void comboBox_subject_TextChanged(object sender, EventArgs e)
         {
-            if (comboBox_type.Text.StartsWith("Підсумковий"))
-            {
-                label2.Visible = false;
-                comboBox_theme.Visible = false;
-                comboBox_theme.Text = "";
-            }
-            else
-            {
-                label2.Visible = true;
-                comboBox_theme.Visible = true;
-            }
+           
         }
 
         private void buttonAdd_Click(object sender, EventArgs e)
@@ -138,6 +128,21 @@ namespace SchoolTest.ProgramForms.Teacher
             message = JsonHelpers.ReadFromJsonStream<MessageString>(Stream);
 
             Message.MessageInfo(message.message);
+        }
+
+        private void comboBox_type_TextChanged(object sender, EventArgs e)
+        {
+            if (comboBox_type.Text.StartsWith("Підсумковий"))
+            {
+                label2.Visible = false;
+                comboBox_theme.Visible = false;
+                comboBox_theme.Text = "";
+            }
+            else
+            {
+                label2.Visible = true;
+                comboBox_theme.Visible = true;
+            }
         }
 
         private void combo_box_subject()

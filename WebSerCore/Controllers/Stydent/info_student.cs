@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 using System;
 using System.Data.SqlClient;
 using System.Net.Mail;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace WebSerCore.Controllers.Stydent
 {
@@ -76,6 +77,110 @@ namespace WebSerCore.Controllers.Stydent
             bd.closeBD();
             return json;
 
+        }
+
+        [HttpGet, Route("check_literature")]
+        [Authorize(Roles = "teacher")]
+        public object check_literature(string id_theme)
+        {
+            BD bd = new BD();
+            bd.connectionBD();
+            string text = "";
+            try
+            {
+                string sqlExpression = @"
+                SELECT COUNT(*) AS CountOfRecords
+                FROM [test].[dbo].[recommended_literature]
+                WHERE theme_id = @theme_id
+            ";
+                using (SqlCommand sqlCommand = new SqlCommand(sqlExpression, bd.connection))
+                {
+
+                    sqlCommand.Parameters.AddWithValue("@theme_id", id_theme);
+                    int count = Convert.ToInt32(sqlCommand.ExecuteScalar());
+
+                    // Проверяем результат и отправляем сообщение в зависимости от него
+                    if (count == 0)
+                    {
+                        text = "На жаль додаткова література не додана, зверніться до вчителя";
+                    }
+                }
+            }
+            catch{}
+            bd.closeBD();
+            var message = new Message { message = text };
+            return Ok(message);
+        }
+
+        [HttpGet, Route("check_test")]
+        [Authorize(Roles = "teacher")]
+        public object check_test(string theme_id, string class_id)
+        {
+            BD bd = new BD();
+            bd.connectionBD();
+            string text = "";
+            try
+            {
+                string sqlExpression = @"
+                SELECT dbo.test.test_id, dbo.test.test_name, dbo.test.theme_id, dbo.test.test_type, dbo.test.class_id
+                FROM dbo.test
+                INNER JOIN dbo.theme ON dbo.test.theme_id = dbo.theme.theme_id
+                WHERE dbo.test.theme_id = @theme_id
+                AND dbo.test.test_type LIKE N'%Оцінювальний%' 
+                AND dbo.test.class_id = @class_id;
+                ";
+                using (SqlCommand sqlCommand = new SqlCommand(sqlExpression, bd.connection))
+                {
+
+                    sqlCommand.Parameters.AddWithValue("@theme_id", theme_id);
+                    sqlCommand.Parameters.AddWithValue("@class_id", class_id);
+
+                    int count = Convert.ToInt32(sqlCommand.ExecuteScalar());
+                    if (count == 0)
+                    {
+                        text = "На жаль даний тест неактивований, зверніться до вчителя";
+                    }
+                }
+            }
+            catch { }
+            bd.closeBD();
+            var message = new Message { message = text };
+            return Ok(message);
+        }
+        [HttpGet, Route("check_practice_test")]
+        [Authorize(Roles = "teacher")]
+        public object check_practice_test(string theme_id, string class_id)
+        {
+            BD bd = new BD();
+            bd.connectionBD();
+            string text = "";
+            try
+            {
+                string sqlExpression = @"
+                SELECT dbo.test.test_id, dbo.test.test_name, dbo.test.theme_id, dbo.test.test_type, dbo.test.class_id
+                FROM dbo.test
+                INNER JOIN dbo.theme ON dbo.test.theme_id = dbo.theme.theme_id
+                WHERE dbo.test.theme_id = @theme_id
+                AND dbo.test.test_type LIKE N'%Підготовчий%' 
+                AND dbo.test.class_id = @class_id;
+                ";
+                using (SqlCommand sqlCommand = new SqlCommand(sqlExpression, bd.connection))
+                {
+
+                    sqlCommand.Parameters.AddWithValue("@theme_id", theme_id);
+                    sqlCommand.Parameters.AddWithValue("@class_id", class_id);
+
+                    int count = Convert.ToInt32(sqlCommand.ExecuteScalar());
+                    if (count == 0)
+                    {
+                        text = "На жаль даний тест неактивований, зверніться до вчителя";
+                    }
+                }
+            }
+            catch { }
+            bd.closeBD();
+            var message = new Message { message = text };
+            return Ok(message);
         }
     }
 }

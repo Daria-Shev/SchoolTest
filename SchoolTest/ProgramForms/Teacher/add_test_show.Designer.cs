@@ -52,16 +52,6 @@
             subject_idLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // comboBox_class
-            // 
-            this.comboBox_class.DisplayMember = "class_name";
-            this.comboBox_class.FormattingEnabled = true;
-            this.comboBox_class.Location = new System.Drawing.Point(323, 80);
-            this.comboBox_class.Name = "comboBox_class";
-            this.comboBox_class.Size = new System.Drawing.Size(55, 21);
-            this.comboBox_class.TabIndex = 35;
-            this.comboBox_class.ValueMember = "class_id";
-            // 
             // class_idLabel
             // 
             class_idLabel.AutoSize = true;
@@ -80,13 +70,6 @@
             test_nameLabel.TabIndex = 23;
             test_nameLabel.Text = "Тест:";
             // 
-            // test_nameTextBox
-            // 
-            this.test_nameTextBox.Location = new System.Drawing.Point(104, 24);
-            this.test_nameTextBox.Name = "test_nameTextBox";
-            this.test_nameTextBox.Size = new System.Drawing.Size(274, 20);
-            this.test_nameTextBox.TabIndex = 24;
-            // 
             // execution_timeLabel
             // 
             execution_timeLabel.AutoSize = true;
@@ -96,13 +79,6 @@
             execution_timeLabel.TabIndex = 28;
             execution_timeLabel.Text = "Час\r\nпроходження(хв):";
             // 
-            // execution_timeTextBox
-            // 
-            this.execution_timeTextBox.Location = new System.Drawing.Point(104, 81);
-            this.execution_timeTextBox.Name = "execution_timeTextBox";
-            this.execution_timeTextBox.Size = new System.Drawing.Size(51, 20);
-            this.execution_timeTextBox.TabIndex = 29;
-            // 
             // attempt_countLabel
             // 
             attempt_countLabel.AutoSize = true;
@@ -111,6 +87,48 @@
             attempt_countLabel.Size = new System.Drawing.Size(41, 13);
             attempt_countLabel.TabIndex = 30;
             attempt_countLabel.Text = "Спроб:";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new System.Drawing.Point(4, 52);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(59, 13);
+            label1.TabIndex = 38;
+            label1.Text = "Тип тесту:";
+            // 
+            // subject_idLabel
+            // 
+            subject_idLabel.AutoSize = true;
+            subject_idLabel.Location = new System.Drawing.Point(4, 110);
+            subject_idLabel.Name = "subject_idLabel";
+            subject_idLabel.Size = new System.Drawing.Size(55, 13);
+            subject_idLabel.TabIndex = 40;
+            subject_idLabel.Text = "Предмет:";
+            // 
+            // comboBox_class
+            // 
+            this.comboBox_class.DisplayMember = "class_name";
+            this.comboBox_class.FormattingEnabled = true;
+            this.comboBox_class.Location = new System.Drawing.Point(323, 80);
+            this.comboBox_class.Name = "comboBox_class";
+            this.comboBox_class.Size = new System.Drawing.Size(55, 21);
+            this.comboBox_class.TabIndex = 35;
+            this.comboBox_class.ValueMember = "class_id";
+            // 
+            // test_nameTextBox
+            // 
+            this.test_nameTextBox.Location = new System.Drawing.Point(104, 24);
+            this.test_nameTextBox.Name = "test_nameTextBox";
+            this.test_nameTextBox.Size = new System.Drawing.Size(274, 20);
+            this.test_nameTextBox.TabIndex = 24;
+            // 
+            // execution_timeTextBox
+            // 
+            this.execution_timeTextBox.Location = new System.Drawing.Point(104, 81);
+            this.execution_timeTextBox.Name = "execution_timeTextBox";
+            this.execution_timeTextBox.Size = new System.Drawing.Size(51, 20);
+            this.execution_timeTextBox.TabIndex = 29;
             // 
             // attempt_countTextBox
             // 
@@ -149,22 +167,13 @@
             this.comboBox_type.FormattingEnabled = true;
             this.comboBox_type.Items.AddRange(new object[] {
             "Підготовчий",
-            "Тематичний",
-            "Підсумковий"});
+            "Оцінювальний"});
             this.comboBox_type.Location = new System.Drawing.Point(104, 49);
             this.comboBox_type.Name = "comboBox_type";
             this.comboBox_type.Size = new System.Drawing.Size(274, 21);
             this.comboBox_type.TabIndex = 39;
             this.comboBox_type.ValueMember = "theme_id";
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(4, 52);
-            label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(59, 13);
-            label1.TabIndex = 38;
-            label1.Text = "Тип тесту:";
+            this.comboBox_type.TextChanged += new System.EventHandler(this.comboBox_type_TextChanged);
             // 
             // comboBox_theme
             // 
@@ -186,15 +195,6 @@
             this.comboBox_subject.TabIndex = 41;
             this.comboBox_subject.ValueMember = "subject_id";
             this.comboBox_subject.TextChanged += new System.EventHandler(this.comboBox_subject_TextChanged);
-            // 
-            // subject_idLabel
-            // 
-            subject_idLabel.AutoSize = true;
-            subject_idLabel.Location = new System.Drawing.Point(4, 110);
-            subject_idLabel.Name = "subject_idLabel";
-            subject_idLabel.Size = new System.Drawing.Size(55, 13);
-            subject_idLabel.TabIndex = 40;
-            subject_idLabel.Text = "Предмет:";
             // 
             // label2
             // 

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace SchoolTest.ProgramForms.Student
 {
-    public partial class literature_student : Form
+    public partial class student_literature : Form
     {
-        public literature_student()
+        public student_literature()
         {
             InitializeComponent();
         }

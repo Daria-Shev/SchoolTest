@@ -1,6 +1,6 @@
 ﻿namespace SchoolTest.ProgramForms.Student
 {
-    partial class literature_student
+    partial class student_literature
     {
         /// <summary>
         /// Required designer variable.
@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "literature_student";
+            this.Text = "student_literature";
         }
 
         #endregion
