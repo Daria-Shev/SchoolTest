@@ -11,6 +11,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SchoolTest.ProgramForms.Student.Test;
+
 
 namespace SchoolTest.ProgramForms.Student
 {
@@ -82,12 +84,14 @@ namespace SchoolTest.ProgramForms.Student
             this.Close();
         }
 
-        private void check_info()
+        private bool check_info()
         {
             if (comboBox_theme.Text=="" || comboBox_subject.Text=="")
             {
                 Message.MessageInfo("Ви не обрали предмет або/та тему");
+                return true;
             }
+            return false;
         }
 
         private bool check_data(string path)
@@ -119,16 +123,25 @@ namespace SchoolTest.ProgramForms.Student
         }
         private void button_test_Click(object sender, EventArgs e)
         {
-            check_info();
+            if (check_info())
+            {
+                return;
+            }
             if (check_data("test"))
-            { }
+            {
+                Form ifrm = new test_info(comboBox_theme.SelectedValue.ToString(), "Оцінювальний");
+                ifrm.ShowDialog();
+            }
 
         }
 
         private void button_lit_Click(object sender, EventArgs e)
         {
-            check_info();
-            if (check_data("literature")) 
+            if (check_info())
+            {
+                return;
+            }
+            if ( check_data("literature")) 
             {
                 Form ifrm = new student_literature(comboBox_theme.SelectedValue.ToString());
                 ifrm.ShowDialog();
@@ -137,8 +150,14 @@ namespace SchoolTest.ProgramForms.Student
 
         private void button_practice_test_Click(object sender, EventArgs e)
         {
-            check_info();
-            if (check_data("practice_test")) { }
+            if (check_info())
+            {
+                return;
+            }
+            if (check_data("practice_test")) {
+                Form ifrm = new test_info(comboBox_theme.SelectedValue.ToString(), "Підготовчий");
+                ifrm.ShowDialog();
+            }
         }
 
     }

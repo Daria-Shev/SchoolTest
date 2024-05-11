@@ -45,6 +45,7 @@ namespace SchoolTest.ProgramForms.Teacher
             comboBox_type.Text = dataTable.test_type;
             execution_timeTextBox.Text = dataTable.execution_time;
             attempt_countTextBox.Text = dataTable.attempt_count;
+            textBox_question_count.Text = dataTable.question_count;
 
             combo_box_subject();
             var itemToSelect = comboBox_subject.Items.Cast<DataRowView>().FirstOrDefault(item => item["subject_id"].ToString() == dataTable.subject_id);
@@ -117,8 +118,8 @@ namespace SchoolTest.ProgramForms.Teacher
                 user_account_id = teacher,
                 creation_date = data_time,
                 theme_id = comboBox_theme.SelectedValue,
-
-            };
+                question_count=textBox_question_count.Text
+        };
             var json = JsonConvert.SerializeObject(classObject);
             authApi.query.Add("jsonData", json);
             authApi.uriCreate();

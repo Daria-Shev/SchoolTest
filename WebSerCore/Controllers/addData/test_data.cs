@@ -21,7 +21,7 @@ namespace WebSerCore.Controllers.addData
 
             // Используйте параметризованный запрос, чтобы избежать SQL-инъекций
             string sqlExpression = @"SELECT       dbo.subject.subject_id, dbo.test.test_id, dbo.test.class_id, dbo.test.user_account_id, dbo.test.theme_id, dbo.test.test_name, dbo.test.execution_time, dbo.test.attempt_count, dbo.test.test_type, dbo.class.class_name, dbo.test.creation_date, 
-                         dbo.user_account.full_name, dbo.theme.theme_name, dbo.subject.subject_name
+                         dbo.user_account.full_name, dbo.theme.theme_name, dbo.subject.subject_name, dbo.test.question_count
 FROM            dbo.test INNER JOIN
                          dbo.theme ON dbo.test.theme_id = dbo.theme.theme_id INNER JOIN
                          dbo.user_account ON dbo.test.user_account_id = dbo.user_account.user_account_id INNER JOIN
@@ -87,8 +87,8 @@ FROM            dbo.test INNER JOIN
                 string sqlExpression = @"
     MERGE INTO [test].[dbo].[recommended_literature] AS target
     USING (
-        VALUES (@test_id, @class_id, @test_name, @theme_id, @creation_date, @execution_time, @attempt_count, @user_account_id, @test_type)
-    ) AS source (test_id, class_id, test_name, theme_id, creation_date, execution_time, attempt_count, user_account_id, test_type)
+        VALUES (@test_id, @class_id, @test_name, @theme_id, @creation_date, @execution_time, @attempt_count, @user_account_id, @test_type, @question_count)
+    ) AS source (test_id, class_id, test_name, theme_id, creation_date, execution_time, attempt_count, user_account_id, test_type, question_count)
     ON target.test_id = source.test_id
     WHEN MATCHED THEN
         UPDATE SET target.class_id = source.class_id,
@@ -99,9 +99,10 @@ FROM            dbo.test INNER JOIN
                    target.attempt_count = source.attempt_count,
                    target.user_account_id = source.user_account_id,
                    target.test_type = source.test_type
+                    target.question_count = source.question_count
     WHEN NOT MATCHED THEN
-        INSERT (class_id, test_name, theme_id, creation_date, execution_time, attempt_count, user_account_id, test_type) 
-        VALUES (source.class_id, source.test_name, source.theme_id, source.creation_date, source.execution_time, source.attempt_count, source.user_account_id, source.test_type);
+        INSERT (class_id, test_name, theme_id, creation_date, execution_time, attempt_count, user_account_id, test_type, question_count) 
+        VALUES (source.class_id, source.test_name, source.theme_id, source.creation_date, source.execution_time, source.attempt_count, source.user_account_id, source.test_type, source.question_count);
 ";
 
                 using (SqlCommand sqlCommand = new SqlCommand(sqlExpression, bd.connection))
@@ -114,6 +115,8 @@ FROM            dbo.test INNER JOIN
                     sqlCommand.Parameters.AddWithValue("@user_account_id", classData.user_account_id);
                     sqlCommand.Parameters.AddWithValue("@test_type", classData.test_type);
                     sqlCommand.Parameters.AddWithValue("@creation_date", classData.creation_date);
+                    sqlCommand.Parameters.AddWithValue("@question_count", classData.question_count);
+
                     sqlCommand.ExecuteNonQuery();
                 }
             }
@@ -136,6 +139,7 @@ FROM            dbo.test INNER JOIN
             public int theme_id { get; set; }
 
             public int user_account_id { get; set; }
+            public int question_count { get; set; }
 
             public string test_type { get; set; }
             public DateTime creation_date { get; set; }

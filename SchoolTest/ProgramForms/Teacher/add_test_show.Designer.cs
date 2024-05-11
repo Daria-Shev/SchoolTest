@@ -34,6 +34,7 @@
             System.Windows.Forms.Label attempt_countLabel;
             System.Windows.Forms.Label label1;
             System.Windows.Forms.Label subject_idLabel;
+            System.Windows.Forms.Label label3;
             this.comboBox_class = new System.Windows.Forms.ComboBox();
             this.test_nameTextBox = new System.Windows.Forms.TextBox();
             this.execution_timeTextBox = new System.Windows.Forms.TextBox();
@@ -44,18 +45,20 @@
             this.comboBox_theme = new System.Windows.Forms.ComboBox();
             this.comboBox_subject = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.textBox_question_count = new System.Windows.Forms.TextBox();
             class_idLabel = new System.Windows.Forms.Label();
             test_nameLabel = new System.Windows.Forms.Label();
             execution_timeLabel = new System.Windows.Forms.Label();
             attempt_countLabel = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
             subject_idLabel = new System.Windows.Forms.Label();
+            label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // class_idLabel
             // 
             class_idLabel.AutoSize = true;
-            class_idLabel.Location = new System.Drawing.Point(282, 84);
+            class_idLabel.Location = new System.Drawing.Point(215, 83);
             class_idLabel.Name = "class_idLabel";
             class_idLabel.Size = new System.Drawing.Size(35, 13);
             class_idLabel.TabIndex = 22;
@@ -82,7 +85,7 @@
             // attempt_countLabel
             // 
             attempt_countLabel.AutoSize = true;
-            attempt_countLabel.Location = new System.Drawing.Point(169, 84);
+            attempt_countLabel.Location = new System.Drawing.Point(215, 113);
             attempt_countLabel.Name = "attempt_countLabel";
             attempt_countLabel.Size = new System.Drawing.Size(41, 13);
             attempt_countLabel.TabIndex = 30;
@@ -100,7 +103,7 @@
             // subject_idLabel
             // 
             subject_idLabel.AutoSize = true;
-            subject_idLabel.Location = new System.Drawing.Point(4, 110);
+            subject_idLabel.Location = new System.Drawing.Point(4, 137);
             subject_idLabel.Name = "subject_idLabel";
             subject_idLabel.Size = new System.Drawing.Size(55, 13);
             subject_idLabel.TabIndex = 40;
@@ -110,9 +113,9 @@
             // 
             this.comboBox_class.DisplayMember = "class_name";
             this.comboBox_class.FormattingEnabled = true;
-            this.comboBox_class.Location = new System.Drawing.Point(323, 80);
+            this.comboBox_class.Location = new System.Drawing.Point(262, 81);
             this.comboBox_class.Name = "comboBox_class";
-            this.comboBox_class.Size = new System.Drawing.Size(55, 21);
+            this.comboBox_class.Size = new System.Drawing.Size(97, 21);
             this.comboBox_class.TabIndex = 35;
             this.comboBox_class.ValueMember = "class_id";
             // 
@@ -120,28 +123,28 @@
             // 
             this.test_nameTextBox.Location = new System.Drawing.Point(104, 24);
             this.test_nameTextBox.Name = "test_nameTextBox";
-            this.test_nameTextBox.Size = new System.Drawing.Size(274, 20);
+            this.test_nameTextBox.Size = new System.Drawing.Size(255, 20);
             this.test_nameTextBox.TabIndex = 24;
             // 
             // execution_timeTextBox
             // 
             this.execution_timeTextBox.Location = new System.Drawing.Point(104, 81);
             this.execution_timeTextBox.Name = "execution_timeTextBox";
-            this.execution_timeTextBox.Size = new System.Drawing.Size(51, 20);
+            this.execution_timeTextBox.Size = new System.Drawing.Size(97, 20);
             this.execution_timeTextBox.TabIndex = 29;
             // 
             // attempt_countTextBox
             // 
-            this.attempt_countTextBox.Location = new System.Drawing.Point(216, 81);
+            this.attempt_countTextBox.Location = new System.Drawing.Point(262, 110);
             this.attempt_countTextBox.Name = "attempt_countTextBox";
-            this.attempt_countTextBox.Size = new System.Drawing.Size(51, 20);
+            this.attempt_countTextBox.Size = new System.Drawing.Size(97, 20);
             this.attempt_countTextBox.TabIndex = 31;
             // 
             // buttonBack
             // 
             this.buttonBack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(252)))), ((int)(((byte)(222)))));
             this.buttonBack.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonBack.Location = new System.Drawing.Point(216, 161);
+            this.buttonBack.Location = new System.Drawing.Point(192, 199);
             this.buttonBack.Name = "buttonBack";
             this.buttonBack.Size = new System.Drawing.Size(75, 23);
             this.buttonBack.TabIndex = 37;
@@ -153,7 +156,7 @@
             // 
             this.buttonAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(252)))), ((int)(((byte)(222)))));
             this.buttonAdd.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonAdd.Location = new System.Drawing.Point(104, 161);
+            this.buttonAdd.Location = new System.Drawing.Point(80, 199);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(75, 23);
             this.buttonAdd.TabIndex = 36;
@@ -170,7 +173,7 @@
             "Оцінювальний"});
             this.comboBox_type.Location = new System.Drawing.Point(104, 49);
             this.comboBox_type.Name = "comboBox_type";
-            this.comboBox_type.Size = new System.Drawing.Size(274, 21);
+            this.comboBox_type.Size = new System.Drawing.Size(255, 21);
             this.comboBox_type.TabIndex = 39;
             this.comboBox_type.ValueMember = "theme_id";
             this.comboBox_type.TextChanged += new System.EventHandler(this.comboBox_type_TextChanged);
@@ -179,9 +182,9 @@
             // 
             this.comboBox_theme.DisplayMember = "theme_name";
             this.comboBox_theme.FormattingEnabled = true;
-            this.comboBox_theme.Location = new System.Drawing.Point(104, 134);
+            this.comboBox_theme.Location = new System.Drawing.Point(104, 161);
             this.comboBox_theme.Name = "comboBox_theme";
-            this.comboBox_theme.Size = new System.Drawing.Size(274, 21);
+            this.comboBox_theme.Size = new System.Drawing.Size(255, 21);
             this.comboBox_theme.TabIndex = 43;
             this.comboBox_theme.ValueMember = "theme_id";
             // 
@@ -189,9 +192,9 @@
             // 
             this.comboBox_subject.DisplayMember = "subject_name";
             this.comboBox_subject.FormattingEnabled = true;
-            this.comboBox_subject.Location = new System.Drawing.Point(104, 107);
+            this.comboBox_subject.Location = new System.Drawing.Point(104, 134);
             this.comboBox_subject.Name = "comboBox_subject";
-            this.comboBox_subject.Size = new System.Drawing.Size(274, 21);
+            this.comboBox_subject.Size = new System.Drawing.Size(255, 21);
             this.comboBox_subject.TabIndex = 41;
             this.comboBox_subject.ValueMember = "subject_id";
             this.comboBox_subject.TextChanged += new System.EventHandler(this.comboBox_subject_TextChanged);
@@ -199,17 +202,35 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(4, 137);
+            this.label2.Location = new System.Drawing.Point(4, 164);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(37, 13);
             this.label2.TabIndex = 44;
             this.label2.Text = "Тема:";
             // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new System.Drawing.Point(4, 110);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(94, 13);
+            label3.TabIndex = 45;
+            label3.Text = "Кількість питань:";
+            // 
+            // textBox_question_count
+            // 
+            this.textBox_question_count.Location = new System.Drawing.Point(104, 107);
+            this.textBox_question_count.Name = "textBox_question_count";
+            this.textBox_question_count.Size = new System.Drawing.Size(97, 20);
+            this.textBox_question_count.TabIndex = 46;
+            // 
             // add_test_show
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(400, 198);
+            this.ClientSize = new System.Drawing.Size(382, 234);
+            this.Controls.Add(label3);
+            this.Controls.Add(this.textBox_question_count);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.comboBox_theme);
             this.Controls.Add(this.comboBox_subject);
@@ -247,5 +268,6 @@
         private System.Windows.Forms.ComboBox comboBox_theme;
         private System.Windows.Forms.ComboBox comboBox_subject;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBox_question_count;
     }
 }

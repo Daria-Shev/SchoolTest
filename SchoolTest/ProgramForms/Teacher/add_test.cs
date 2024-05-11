@@ -100,7 +100,7 @@ namespace SchoolTest.ProgramForms.Teacher
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = string.Format("theme_name LIKE '%{0}%' OR subject_name LIKE '%{0}%' OR test_name LIKE '%{0}%' OR test_type LIKE '%{0}%' OR attempt_count LIKE '%{0}%' OR execution_time LIKE '%{0}%' OR class_name LIKE '%{0}%'OR creation_date LIKE '%{0}%'OR full_name LIKE '%{0}%'", textBox1.Text);
+            (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = string.Format("theme_name LIKE '%{0}%' OR subject_name LIKE '%{0}%' OR test_name LIKE '%{0}%' OR test_type LIKE '%{0}%' OR attempt_count LIKE '%{0}%' OR execution_time LIKE '%{0}%' OR class_name LIKE '%{0}%' OR creation_date LIKE '%{0}%' OR full_name LIKE '%{0}%' OR question_count LIKE '%{0}%'", textBox1.Text);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -122,7 +122,8 @@ namespace SchoolTest.ProgramForms.Teacher
             string attempt_count = "";
             string test_type = "";
             string class_id = "0";
-            var data = new { test_id, theme_id, subject_id, test_name, execution_time, attempt_count, test_type, class_id };
+            string question_count = "";
+            var data = new { test_id, theme_id, subject_id, test_name, execution_time, attempt_count, test_type, class_id, question_count };
             Form ifrm = new add_test_show(data);
             ifrm.ShowDialog();
         }
@@ -148,6 +149,7 @@ namespace SchoolTest.ProgramForms.Teacher
             string attempt_count = "";
             string test_type = "";
             string class_id = "0";
+            string question_count = "";
             if (dataGridView1.SelectedRows.Count > 0)
             {
                 DataGridViewRow selectedRow = dataGridView1.SelectedRows[0];
@@ -159,8 +161,9 @@ namespace SchoolTest.ProgramForms.Teacher
                 attempt_count = selectedRow.Cells["attempt_count"].Value.ToString();
                 test_type = selectedRow.Cells["test_type"].Value.ToString();
                 class_id = selectedRow.Cells["class_id"].Value.ToString();
+                question_count = selectedRow.Cells["question_count"].Value.ToString();
             }
-            var data = new { test_id, theme_id, subject_id, test_name, execution_time, attempt_count, test_type, class_id };
+            var data = new { test_id, theme_id, subject_id, test_name, execution_time, attempt_count, test_type, class_id, question_count };
             return data;
         }
 
