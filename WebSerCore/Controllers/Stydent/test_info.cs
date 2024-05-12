@@ -12,6 +12,45 @@ namespace WebSerCore.Controllers.Stydent
 {
     public class test_info : Controller
     {
+        [HttpGet, Route("info_test_id")]
+        [Authorize]
+        public object info_test_id(string test_id)
+        {
+            BD bd = new BD();
+            bd.connectionBD();
+
+            string sqlExpression = @"
+        SELECT dbo.test.test_id, dbo.test.test_name, dbo.test.test_type, 
+        dbo.test.execution_time, dbo.test.question_count
+        FROM dbo.test
+        WHERE dbo.test.test_id = @test_id
+    ";
+
+            object obj = null;
+            using (SqlCommand command = new SqlCommand(sqlExpression, bd.connection))
+            {
+                command.Parameters.AddWithValue("@test_id", test_id);
+
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        obj = new
+                        {
+                            test_type = reader["test_type"].ToString(),
+                            test_name = reader["test_name"].ToString(),
+                            execution_time = reader["execution_time"].ToString(),
+                            question_count = reader["question_count"].ToString(),
+                        };
+                    }
+                }
+            }
+
+            bd.closeBD();
+            return obj;
+        }
+
         [HttpGet, Route("InfoTest")]
         [Authorize]
         public object InfoTest(string theme_id, string class_id, string test_type)

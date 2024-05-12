@@ -39,6 +39,8 @@ namespace SchoolTest.ProgramForms.Student.Test
             authApi.path = "InfoTest";
             authApi.query.Add("theme_id", theme_id);
             authApi.query.Add("class_id", User.class_id);
+            authApi.query.Add("test_type", test_type);
+
 
             //authApi.query.Add("password", password);
             authApi.uriCreate();
@@ -101,7 +103,7 @@ namespace SchoolTest.ProgramForms.Student.Test
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Form ifrm = new student_literature(test_id, test_type);
+            Form ifrm = new Test(test_id, theme_id);
             ifrm.Show();
             this.Close();
         }

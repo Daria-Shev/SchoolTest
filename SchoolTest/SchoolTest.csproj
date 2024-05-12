@@ -80,6 +80,7 @@
     <Compile Include="ProgramForms\Student\student_literature.Designer.cs">
       <DependentUpon>student_literature.cs</DependentUpon>
     </Compile>
+    <Compile Include="ProgramForms\Student\Test\question.cs" />
     <Compile Include="ProgramForms\Student\Test\Test.cs">
       <SubType>Form</SubType>
     </Compile>
