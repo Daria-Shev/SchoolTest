@@ -14,40 +14,52 @@ namespace WebSerCore.Controllers.Stydent
     {
         [HttpGet, Route("question_list")]
         [Authorize]
+
         public object question_list(int count, string theme_id)
         {
             BD bd = new BD();
             bd.connectionBD();
 
+            //        string sqlExpression = @"
+            //    SELECT TOP(@count) dbo.question.question_id, dbo.question.question_text, dbo.question.points, dbo.question.theme_id
+            //    FROM dbo.question  
+            //    WHERE dbo.question.theme_id = @theme_id
+            //    ORDER BY NEWID();
+            //";
             string sqlExpression = @"
-                    SELECT TOP(@count) dbo.question.question_id, dbo.question.question_text, dbo.question.points, dbo.question.theme_id, dbo.response.response_type
-FROM            dbo.question INNER JOIN
-                         dbo.response ON dbo.question.question_id = dbo.response.question_id
-            WHERE dbo.question.theme_id = @theme_id
-            ORDER BY NEWID();
-                ";
+        SELECT q.question_id, q.question_text, q.points, q.theme_id, r.*
+FROM (
+    SELECT TOP(10) dbo.question.question_id, dbo.question.question_text, dbo.question.points, dbo.question.theme_id
+    FROM dbo.question  
+    WHERE dbo.question.theme_id = 2
+    ORDER BY NEWID()
+) AS q
+LEFT JOIN response AS r ON r.question_id IN (
+    SELECT question_id FROM dbo.question WHERE theme_id = 2
+) AND r.question_id = q.question_id;
+            ";
+
             List<object> questions = new List<object>();
 
-            object obj = null;
             using (SqlCommand command = new SqlCommand(sqlExpression, bd.connection))
             {
                 command.Parameters.AddWithValue("@count", count);
                 command.Parameters.AddWithValue("@theme_id", theme_id);
 
-
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
-                    if (reader.Read())
+                    while (reader.Read())
                     {
-                        obj = new
+                        var obj = new
                         {
+                            response_id = reader["response_id"].ToString(),
                             question_id = reader["question_id"].ToString(),
                             question_text = reader["question_text"].ToString(),
                             points = reader["points"].ToString(),
-                            response_type = reader["theme_id"].ToString()
+                            response_type = reader["response_type"].ToString()
                         };
-                        questions.Add(obj);
 
+                        questions.Add(obj);
                     }
                 }
             }
@@ -55,5 +67,7 @@ FROM            dbo.question INNER JOIN
             bd.closeBD();
             return questions;
         }
+
+
     }
 }

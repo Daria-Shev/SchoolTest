@@ -73,9 +73,49 @@ namespace SchoolTest.ProgramForms.Student.Test
 
             //..List<question> questions = new List<question>();
 
-            List<question> questions = JsonHelpers.ReadFromJsonStream<List<question>>(Stream);
+            List<QuerstionAndResponce> questions = JsonHelpers.ReadFromJsonStream<List<QuerstionAndResponce>>(Stream);
+
+            testStart a = new testStart();
+            a.questionResponce = new Dictionary<int, question>();
+
+            foreach (QuerstionAndResponce question in questions)
+            {
+                
+
+                if (a.questionResponce.ContainsKey(question.question_id))
+                {
+                    dictionaryAdd(a, question);
+                    //a.questionResponce[question.question_id].question_text = question.question_text_BD;
+                    //a.questionResponce[question.question_id].response_type = question.response_type;
+                    //a.questionResponce[question.question_id].response_type = question.response_type;
+                    //a.questionResponce[question.question_id].points = question.points;
+                    //a.questionResponce[question.question_id].response_id.Add(question.response_id);
 
 
+                }
+                else
+                {
+                    a.questionResponce.Add(question.question_id, new question());
+                    dictionaryAdd(a, question);
+
+                    //a.questionResponce[question.question_id].question_text = question.question_text_BD;
+                    //a.questionResponce[question.question_id].response_type = question.response_type;
+                    //a.questionResponce[question.question_id].response_type = question.response_type;
+                    //a.questionResponce[question.question_id].points = question.points;
+                    //a.questionResponce[question.question_id].response_id.Add(question.response_id);
+
+                }
+            }
+            int o = 0;
+
+        }
+       public void dictionaryAdd(testStart a, QuerstionAndResponce question)
+        {
+            a.questionResponce[question.question_id].question_text = question.question_text;
+            a.questionResponce[question.question_id].response_type = question.response_type;
+            a.questionResponce[question.question_id].points = question.points;
+
+            a.questionResponce[question.question_id].response_id.Add(question.response_id);
         }
     }
 }
