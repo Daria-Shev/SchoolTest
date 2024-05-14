@@ -28,7 +28,11 @@ namespace SchoolTest.ProgramForms.Student.Test
         public int question_id;
         public List<int> response_id;
 
-        public List<open_response> open_response;
+        public List<open_response> open_response = new List<open_response>();
+        public List<sequence> sequence = new List<sequence>();
+        public List<answer_options> answer_options = new List<answer_options>();
+        public List<matching> matching = new List<matching>();
+
         public question()
         {
             // Инициализация списка response_id как пустого списка
@@ -37,11 +41,13 @@ namespace SchoolTest.ProgramForms.Student.Test
     }
     public class open_response
     {
+        public int response_id;
         public string correct_response;
     }
     public class sequence
     {
-        public int question_id;
+        public int response_id;
+
 
         public int sequence_number;
         public string sequence_text;
@@ -49,7 +55,8 @@ namespace SchoolTest.ProgramForms.Student.Test
     }
     public class answer_options
     {
-        public int question_id;
+        public int response_id;
+
 
          public int option_number;
         public string correct_option;
@@ -58,7 +65,7 @@ namespace SchoolTest.ProgramForms.Student.Test
     }
     public class matching
     {
-        public int question_id;
+        public int response_id;
 
         public int matching_number;
         public string option_text;
