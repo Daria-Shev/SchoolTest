@@ -17,12 +17,14 @@ namespace SchoolTest.ProgramForms.Student.Test
 {
     public partial class Test : Form
     {
- 
+
         string test_id;
         string test_type;
         int execution_time;
         int question_count;
-        int question_count_now=0;
+        int question_count_now = 0;
+        private int executionTimeInSeconds; // Время выполнения в секундах
+        private int remainingTimeInSeconds; // Оставшееся время в секундах
 
         string theme_id;
         testStart a = new testStart();
@@ -45,8 +47,10 @@ namespace SchoolTest.ProgramForms.Student.Test
         }
         private void question_form()
         {
+
+            label_count_question.Text = "Питання" + (question_count_now + 1) + " з " + question_count;
             var quest = a.questionResponce.ElementAt(question_count_now).Value;
-            label_question_text.Text= quest.question_text;
+            label_question_text.Text = quest.question_text;
             panel_visible_false();
             if (quest.response_type.StartsWith("open_response"))
             {
@@ -62,7 +66,7 @@ namespace SchoolTest.ProgramForms.Student.Test
                 question_sequence();
             }
             if (quest.response_type.StartsWith("answer_options"))
-            {               
+            {
                 question_answer_options();
             }
         }
@@ -71,10 +75,10 @@ namespace SchoolTest.ProgramForms.Student.Test
             panel_answer_options.Visible = true;
             var quest = a.questionResponce.ElementAt(question_count_now).Value;
             label_type_text.Text = "Виберіть одну або декілько правильних відповідей";
-            for (int i = 1; i <= quest.matching.Count; i++)
+            for (int i = 0; i < quest.answer_options.Count; i++)
             {
-                this.Controls["checkBox" + i.ToString()].Visible = true;
-                ((CheckBox)this.Controls["checkBox" + i.ToString()]).Text=quest.answer_options[i - 1].option_text;
+                panel_answer_options.Controls["checkBox" + (i + 1).ToString()].Visible = true;
+                ((CheckBox)panel_answer_options.Controls["checkBox" + (i + 1).ToString()]).Text = quest.answer_options[i].option_text;
             }
         }
         private void question_sequence()
@@ -83,11 +87,15 @@ namespace SchoolTest.ProgramForms.Student.Test
 
             var quest = a.questionResponce.ElementAt(question_count_now).Value;
             label_type_text.Text = "Вкажіть правильну послідовність";
-            for (int i = 7; i <= quest.matching.Count; i++)
+            for (int i = 0; i < quest.sequence.Count; i++)
             {
-                this.Controls["label" + i.ToString()].Visible = true;
-                this.Controls["comboBox" + i.ToString()].Visible = true;
-                ((ComboBox)this.Controls["comboBox" + i.ToString()]).Items.Add(quest.sequence[i - 7].sequence_text);
+                panel_sequence.Controls["label" + (i + 7).ToString()].Visible = true;
+                panel_sequence.Controls["comboBox" + (i + 7).ToString()].Visible = true;
+                for (int j = 0; j < quest.sequence.Count; j++)
+                {
+                    ((ComboBox)panel_sequence.Controls["comboBox" + (i + 7).ToString()]).Items.Add(quest.sequence[j].sequence_text);
+
+                }
             }
         }
         private void question_matching()
@@ -95,12 +103,16 @@ namespace SchoolTest.ProgramForms.Student.Test
             panel_matching.Visible = true;
             var quest = a.questionResponce.ElementAt(question_count_now).Value;
             label_type_text.Text = "Установіть відповідність";
-            for (int i = 1; i <= quest.matching.Count; i++)
+            for (int i = 0; i < quest.matching.Count; i++)
             {
-                this.Controls["label" + i.ToString()].Visible = true;
-                this.Controls["comboBox" + i.ToString()].Visible = true;
-                this.Controls["label" + i.ToString()].Text = quest.matching[i-1].matching_text;
-                ((ComboBox)this.Controls["comboBox" + i.ToString()]).Items.Add(quest.matching[i - 1].option_text);
+                panel_matching.Controls["label" + (i + 1).ToString()].Visible = true;
+                panel_matching.Controls["comboBox" + (i + 1).ToString()].Visible = true;
+                panel_matching.Controls["label" + (i + 1).ToString()].Text = quest.matching[i].matching_text;
+                for (int j = 0; j < quest.matching.Count; j++)
+                {
+                    ((ComboBox)panel_matching.Controls["comboBox" + (i + 1).ToString()]).Items.Add(quest.matching[j].option_text);
+
+                }
             }
 
         }
@@ -110,10 +122,23 @@ namespace SchoolTest.ProgramForms.Student.Test
             panel_matching.Visible = false;
             panel_sequence.Visible = false;
             panel_answer_options.Visible = false;
-            for (int i = 1; i <= 12; i++)
+            for (int i = 1; i <= 6; i++)
             {
-                this.Controls["label" + i.ToString()].Visible = false;
-                this.Controls["comboBox" + i.ToString()].Visible = false;
+                panel_matching.Controls["label" + i.ToString()].Visible = false;
+                panel_matching.Controls["comboBox" + i.ToString()].Visible = false;
+                ((ComboBox)panel_matching.Controls["comboBox" + i.ToString()]).Items.Clear();
+
+            }
+            for (int i = 7; i <= 12; i++)
+            {
+                panel_sequence.Controls["label" + i.ToString()].Visible = false;
+                panel_sequence.Controls["comboBox" + i.ToString()].Visible = false;
+                ((ComboBox)panel_sequence.Controls["comboBox" + i.ToString()]).Items.Clear();
+
+            }
+            for (int i = 1; i <= 8; i++)
+            {
+                panel_answer_options.Controls["checkBox" + i.ToString()].Visible = false;
             }
         }
         private void Info()
@@ -131,12 +156,15 @@ namespace SchoolTest.ProgramForms.Student.Test
             execution_time = int.Parse(test.execution_time);
             question_count = int.Parse(test.question_count);
             test_type = test.test_type;
-            label_count_question.Text = "Питання" + (question_count_now+1)+ " з " + question_count;
+            label_count_question.Text = "Питання" + (question_count_now + 1) + " з " + question_count;
         }
         private void taimer()
         {
-            
-
+            executionTimeInSeconds = execution_time * 60;
+            remainingTimeInSeconds = executionTimeInSeconds;
+            timer.Tick += timer_Tick;
+            timer.Interval = 2000; // 1 секунда
+            timer.Start();
         }
         private void question()
         {
@@ -170,11 +198,37 @@ namespace SchoolTest.ProgramForms.Student.Test
             }
             foreach (QuerstionAndResponce question in questions)
             {
-                response(a, question);
+                if (checkResponce(a, question))
+                {
+                    response(a, question);
+
+                }
+                //response(a, question);
             }
 
         }
-       public void dictionaryAdd(testStart a, QuerstionAndResponce question)
+        public bool checkResponce(testStart a, QuerstionAndResponce question)
+        {
+            if (a.questionResponce[question.question_id].matching.Count != 0)
+            {
+                return false;
+            }
+            if (a.questionResponce[question.question_id].answer_options.Count != 0)
+            {
+                return false;
+            }
+            if (a.questionResponce[question.question_id].sequence.Count != 0)
+            {
+                return false;
+            }
+            if (a.questionResponce[question.question_id].open_response.Count != 0)
+            {
+                return false;
+            }
+            return true;
+
+        }
+        public void dictionaryAdd(testStart a, QuerstionAndResponce question)
         {
             a.questionResponce[question.question_id].question_text = question.question_text;
             a.questionResponce[question.question_id].response_type = question.response_type;
@@ -192,16 +246,17 @@ namespace SchoolTest.ProgramForms.Student.Test
 
             authApi.uriCreate();
             var Stream = authApi.ServerAuthorization();
+
             if (question.response_type.StartsWith("matching"))
             {
                 List<matching> response = JsonHelpers.ReadFromJsonStream<List<matching>>(Stream);
                 foreach (matching matching in response)
                 {
                     //if (question.response_id== matching.response_id)
-                   // {
-                        a.questionResponce[question.question_id].matching.Add(matching);
+                    // {
+                    a.questionResponce[question.question_id].matching.Add(matching);
 
-                   // }
+                    // }
                 }
             }
             if (question.response_type.StartsWith("open_response"))
@@ -211,7 +266,7 @@ namespace SchoolTest.ProgramForms.Student.Test
                 {
                     //if (question.response_id == open_response.response_id)
                     //{
-                        a.questionResponce[question.question_id].open_response.Add(open_response);
+                    a.questionResponce[question.question_id].open_response.Add(open_response);
 
                     //}
                 }
@@ -222,10 +277,10 @@ namespace SchoolTest.ProgramForms.Student.Test
                 foreach (sequence sequence in response)
                 {
                     //if (question.response_id == sequence.response_id)
-                   // {
-                        a.questionResponce[question.question_id].sequence.Add(sequence);
+                    // {
+                    a.questionResponce[question.question_id].sequence.Add(sequence);
 
-                  //  }
+                    //  }
                 }
             }
             if (question.response_type.StartsWith("answer_options"))
@@ -233,9 +288,9 @@ namespace SchoolTest.ProgramForms.Student.Test
                 List<answer_options> response = JsonHelpers.ReadFromJsonStream<List<answer_options>>(Stream);
                 foreach (answer_options answer_options in response)
                 {
-                           // if (question.response_id == answer_options.response_id)
-                   // {
-                        a.questionResponce[question.question_id].answer_options.Add(answer_options);
+                    // if (question.response_id == answer_options.response_id)
+                    // {
+                    a.questionResponce[question.question_id].answer_options.Add(answer_options);
 
                     //}
                 }
@@ -251,16 +306,48 @@ namespace SchoolTest.ProgramForms.Student.Test
         private void button1_Click(object sender, EventArgs e)
         {
             question_count_now++;
-            if (question_count_now> question_count)
+            if (question_count_now == question_count)
             {
-                // сделать что-то окончание теста
+                button1.Text = "Завершити тестування";
+            }
+            if (question_count_now > question_count)
+            {
+                exit_test();
+
             }
             question_form();
+
+        }
+        private void exit_test()
+        {
+            this.Close();
 
         }
 
         private void label4_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            remainingTimeInSeconds--;
+            TimeSpan remainingTime = TimeSpan.FromSeconds(remainingTimeInSeconds);
+            label_time.Text = $"{remainingTime.Minutes:00}:{remainingTime.Seconds:00}";
+
+            if (remainingTimeInSeconds <= 120) // Если осталось 2 минуты или меньше
+            {
+                label_time.ForeColor = Color.Red;
+            }
+
+            if (remainingTimeInSeconds <= 0) // Если время истекло
+            {
+                timer.Stop();
+                Message.MessageInfo("Час вийшов. Тестування завершено.");
+
+                // Вызов функции по истечении времени
+                exit_test();
+            }
 
         }
     }
