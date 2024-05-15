@@ -252,11 +252,7 @@ namespace SchoolTest.ProgramForms.Student.Test
                 List<matching> response = JsonHelpers.ReadFromJsonStream<List<matching>>(Stream);
                 foreach (matching matching in response)
                 {
-                    //if (question.response_id== matching.response_id)
-                    // {
                     a.questionResponce[question.question_id].matching.Add(matching);
-
-                    // }
                 }
             }
             if (question.response_type.StartsWith("open_response"))
@@ -264,11 +260,7 @@ namespace SchoolTest.ProgramForms.Student.Test
                 List<open_response> response = JsonHelpers.ReadFromJsonStream<List<open_response>>(Stream);
                 foreach (open_response open_response in response)
                 {
-                    //if (question.response_id == open_response.response_id)
-                    //{
                     a.questionResponce[question.question_id].open_response.Add(open_response);
-
-                    //}
                 }
             }
             if (question.response_type.StartsWith("sequence"))
@@ -276,11 +268,7 @@ namespace SchoolTest.ProgramForms.Student.Test
                 List<sequence> response = JsonHelpers.ReadFromJsonStream<List<sequence>>(Stream);
                 foreach (sequence sequence in response)
                 {
-                    //if (question.response_id == sequence.response_id)
-                    // {
                     a.questionResponce[question.question_id].sequence.Add(sequence);
-
-                    //  }
                 }
             }
             if (question.response_type.StartsWith("answer_options"))
@@ -288,11 +276,7 @@ namespace SchoolTest.ProgramForms.Student.Test
                 List<answer_options> response = JsonHelpers.ReadFromJsonStream<List<answer_options>>(Stream);
                 foreach (answer_options answer_options in response)
                 {
-                    // if (question.response_id == answer_options.response_id)
-                    // {
                     a.questionResponce[question.question_id].answer_options.Add(answer_options);
-
-                    //}
                 }
             }
             //List<QuerstionAndResponce> questions = JsonHelpers.ReadFromJsonStream<List<QuerstionAndResponce>>(Stream);
@@ -321,7 +305,40 @@ namespace SchoolTest.ProgramForms.Student.Test
         }
         private void response_sent_to_server()
         {
-            this.Close();
+            var quest = a.questionResponce.ElementAt(question_count_now).Value;
+            if (quest.response_type.StartsWith("open_response"))
+            {
+                open_response_sent_to_server();
+            }
+            if (quest.response_type.StartsWith("matching"))
+            {
+            }
+            if (quest.response_type.StartsWith("sequence"))
+            {
+            }
+            if (quest.response_type.StartsWith("answer_options"))
+            {
+            }
+        }
+        private void open_response_sent_to_server()
+        {
+            var quest = a.questionResponce.ElementAt(question_count_now).Value;
+
+            ApiClass authApi = new ApiClass();
+
+            authApi.path = "open_response_sent_to_server";
+
+            var classObject = new
+            {
+                test_id=test_id,
+                user_account_id=User.id,
+                question_id = quest.question_id,
+                response_id = quest.response_id,
+                response = richTextBox1.Text,             
+            };
+            var json = JsonConvert.SerializeObject(classObject);
+            authApi.query.Add("jsonData", json);
+            authApi.uriCreate();
 
         }
         private void exit_test()
