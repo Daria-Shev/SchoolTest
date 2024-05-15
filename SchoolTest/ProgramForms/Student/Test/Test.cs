@@ -305,6 +305,7 @@ namespace SchoolTest.ProgramForms.Student.Test
 
         private void button1_Click(object sender, EventArgs e)
         {
+            response_sent_to_server();
             question_count_now++;
             if (question_count_now == question_count)
             {
@@ -318,8 +319,15 @@ namespace SchoolTest.ProgramForms.Student.Test
             question_form();
 
         }
+        private void response_sent_to_server()
+        {
+            this.Close();
+
+        }
         private void exit_test()
         {
+            Form ifrm = new test_info(test_id);
+            ifrm.ShowDialog();
             this.Close();
 
         }

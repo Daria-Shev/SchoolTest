@@ -16,7 +16,7 @@ namespace SchoolTest.ProgramForms.Student.Test
     public partial class test_info : Form
     {
         string theme_id;
-        string test_id;
+        string test_id="";
         string test_type;
 
         public test_info(string data, string test_type)
@@ -25,24 +25,37 @@ namespace SchoolTest.ProgramForms.Student.Test
             this.theme_id = data;
             this.test_type = test_type;
         }
+        public test_info(string test_id)
+        {
+            InitializeComponent();
+            this.test_id = test_id;
+        }
 
         private void test_info_Load(object sender, EventArgs e)
         {
-            getInfo();
-            //дописать
+                getInfo();
+
+
 
         }
         private void getInfo()
         {
-            ApiClass authApi = new ApiClass();
+              ApiClass authApi = new ApiClass();
+            if (test_id == "")
+            {
+                authApi.path = "InfoTest";
+                authApi.query.Add("theme_id", theme_id);
+                authApi.query.Add("class_id", User.class_id);
+                authApi.query.Add("test_type", test_type);
+            }
+            else
+            {
+                authApi.path = "InfoTest2";
+                authApi.query.Add("test_id", test_id);
+            }
+            
 
-            authApi.path = "InfoTest";
-            authApi.query.Add("theme_id", theme_id);
-            authApi.query.Add("class_id", User.class_id);
-            authApi.query.Add("test_type", test_type);
 
-
-            //authApi.query.Add("password", password);
             authApi.uriCreate();
             var Stream = authApi.ServerAuthorization();
 

@@ -94,7 +94,46 @@ namespace WebSerCore.Controllers.Stydent
             bd.closeBD();
             return obj;
         }
+        [HttpGet, Route("InfoTest2")]
+        [Authorize]
+        public object InfoTest2(string test_id)
+        {
+            BD bd = new BD();
+            bd.connectionBD();
 
+            string sqlExpression = @"
+        SELECT dbo.test.test_id, dbo.test.test_name, dbo.test.theme_id, dbo.test.test_type, dbo.test.class_id, 
+        dbo.test.execution_time, dbo.test.attempt_count, dbo.theme.theme_name
+        FROM dbo.test
+        INNER JOIN dbo.theme ON dbo.test.theme_id = dbo.theme.theme_id
+        WHERE dbo.test.test_id = @test_id;
+    ";
+
+            object obj = null;
+            using (SqlCommand command = new SqlCommand(sqlExpression, bd.connection))
+            {
+                command.Parameters.AddWithValue("@test_id", test_id);
+
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        obj = new
+                        {
+                            test_id = reader["test_id"].ToString(),
+                            test_name = reader["test_name"].ToString(),
+                            execution_time = reader["execution_time"].ToString(),
+                            attempt_count = reader["attempt_count"].ToString(),
+                            theme_name = reader["theme_name"].ToString()
+                        };
+                    }
+                }
+            }
+
+            bd.closeBD();
+            return obj;
+        }
 
 
         [HttpGet, Route("check_attempts_used_test")]
