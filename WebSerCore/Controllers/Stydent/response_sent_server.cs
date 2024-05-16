@@ -316,6 +316,7 @@ FROM            dbo.matching INNER JOIN
             var classData = JsonConvert.DeserializeObject<test_result>(jsonData);
             BD bd = new BD();
             bd.connectionBD();
+            int grade=0;
 
             try
             {
@@ -355,7 +356,6 @@ FROM            dbo.matching INNER JOIN
                 }
                 double ratio = (double)user_points / test_points;
 
-                int grade;
 
                 switch (ratio)
                 {
@@ -391,13 +391,33 @@ FROM            dbo.matching INNER JOIN
                 }
             }
             catch
-            {
-                return BadRequest(new { Message = "Виникла помилка" });
-            }
+            {            }
             bd.closeBD();
-            var message = new Message { message = "Операція успішна" };
+            var message = new Message { message = "Вітаю! Ви пройшли тест. Ваш рівень володіння темою: " + grade_number_string(grade) };
             return Ok(message);
+
         }
+        private string grade_number_string(int grade_number)
+        {
+            string grade = "";
+            switch (grade_number)
+            {
+                case 1:
+                    grade = "П (початковий рівень)";
+                    break;
+                case 2:
+                    grade = "С (середній рівень)";
+                    break;
+                case 3:
+                    grade = "Д (достатній рівень)";
+                    break;
+                case 4:
+                    grade = "В (високий рівень)";
+                    break;
+            }
+            return grade;
+        }
+
 
         private class response
         {

@@ -81,6 +81,12 @@
       <DependentUpon>student_literature.cs</DependentUpon>
     </Compile>
     <Compile Include="ProgramForms\Student\Test\question.cs" />
+    <Compile Include="ProgramForms\Student\Test\result_test.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProgramForms\Student\Test\result_test.Designer.cs">
+      <DependentUpon>result_test.cs</DependentUpon>
+    </Compile>
     <Compile Include="ProgramForms\Student\Test\Test.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -225,6 +231,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ProgramForms\Student\student_literature.resx">
       <DependentUpon>student_literature.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProgramForms\Student\Test\result_test.resx">
+      <DependentUpon>result_test.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProgramForms\Student\Test\Test.resx">
       <DependentUpon>Test.cs</DependentUpon>

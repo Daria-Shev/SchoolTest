@@ -464,11 +464,21 @@ namespace SchoolTest.ProgramForms.Student.Test
             authApi.uriCreate();
             var Stream = authApi.ServerAuthorization();
 
+            MessageString message = new MessageString();
+            message = JsonHelpers.ReadFromJsonStream<MessageString>(Stream);
 
-            Form ifrm = new test_info(test_id);
-            ifrm.ShowDialog();
+            Message.MessageInfo(message.message);
+            if (test_type.StartsWith("Підготовчий"))
+            {
+                Form ifrm = new result_test(test_id, test_attempt);
+                ifrm.Show();
+            }
+            else
+            {
+                Form ifrm = new test_info(test_id);
+                ifrm.Show();
+            }
             this.Close();
-
         }
 
         private void label4_Click(object sender, EventArgs e)

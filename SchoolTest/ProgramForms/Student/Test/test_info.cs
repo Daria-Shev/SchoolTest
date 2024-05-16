@@ -86,7 +86,7 @@ namespace SchoolTest.ProgramForms.Student.Test
             {
                 int grade_number = int.Parse(info.max_grade);
                 string grade = grade_number_string(grade_number);
-                label_text.Text = "Ви вже проходили цей тест, ваш результат: "+ grade;
+                label_text.Text = "Ви вже проходили цей тест, ваш максимальний результат: "+ grade;
             }
         }
         private string grade_number_string(int grade_number)
