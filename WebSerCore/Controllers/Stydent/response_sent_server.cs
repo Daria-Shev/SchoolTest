@@ -47,20 +47,23 @@ namespace WebSerCore.Controllers.Stydent
                     }
                 }
                 sqlExpression = @"
-INSERT INTO dbo.student_answers (correctness, test_id, question_id, user_account_id)
-SELECT @correctness, @test_id, r.question_id, @user_account_id
+INSERT INTO dbo.student_answers (correctness, test_id, question_id, user_account_id, test_attempt)
+SELECT @correctness, @test_id, r.question_id, @user_account_id, @test_attempt
 FROM dbo.response r
 WHERE r.response_id = @response_id;
-                ";
-                //using (SqlCommand sqlCommand = new SqlCommand(sqlExpression, bd.connection))
-                //{
 
-                //    sqlCommand.Parameters.AddWithValue("@correctness", correctness);
-                //    sqlCommand.Parameters.AddWithValue("@test_id", classData.test_id);
-                //    sqlCommand.Parameters.AddWithValue("@response_id", classData.response_id);
-                //    sqlCommand.Parameters.AddWithValue("@user_account_id", classData.user_account_id);
-                //    sqlCommand.ExecuteNonQuery();
-                //}
+                ";
+                using (SqlCommand sqlCommand = new SqlCommand(sqlExpression, bd.connection))
+                {
+
+                    sqlCommand.Parameters.AddWithValue("@correctness", correctness);
+                    sqlCommand.Parameters.AddWithValue("@test_id", classData.test_id);
+                    sqlCommand.Parameters.AddWithValue("@response_id", classData.response_id);
+                    sqlCommand.Parameters.AddWithValue("@user_account_id", classData.user_account_id);
+                    sqlCommand.Parameters.AddWithValue("@test_attempt", classData.test_attempt);
+
+                    sqlCommand.ExecuteNonQuery();
+                }
             }
             catch
             {
@@ -87,10 +90,11 @@ WHERE r.response_id = @response_id;
                 double correctness = 0;
 
                 string sqlExpression = @"
-            SELECT dbo.response.question_id, dbo.answer_options.response_id, dbo.answer_options.option_number, dbo.answer_options.correct_option, dbo.answer_options.option_text
-            FROM dbo.answer_options 
-            INNER JOIN dbo.response ON dbo.answer_options.response_id = dbo.response.response_id 
-            WHERE dbo.answer_options.response_id = @response_id;
+INSERT INTO dbo.student_answers (correctness, test_id, question_id, user_account_id, question_end)
+SELECT @correctness, @test_id, r.question_id, @user_account_id, GETDATE()
+FROM dbo.response r
+WHERE r.response_id = @response_id;
+
         ";
 
                 // Перебираем каждый response_id из списка
@@ -119,23 +123,26 @@ WHERE r.response_id = @response_id;
 
                 if (totalOptions > 0)
                 {
-                    correctness = correctOptions / totalOptions; 
+                    correctness = (double)correctOptions / totalOptions;
                 }
                 sqlExpression = @"
-INSERT INTO dbo.student_answers (correctness, test_id, question_id, user_account_id)
-SELECT @correctness, @test_id, r.question_id, @user_account_id
+INSERT INTO dbo.student_answers (correctness, test_id, question_id, user_account_id, test_attempt)
+SELECT @correctness, @test_id, r.question_id, @user_account_id, @test_attempt
 FROM dbo.response r
 WHERE r.response_id = @response_id;
-                ";
-                //using (SqlCommand sqlCommand = new SqlCommand(sqlExpression, bd.connection))
-                //{
 
-                //    sqlCommand.Parameters.AddWithValue("@correctness", correctness);
-                //    sqlCommand.Parameters.AddWithValue("@test_id", classData.test_id);
-                //    sqlCommand.Parameters.AddWithValue("@response_id", classData.response_id[0]);
-                //    sqlCommand.Parameters.AddWithValue("@user_account_id", classData.user_account_id);
-                //    sqlCommand.ExecuteNonQuery();
-                //}
+                ";
+                using (SqlCommand sqlCommand = new SqlCommand(sqlExpression, bd.connection))
+                {
+
+                    sqlCommand.Parameters.AddWithValue("@correctness", correctness);
+                    sqlCommand.Parameters.AddWithValue("@test_id", classData.test_id);
+                    sqlCommand.Parameters.AddWithValue("@response_id", classData.response_id[0]);
+                    sqlCommand.Parameters.AddWithValue("@user_account_id", classData.user_account_id);
+                    sqlCommand.Parameters.AddWithValue("@test_attempt", classData.test_attempt);
+
+                    sqlCommand.ExecuteNonQuery();
+                }
             }
             catch
             {
@@ -163,10 +170,11 @@ WHERE r.response_id = @response_id;
                 double correctness = 0;
 
                 string sqlExpression = @"
-            SELECT        dbo.response.response_id, dbo.sequence.sequence_number, dbo.sequence.sequence_text
-FROM            dbo.sequence INNER JOIN
-                         dbo.response ON dbo.sequence.response_id = dbo.response.response_id
-            WHERE dbo.sequence.response_id = @response_id;
+INSERT INTO dbo.student_answers (correctness, test_id, question_id, user_account_id, question_end)
+SELECT @correctness, @test_id, r.question_id, @user_account_id, GETDATE()
+FROM dbo.response r
+WHERE r.response_id = @response_id;
+
         ";
 
                 // Перебираем каждый response_id из списка
@@ -195,23 +203,26 @@ FROM            dbo.sequence INNER JOIN
 
                 if (totalOptions > 0)
                 {
-                    correctness = correctOptions / totalOptions;
+                    correctness = (double)correctOptions / totalOptions;
                 }
                 sqlExpression = @"
-INSERT INTO dbo.student_answers (correctness, test_id, question_id, user_account_id)
-SELECT @correctness, @test_id, r.question_id, @user_account_id
+INSERT INTO dbo.student_answers (correctness, test_id, question_id, user_account_id, test_attempt)
+SELECT @correctness, @test_id, r.question_id, @user_account_id, @test_attempt
 FROM dbo.response r
 WHERE r.response_id = @response_id;
-                ";
-                //using (SqlCommand sqlCommand = new SqlCommand(sqlExpression, bd.connection))
-                //{
 
-                //    sqlCommand.Parameters.AddWithValue("@correctness", correctness);
-                //    sqlCommand.Parameters.AddWithValue("@test_id", classData.test_id);
-                //    sqlCommand.Parameters.AddWithValue("@response_id", classData.response_id[0]);
-                //    sqlCommand.Parameters.AddWithValue("@user_account_id", classData.user_account_id);
-                //    sqlCommand.ExecuteNonQuery();
-                //}
+                ";
+                using (SqlCommand sqlCommand = new SqlCommand(sqlExpression, bd.connection))
+                {
+
+                    sqlCommand.Parameters.AddWithValue("@correctness", correctness);
+                    sqlCommand.Parameters.AddWithValue("@test_id", classData.test_id);
+                    sqlCommand.Parameters.AddWithValue("@response_id", classData.response_id[0]);
+                    sqlCommand.Parameters.AddWithValue("@user_account_id", classData.user_account_id);
+                    sqlCommand.Parameters.AddWithValue("@test_attempt", classData.test_attempt);
+
+                    sqlCommand.ExecuteNonQuery();
+                }
             }
             catch
             {
@@ -256,8 +267,8 @@ FROM            dbo.matching INNER JOIN
                             while (reader.Read())
                             {
                                 totalOptions++;
-                                string correctResponseFromDB = reader["matching_text"].ToString();
-                                string userResponse = classData.matching_text[totalOptions - 1]; // По индексу, так как мы читаем по порядку
+                                string correctResponseFromDB = reader["option_text"].ToString();
+                                string userResponse = classData.option_text[totalOptions - 1]; // По индексу, так как мы читаем по порядку
                                 if (userResponse == correctResponseFromDB)
                                 {
                                     correctOptions++;
@@ -269,23 +280,115 @@ FROM            dbo.matching INNER JOIN
 
                 if (totalOptions > 0)
                 {
-                    correctness = correctOptions / totalOptions;
+                    correctness = (double)correctOptions / totalOptions;
                 }
                 sqlExpression = @"
-INSERT INTO dbo.student_answers (correctness, test_id, question_id, user_account_id)
-SELECT @correctness, @test_id, r.question_id, @user_account_id
-FROM dbo.response r
-WHERE r.response_id = @response_id;
+                INSERT INTO dbo.student_answers (correctness, test_id, question_id, user_account_id, test_attempt)
+                SELECT @correctness, @test_id, r.question_id, @user_account_id, @test_attempt
+                FROM dbo.response r
+                WHERE r.response_id = @response_id;
                 ";
-                //using (SqlCommand sqlCommand = new SqlCommand(sqlExpression, bd.connection))
-                //{
+                using (SqlCommand sqlCommand = new SqlCommand(sqlExpression, bd.connection))
+                {
 
-                //    sqlCommand.Parameters.AddWithValue("@correctness", correctness);
-                //    sqlCommand.Parameters.AddWithValue("@test_id", classData.test_id);
-                //    sqlCommand.Parameters.AddWithValue("@response_id", classData.response_id[0]);
-                //    sqlCommand.Parameters.AddWithValue("@user_account_id", classData.user_account_id);
-                //    sqlCommand.ExecuteNonQuery();
-                //}
+                    sqlCommand.Parameters.AddWithValue("@correctness", correctness);
+                    sqlCommand.Parameters.AddWithValue("@test_id", classData.test_id);
+                    sqlCommand.Parameters.AddWithValue("@response_id", classData.response_id[0]);
+                    sqlCommand.Parameters.AddWithValue("@user_account_id", classData.user_account_id);
+                    sqlCommand.Parameters.AddWithValue("@test_attempt", classData.test_attempt);
+
+                    sqlCommand.ExecuteNonQuery();
+                }
+            }
+            catch
+            {
+                return BadRequest(new { Message = "Виникла помилка" });
+            }
+            bd.closeBD();
+            var message = new Message { message = "Операція успішна" };
+            return Ok(message);
+        }
+
+        [HttpGet, Route("test_end")]
+        [Authorize]
+        public object test_end(string jsonData)
+        {
+            var classData = JsonConvert.DeserializeObject<test_result>(jsonData);
+            BD bd = new BD();
+            bd.connectionBD();
+
+            try
+            {
+                int test_points=0;
+                int user_points=0;
+                string question_id_list = string.Join(",", classData.question_id.Select(id => "@question_id" + id)); // Создаем список параметров вида "@questionId1,@questionId2,@questionId3,..."
+
+                string sqlExpression = @"
+        SELECT 
+            q.question_id,
+            SUM(q.points) AS test_points,
+            SUM(q.points * sa.correctness) AS user_points
+        FROM 
+            dbo.question q
+            JOIN dbo.student_answers sa ON q.question_id = sa.question_id
+        WHERE 
+        q.question_id IN (" + question_id_list + @")
+        GROUP BY 
+            q.question_id;
+    ";
+
+                using (SqlCommand command = new SqlCommand(sqlExpression, bd.connection))
+                {
+                    for (int i = 0; i < classData.question_id.Count; i++)
+                    {
+                        command.Parameters.AddWithValue("@question_id" + classData.question_id[i], classData.question_id[i]);
+                    }
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                             test_points = (int)reader["test_points"];
+                             user_points = (int)reader["user_points"];
+
+                        }
+                    }
+                }
+                double ratio = (double)user_points / test_points;
+
+                int grade;
+
+                switch (ratio)
+                {
+                    case var _ when ratio >= 0.75:
+                        grade = 4;
+                        break;
+                    case var _ when ratio >= 0.5:
+                        grade = 3;
+                        break;
+                    case var _ when ratio >= 0.25:
+                        grade = 2;
+                        break;
+                    default:
+                        grade = 1;
+                        break;
+                }
+
+
+                sqlExpression = @"
+                INSERT INTO [test].[dbo].[student_result] (test_id, grade, test_end, user_account_id, test_attempt)
+                VALUES ( @test_id, @grade, GETDATE(), @user_account_id, @test_attempt);
+
+                ";
+                using (SqlCommand sqlCommand = new SqlCommand(sqlExpression, bd.connection))
+                {
+
+                    sqlCommand.Parameters.AddWithValue("@test_id", classData.test_id);
+                    sqlCommand.Parameters.AddWithValue("@grade", grade);
+                    sqlCommand.Parameters.AddWithValue("@user_account_id", classData.user_account_id);
+                    sqlCommand.Parameters.AddWithValue("@test_attempt", classData.test_attempt);
+
+                    sqlCommand.ExecuteNonQuery();
+                }
             }
             catch
             {
@@ -300,7 +403,13 @@ WHERE r.response_id = @response_id;
         {
             public int user_account_id { get; set; }
             public int test_id { get; set; }
-            //public int question_id { get; set; }
+
+            public int test_attempt { get; set; }
+        }
+        private class test_result:response
+        {
+            public List<int> question_id { get; set; }
+
         }
         private class open_respons: response
         {

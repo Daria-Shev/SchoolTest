@@ -18,6 +18,7 @@ namespace SchoolTest.ProgramForms.Student.Test
         string theme_id;
         string test_id="";
         string test_type;
+        int attempts_used;
 
         public test_info(string data, string test_type)
         {
@@ -73,8 +74,8 @@ namespace SchoolTest.ProgramForms.Student.Test
             Stream = authApi.ServerAuthorization();
             var info = JsonHelpers.ReadFromJsonStream(new { attempts_used = "", max_grade = ""}, Stream);
             int attempt_count_now = int.Parse(test.attempt_count)- int.Parse(info.attempts_used);
-            
-            test_id= test.test_id;
+            attempts_used = int.Parse(info.attempts_used);
+            test_id = test.test_id;
             label_test_name.Text = test.test_name;
             label_theme.Text = test.theme_name;
             label_attempt_count.Text = test.attempt_count;
@@ -116,7 +117,7 @@ namespace SchoolTest.ProgramForms.Student.Test
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Form ifrm = new Test(test_id, theme_id);
+            Form ifrm = new Test(test_id, theme_id, attempts_used);
             ifrm.Show();
             this.Close();
         }

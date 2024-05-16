@@ -20,7 +20,7 @@ namespace SchoolTest.ProgramForms.Student.Test
 
         string test_id;
         string test_type;
-        int execution_time;
+        int execution_time, test_attempt;
         int question_count;
         int question_count_now = 0;
         private int executionTimeInSeconds; // Время выполнения в секундах
@@ -29,11 +29,13 @@ namespace SchoolTest.ProgramForms.Student.Test
         string theme_id;
         testStart a = new testStart();
 
-        public Test(string test_id, string theme_id)
+        public Test(string test_id, string theme_id, int attempts_used)
         {
             InitializeComponent();
             this.test_id = test_id;
             this.theme_id = theme_id;
+            this.test_attempt = attempts_used;
+
         }
 
         private void Test_Load(object sender, EventArgs e)
@@ -48,7 +50,7 @@ namespace SchoolTest.ProgramForms.Student.Test
         private void question_form()
         {
 
-            label_count_question.Text = "Питання" + (question_count_now + 1) + " з " + question_count;
+            label_count_question.Text = "Питання " + (question_count_now + 1) + " з " + question_count;
             var quest = a.questionResponce.ElementAt(question_count_now).Value;
             label_question_text.Text = quest.question_text;
             panel_visible_false();
@@ -140,6 +142,8 @@ namespace SchoolTest.ProgramForms.Student.Test
             for (int i = 1; i <= 8; i++)
             {
                 panel_answer_options.Controls["checkBox" + i.ToString()].Visible = false;
+                ((CheckBox)panel_answer_options.Controls["checkBox" + i.ToString()]).Checked = false;
+
             }
         }
         private void Info()
@@ -157,7 +161,7 @@ namespace SchoolTest.ProgramForms.Student.Test
             execution_time = int.Parse(test.execution_time);
             question_count = int.Parse(test.question_count);
             test_type = test.test_type;
-            label_count_question.Text = "Питання" + (question_count_now + 1) + " з " + question_count;
+            label_count_question.Text = "Питання " + (question_count_now + 1) + " з " + question_count;
         }
         private void taimer()
         {
@@ -346,7 +350,7 @@ namespace SchoolTest.ProgramForms.Student.Test
             {
                 test_id = test_id,
                 user_account_id = User.id,
-                //question_id = quest.question_id,
+                test_attempt = test_attempt,
                 response_id = quest.response_id,
                 option_text = checkBoxTextList,
                 correct_option= correct_optionTextList
@@ -373,7 +377,7 @@ namespace SchoolTest.ProgramForms.Student.Test
             {
                 test_id = test_id,
                 user_account_id = User.id,
-                //question_id = quest.question_id,
+                test_attempt = test_attempt,
                 response_id = quest.response_id,
                 sequence_text = sequenceTextList,
 
@@ -391,8 +395,8 @@ namespace SchoolTest.ProgramForms.Student.Test
             var matchingTextList = new List<string>();
             for (int i = 0; i < quest.matching.Count; i++)
             {
-                optionTextList.Add(panel_matching.Controls["label" + (i + 1).ToString()].Text);
-                matchingTextList.Add(((ComboBox)panel_matching.Controls["comboBox" + (i + 1).ToString()]).Text);
+                matchingTextList.Add(panel_matching.Controls["label" + (i + 1).ToString()].Text);
+                optionTextList.Add(((ComboBox)panel_matching.Controls["comboBox" + (i + 1).ToString()]).Text);
             }
             ApiClass authApi = new ApiClass();
 
@@ -402,7 +406,7 @@ namespace SchoolTest.ProgramForms.Student.Test
             {
                 test_id = test_id,
                 user_account_id = User.id,
-                //question_id = quest.question_id,
+                test_attempt = test_attempt,
                 response_id = quest.response_id,
                 option_text = optionTextList,
                 matching_text = matchingTextList
@@ -426,7 +430,7 @@ namespace SchoolTest.ProgramForms.Student.Test
             {
                 test_id=test_id,
                 user_account_id=User.id,
-                //question_id = quest.question_id,
+                test_attempt = test_attempt,
                 response_id = quest.response_id[0],
                 user_response = richTextBox1.Text,             
             };
@@ -439,6 +443,28 @@ namespace SchoolTest.ProgramForms.Student.Test
         }
         private void exit_test()
         {
+            List<int> question_id_list = new List<int>();
+            for (int i = 0; i < a.questionResponce.Count; i++)
+            {
+                question_id_list.Add( a.questionResponce.ElementAt(i).Key);
+            }
+            ApiClass authApi = new ApiClass();
+
+            authApi.path = "test_end";
+
+            var classObject = new
+            {
+                test_id = test_id,
+                user_account_id = User.id,
+                test_attempt = test_attempt,
+                 question_id = question_id_list,
+            };
+            var json = JsonConvert.SerializeObject(classObject);
+            authApi.query.Add("jsonData", json);
+            authApi.uriCreate();
+            var Stream = authApi.ServerAuthorization();
+
+
             Form ifrm = new test_info(test_id);
             ifrm.ShowDialog();
             this.Close();
