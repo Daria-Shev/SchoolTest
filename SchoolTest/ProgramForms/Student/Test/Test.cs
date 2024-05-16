@@ -122,6 +122,7 @@ namespace SchoolTest.ProgramForms.Student.Test
             panel_matching.Visible = false;
             panel_sequence.Visible = false;
             panel_answer_options.Visible = false;
+            richTextBox1.Text = "";
             for (int i = 1; i <= 6; i++)
             {
                 panel_matching.Controls["label" + i.ToString()].Visible = false;
@@ -330,7 +331,7 @@ namespace SchoolTest.ProgramForms.Student.Test
             var correct_optionTextList = new List<string>();
             //var response_idList = new List<string>();
 
-            for (int i = 0; i < quest.matching.Count; i++)
+            for (int i = 0; i < quest.answer_options.Count; i++)
             {
                 checkBoxTextList.Add(((CheckBox)panel_matching.Controls["checkBox" + (i + 1).ToString()]).Text);
                 bool isChecked = ((CheckBox)panel_matching.Controls["checkBox" + (i + 1).ToString()]).Checked;
@@ -345,7 +346,7 @@ namespace SchoolTest.ProgramForms.Student.Test
             {
                 test_id = test_id,
                 user_account_id = User.id,
-                question_id = quest.question_id,
+                //question_id = quest.question_id,
                 response_id = quest.response_id,
                 option_text = checkBoxTextList,
                 correct_option= correct_optionTextList
@@ -353,12 +354,14 @@ namespace SchoolTest.ProgramForms.Student.Test
             var json = JsonConvert.SerializeObject(classObject);
             authApi.query.Add("jsonData", json);
             authApi.uriCreate();
+            var Stream = authApi.ServerAuthorization();
+
         }
         private void sequence_sent_to_server()
         {
             var quest = a.questionResponce.ElementAt(question_count_now).Value;
             var sequenceTextList = new List<string>();
-            for (int i = 0; i < quest.matching.Count; i++)
+            for (int i = 0; i < quest.sequence.Count; i++)
             {
                 sequenceTextList.Add(((ComboBox)panel_matching.Controls["comboBox" + (i + 7).ToString()]).Text);
             }
@@ -370,7 +373,7 @@ namespace SchoolTest.ProgramForms.Student.Test
             {
                 test_id = test_id,
                 user_account_id = User.id,
-                question_id = quest.question_id,
+                //question_id = quest.question_id,
                 response_id = quest.response_id,
                 sequence_text = sequenceTextList,
 
@@ -378,6 +381,8 @@ namespace SchoolTest.ProgramForms.Student.Test
             var json = JsonConvert.SerializeObject(classObject);
             authApi.query.Add("jsonData", json);
             authApi.uriCreate();
+            var Stream = authApi.ServerAuthorization();
+
         }
         private void matching_sent_to_server()
         {
@@ -397,7 +402,7 @@ namespace SchoolTest.ProgramForms.Student.Test
             {
                 test_id = test_id,
                 user_account_id = User.id,
-                question_id = quest.question_id,
+                //question_id = quest.question_id,
                 response_id = quest.response_id,
                 option_text = optionTextList,
                 matching_text = matchingTextList
@@ -406,6 +411,8 @@ namespace SchoolTest.ProgramForms.Student.Test
             var json = JsonConvert.SerializeObject(classObject);
             authApi.query.Add("jsonData", json);
             authApi.uriCreate();
+            var Stream = authApi.ServerAuthorization();
+
         }
         private void open_response_sent_to_server()
         {
@@ -419,13 +426,15 @@ namespace SchoolTest.ProgramForms.Student.Test
             {
                 test_id=test_id,
                 user_account_id=User.id,
-                question_id = quest.question_id,
-                response_id = quest.response_id,
+                //question_id = quest.question_id,
+                response_id = quest.response_id[0],
                 user_response = richTextBox1.Text,             
             };
             var json = JsonConvert.SerializeObject(classObject);
             authApi.query.Add("jsonData", json);
             authApi.uriCreate();
+            var Stream = authApi.ServerAuthorization();
+
 
         }
         private void exit_test()

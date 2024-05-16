@@ -51,15 +51,15 @@ INSERT INTO dbo.student_answers ( correctness, test_id, question_id, user_accoun
 VALUES ( @correctness, @test_id, @question_id, @user_account_id);
 
                 ";
-                using (SqlCommand sqlCommand = new SqlCommand(sqlExpression, bd.connection))
-                {
+                //using (SqlCommand sqlCommand = new SqlCommand(sqlExpression, bd.connection))
+                //{
 
-                    sqlCommand.Parameters.AddWithValue("@correctness", correctness);
-                    sqlCommand.Parameters.AddWithValue("@test_id", classData.test_id);
-                    sqlCommand.Parameters.AddWithValue("@question_id", classData.question_id);
-                    sqlCommand.Parameters.AddWithValue("@user_account_id", classData.user_account_id);
-                    sqlCommand.ExecuteNonQuery();
-                }
+                //    sqlCommand.Parameters.AddWithValue("@correctness", correctness);
+                //    sqlCommand.Parameters.AddWithValue("@test_id", classData.test_id);
+                //    sqlCommand.Parameters.AddWithValue("@question_id", classData.question_id);
+                //    sqlCommand.Parameters.AddWithValue("@user_account_id", classData.user_account_id);
+                //    sqlCommand.ExecuteNonQuery();
+                //}
             }
             catch
             {
@@ -93,7 +93,7 @@ WHERE dbo.response.question_id = @question_id;
                 ";
                 using (SqlCommand command = new SqlCommand(sqlExpression, bd.connection))
                 {
-                    command.Parameters.AddWithValue("@question_id", classData.question_id);
+                    command.Parameters.AddWithValue("@response_id", classData.response_id);
 
 
                     using (SqlDataReader reader = command.ExecuteReader())
@@ -120,15 +120,15 @@ INSERT INTO dbo.student_answers ( correctness, test_id, question_id, user_accoun
 VALUES ( @correctness, @test_id, @question_id, @user_account_id);
 
                 ";
-                using (SqlCommand sqlCommand = new SqlCommand(sqlExpression, bd.connection))
-                {
+                //using (SqlCommand sqlCommand = new SqlCommand(sqlExpression, bd.connection))
+                //{
 
-                    sqlCommand.Parameters.AddWithValue("@correctness", correctness);
-                    sqlCommand.Parameters.AddWithValue("@test_id", classData.test_id);
-                    sqlCommand.Parameters.AddWithValue("@question_id", classData.question_id);
-                    sqlCommand.Parameters.AddWithValue("@user_account_id", classData.user_account_id);
-                    sqlCommand.ExecuteNonQuery();
-                }
+                //    sqlCommand.Parameters.AddWithValue("@correctness", correctness);
+                //    sqlCommand.Parameters.AddWithValue("@test_id", classData.test_id);
+                //    sqlCommand.Parameters.AddWithValue("@question_id", classData.question_id);
+                //    sqlCommand.Parameters.AddWithValue("@user_account_id", classData.user_account_id);
+                //    sqlCommand.ExecuteNonQuery();
+                //}
             }
             catch
             {
@@ -160,7 +160,7 @@ VALUES ( @correctness, @test_id, @question_id, @user_account_id);
         {
             public int user_account_id { get; set; }
             public int test_id { get; set; }
-            public int question_id { get; set; }
+            //public int question_id { get; set; }
         }
         private class open_respons: response
         {
