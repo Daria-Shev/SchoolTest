@@ -333,8 +333,8 @@ namespace SchoolTest.ProgramForms.Student.Test
 
             for (int i = 0; i < quest.answer_options.Count; i++)
             {
-                checkBoxTextList.Add(((CheckBox)panel_matching.Controls["checkBox" + (i + 1).ToString()]).Text);
-                bool isChecked = ((CheckBox)panel_matching.Controls["checkBox" + (i + 1).ToString()]).Checked;
+                checkBoxTextList.Add(((CheckBox)panel_answer_options.Controls["checkBox" + (i + 1).ToString()]).Text);
+                bool isChecked = ((CheckBox)panel_answer_options.Controls["checkBox" + (i + 1).ToString()]).Checked;
                 correct_optionTextList.Add(isChecked ? "Так" : "Ні");
             }
 
@@ -363,7 +363,7 @@ namespace SchoolTest.ProgramForms.Student.Test
             var sequenceTextList = new List<string>();
             for (int i = 0; i < quest.sequence.Count; i++)
             {
-                sequenceTextList.Add(((ComboBox)panel_matching.Controls["comboBox" + (i + 7).ToString()]).Text);
+                sequenceTextList.Add(((ComboBox)panel_sequence.Controls["comboBox" + (i + 7).ToString()]).Text);
             }
             ApiClass authApi = new ApiClass();
 

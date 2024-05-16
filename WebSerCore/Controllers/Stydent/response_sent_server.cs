@@ -47,16 +47,17 @@ namespace WebSerCore.Controllers.Stydent
                     }
                 }
                 sqlExpression = @"
-INSERT INTO dbo.student_answers ( correctness, test_id, question_id, user_account_id)
-VALUES ( @correctness, @test_id, @question_id, @user_account_id);
-
+INSERT INTO dbo.student_answers (correctness, test_id, question_id, user_account_id)
+SELECT @correctness, @test_id, r.question_id, @user_account_id
+FROM dbo.response r
+WHERE r.response_id = @response_id;
                 ";
                 //using (SqlCommand sqlCommand = new SqlCommand(sqlExpression, bd.connection))
                 //{
 
                 //    sqlCommand.Parameters.AddWithValue("@correctness", correctness);
                 //    sqlCommand.Parameters.AddWithValue("@test_id", classData.test_id);
-                //    sqlCommand.Parameters.AddWithValue("@question_id", classData.question_id);
+                //    sqlCommand.Parameters.AddWithValue("@response_id", classData.response_id);
                 //    sqlCommand.Parameters.AddWithValue("@user_account_id", classData.user_account_id);
                 //    sqlCommand.ExecuteNonQuery();
                 //}
@@ -81,51 +82,57 @@ VALUES ( @correctness, @test_id, @question_id, @user_account_id);
 
             try
             {
-                int correctness = 0;
                 int totalOptions = 0;
                 int correctOptions = 0;
+                double correctness = 0;
+
                 string sqlExpression = @"
-SELECT dbo.response.question_id, dbo.answer_options.response_id, dbo.answer_options.option_number, dbo.answer_options.correct_option, dbo.answer_options.option_text
-FROM dbo.answer_options 
-INNER JOIN dbo.response ON dbo.answer_options.response_id = dbo.response.response_id 
-WHERE dbo.response.question_id = @question_id;
+            SELECT dbo.response.question_id, dbo.answer_options.response_id, dbo.answer_options.option_number, dbo.answer_options.correct_option, dbo.answer_options.option_text
+            FROM dbo.answer_options 
+            INNER JOIN dbo.response ON dbo.answer_options.response_id = dbo.response.response_id 
+            WHERE dbo.answer_options.response_id = @response_id;
+        ";
 
-                ";
-                using (SqlCommand command = new SqlCommand(sqlExpression, bd.connection))
+                // Перебираем каждый response_id из списка
+                foreach (int responseId in classData.response_id)
                 {
-                    command.Parameters.AddWithValue("@response_id", classData.response_id);
-
-
-                    using (SqlDataReader reader = command.ExecuteReader())
+                    using (SqlCommand command = new SqlCommand(sqlExpression, bd.connection))
                     {
-                        if (reader.Read())
-                        {
-                            totalOptions++;
-                            string correctResponseFromDB = reader["correct_option"].ToString();
-                            string userResponse = classData.correct_option[totalOptions - 1]; // По индексу, так как мы читаем по порядку
-                            if (userResponse == correctResponseFromDB)
-                            {
-                                correctOptions++;
-                            }
+                        command.Parameters.Clear();
+                        command.Parameters.AddWithValue("@response_id", responseId);
 
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                totalOptions++;
+                                string correctResponseFromDB = reader["correct_option"].ToString();
+                                string userResponse = classData.correct_option[totalOptions - 1]; // По индексу, так как мы читаем по порядку
+                                if (userResponse == correctResponseFromDB)
+                                {
+                                    correctOptions++;
+                                }
+                            }
                         }
                     }
                 }
+
                 if (totalOptions > 0)
                 {
-                    correctness = (int)Math.Round((double)correctOptions / totalOptions); 
+                    correctness = correctOptions / totalOptions; 
                 }
                 sqlExpression = @"
-INSERT INTO dbo.student_answers ( correctness, test_id, question_id, user_account_id)
-VALUES ( @correctness, @test_id, @question_id, @user_account_id);
-
+INSERT INTO dbo.student_answers (correctness, test_id, question_id, user_account_id)
+SELECT @correctness, @test_id, r.question_id, @user_account_id
+FROM dbo.response r
+WHERE r.response_id = @response_id;
                 ";
                 //using (SqlCommand sqlCommand = new SqlCommand(sqlExpression, bd.connection))
                 //{
 
                 //    sqlCommand.Parameters.AddWithValue("@correctness", correctness);
                 //    sqlCommand.Parameters.AddWithValue("@test_id", classData.test_id);
-                //    sqlCommand.Parameters.AddWithValue("@question_id", classData.question_id);
+                //    sqlCommand.Parameters.AddWithValue("@response_id", classData.response_id[0]);
                 //    sqlCommand.Parameters.AddWithValue("@user_account_id", classData.user_account_id);
                 //    sqlCommand.ExecuteNonQuery();
                 //}
@@ -144,6 +151,73 @@ VALUES ( @correctness, @test_id, @question_id, @user_account_id);
         [Authorize]
         public object sequence_sent_to_server(string jsonData)
         {
+            // Десериализуем JSON строку в объект класса
+            var classData = JsonConvert.DeserializeObject<sequence>(jsonData);
+            BD bd = new BD();
+            bd.connectionBD();
+
+            try
+            {
+                int totalOptions = 0;
+                int correctOptions = 0;
+                double correctness = 0;
+
+                string sqlExpression = @"
+            SELECT        dbo.response.response_id, dbo.sequence.sequence_number, dbo.sequence.sequence_text
+FROM            dbo.sequence INNER JOIN
+                         dbo.response ON dbo.sequence.response_id = dbo.response.response_id
+            WHERE dbo.sequence.response_id = @response_id;
+        ";
+
+                // Перебираем каждый response_id из списка
+                foreach (int responseId in classData.response_id)
+                {
+                    using (SqlCommand command = new SqlCommand(sqlExpression, bd.connection))
+                    {
+                        command.Parameters.Clear();
+                        command.Parameters.AddWithValue("@response_id", responseId);
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                totalOptions++;
+                                string correctResponseFromDB = reader["sequence_text"].ToString();
+                                string userResponse = classData.sequence_text[totalOptions - 1]; // По индексу, так как мы читаем по порядку
+                                if (userResponse == correctResponseFromDB)
+                                {
+                                    correctOptions++;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                if (totalOptions > 0)
+                {
+                    correctness = correctOptions / totalOptions;
+                }
+                sqlExpression = @"
+INSERT INTO dbo.student_answers (correctness, test_id, question_id, user_account_id)
+SELECT @correctness, @test_id, r.question_id, @user_account_id
+FROM dbo.response r
+WHERE r.response_id = @response_id;
+                ";
+                //using (SqlCommand sqlCommand = new SqlCommand(sqlExpression, bd.connection))
+                //{
+
+                //    sqlCommand.Parameters.AddWithValue("@correctness", correctness);
+                //    sqlCommand.Parameters.AddWithValue("@test_id", classData.test_id);
+                //    sqlCommand.Parameters.AddWithValue("@response_id", classData.response_id[0]);
+                //    sqlCommand.Parameters.AddWithValue("@user_account_id", classData.user_account_id);
+                //    sqlCommand.ExecuteNonQuery();
+                //}
+            }
+            catch
+            {
+                return BadRequest(new { Message = "Виникла помилка" });
+            }
+            bd.closeBD();
             var message = new Message { message = "Операція успішна" };
             return Ok(message);
         }
@@ -152,6 +226,72 @@ VALUES ( @correctness, @test_id, @question_id, @user_account_id);
         [Authorize]
         public object matching_sent_to_server(string jsonData)
         {
+            var classData = JsonConvert.DeserializeObject<matching>(jsonData);
+            BD bd = new BD();
+            bd.connectionBD();
+
+            try
+            {
+                int totalOptions = 0;
+                int correctOptions = 0;
+                double correctness = 0;
+
+                string sqlExpression = @"
+SELECT        dbo.response.response_id AS Expr1, dbo.matching.matching_number, dbo.matching.option_text, dbo.matching.matching_text
+FROM            dbo.matching INNER JOIN
+                         dbo.response ON dbo.matching.response_id = dbo.response.response_id
+            WHERE dbo.matching.response_id = @response_id;
+        ";
+
+                // Перебираем каждый response_id из списка
+                foreach (int responseId in classData.response_id)
+                {
+                    using (SqlCommand command = new SqlCommand(sqlExpression, bd.connection))
+                    {
+                        command.Parameters.Clear();
+                        command.Parameters.AddWithValue("@response_id", responseId);
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                totalOptions++;
+                                string correctResponseFromDB = reader["matching_text"].ToString();
+                                string userResponse = classData.matching_text[totalOptions - 1]; // По индексу, так как мы читаем по порядку
+                                if (userResponse == correctResponseFromDB)
+                                {
+                                    correctOptions++;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                if (totalOptions > 0)
+                {
+                    correctness = correctOptions / totalOptions;
+                }
+                sqlExpression = @"
+INSERT INTO dbo.student_answers (correctness, test_id, question_id, user_account_id)
+SELECT @correctness, @test_id, r.question_id, @user_account_id
+FROM dbo.response r
+WHERE r.response_id = @response_id;
+                ";
+                //using (SqlCommand sqlCommand = new SqlCommand(sqlExpression, bd.connection))
+                //{
+
+                //    sqlCommand.Parameters.AddWithValue("@correctness", correctness);
+                //    sqlCommand.Parameters.AddWithValue("@test_id", classData.test_id);
+                //    sqlCommand.Parameters.AddWithValue("@response_id", classData.response_id[0]);
+                //    sqlCommand.Parameters.AddWithValue("@user_account_id", classData.user_account_id);
+                //    sqlCommand.ExecuteNonQuery();
+                //}
+            }
+            catch
+            {
+                return BadRequest(new { Message = "Виникла помилка" });
+            }
+            bd.closeBD();
             var message = new Message { message = "Операція успішна" };
             return Ok(message);
         }
