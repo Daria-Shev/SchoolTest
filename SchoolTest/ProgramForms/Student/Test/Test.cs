@@ -312,13 +312,100 @@ namespace SchoolTest.ProgramForms.Student.Test
             }
             if (quest.response_type.StartsWith("matching"))
             {
+                matching_sent_to_server();
             }
             if (quest.response_type.StartsWith("sequence"))
             {
+                sequence_sent_to_server();
             }
             if (quest.response_type.StartsWith("answer_options"))
             {
+                answer_options_sent_to_server();
             }
+        }
+        private void answer_options_sent_to_server()
+        {
+            var quest = a.questionResponce.ElementAt(question_count_now).Value;
+            var checkBoxTextList = new List<string>();
+            var correct_optionTextList = new List<string>();
+            //var response_idList = new List<string>();
+
+            for (int i = 0; i < quest.matching.Count; i++)
+            {
+                checkBoxTextList.Add(((CheckBox)panel_matching.Controls["checkBox" + (i + 1).ToString()]).Text);
+                bool isChecked = ((CheckBox)panel_matching.Controls["checkBox" + (i + 1).ToString()]).Checked;
+                correct_optionTextList.Add(isChecked ? "Так" : "Ні");
+            }
+
+            ApiClass authApi = new ApiClass();
+
+            authApi.path = "answer_options_sent_to_server";
+
+            var classObject = new
+            {
+                test_id = test_id,
+                user_account_id = User.id,
+                question_id = quest.question_id,
+                response_id = quest.response_id,
+                option_text = checkBoxTextList,
+                correct_option= correct_optionTextList
+            };
+            var json = JsonConvert.SerializeObject(classObject);
+            authApi.query.Add("jsonData", json);
+            authApi.uriCreate();
+        }
+        private void sequence_sent_to_server()
+        {
+            var quest = a.questionResponce.ElementAt(question_count_now).Value;
+            var sequenceTextList = new List<string>();
+            for (int i = 0; i < quest.matching.Count; i++)
+            {
+                sequenceTextList.Add(((ComboBox)panel_matching.Controls["comboBox" + (i + 7).ToString()]).Text);
+            }
+            ApiClass authApi = new ApiClass();
+
+            authApi.path = "sequence_sent_to_server";
+
+            var classObject = new
+            {
+                test_id = test_id,
+                user_account_id = User.id,
+                question_id = quest.question_id,
+                response_id = quest.response_id,
+                sequence_text = sequenceTextList,
+
+            };
+            var json = JsonConvert.SerializeObject(classObject);
+            authApi.query.Add("jsonData", json);
+            authApi.uriCreate();
+        }
+        private void matching_sent_to_server()
+        {
+            var quest = a.questionResponce.ElementAt(question_count_now).Value;
+            var optionTextList = new List<string>();
+            var matchingTextList = new List<string>();
+            for (int i = 0; i < quest.matching.Count; i++)
+            {
+                optionTextList.Add(panel_matching.Controls["label" + (i + 1).ToString()].Text);
+                matchingTextList.Add(((ComboBox)panel_matching.Controls["comboBox" + (i + 1).ToString()]).Text);
+            }
+            ApiClass authApi = new ApiClass();
+
+            authApi.path = "matching_sent_to_server";
+
+            var classObject = new
+            {
+                test_id = test_id,
+                user_account_id = User.id,
+                question_id = quest.question_id,
+                response_id = quest.response_id,
+                option_text = optionTextList,
+                matching_text = matchingTextList
+
+            };
+            var json = JsonConvert.SerializeObject(classObject);
+            authApi.query.Add("jsonData", json);
+            authApi.uriCreate();
         }
         private void open_response_sent_to_server()
         {
@@ -334,7 +421,7 @@ namespace SchoolTest.ProgramForms.Student.Test
                 user_account_id=User.id,
                 question_id = quest.question_id,
                 response_id = quest.response_id,
-                response = richTextBox1.Text,             
+                user_response = richTextBox1.Text,             
             };
             var json = JsonConvert.SerializeObject(classObject);
             authApi.query.Add("jsonData", json);
