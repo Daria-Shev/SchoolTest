@@ -39,8 +39,15 @@
             this.comboBox_type = new System.Windows.Forms.ComboBox();
             this.panel_open_response = new System.Windows.Forms.Panel();
             this.dataGridView_open_response = new System.Windows.Forms.DataGridView();
+            this.response_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.question_id_response = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.correct_response = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel_sequence = new System.Windows.Forms.Panel();
             this.dataGridView_sequence = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sequence_number = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sequence_text = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel_matching = new System.Windows.Forms.Panel();
             this.dataGridView_matching = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,23 +57,16 @@
             this.matching_text = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel_answer_options = new System.Windows.Forms.Panel();
             this.dataGridView_answer_options = new System.Windows.Forms.DataGridView();
-            this.buttonBack = new System.Windows.Forms.Button();
-            this.buttonAdd = new System.Windows.Forms.Button();
-            this.comboBox_subject = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.response_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.question_id_response = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.correct_response = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.option_number = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.correct_option = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.option_text = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.buttonBack = new System.Windows.Forms.Button();
+            this.buttonAdd = new System.Windows.Forms.Button();
+            this.comboBox_subject = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sequence_number = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sequence_text = new System.Windows.Forms.DataGridViewTextBoxColumn();
             theme_idLabel = new System.Windows.Forms.Label();
             question_textLabel = new System.Windows.Forms.Label();
             pointsLabel = new System.Windows.Forms.Label();
@@ -178,7 +178,7 @@
             // 
             this.dataGridView_open_response.AllowUserToAddRows = false;
             this.dataGridView_open_response.AllowUserToDeleteRows = false;
-            this.dataGridView_open_response.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridView_open_response.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(251)))), ((int)(((byte)(233)))));
             this.dataGridView_open_response.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dataGridView_open_response.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView_open_response.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -192,6 +192,30 @@
             this.dataGridView_open_response.TabIndex = 54;
             this.dataGridView_open_response.DoubleClick += new System.EventHandler(this.dataGridView_open_response_DoubleClick);
             // 
+            // response_id
+            // 
+            this.response_id.DataPropertyName = "response_id";
+            this.response_id.HeaderText = "response_id";
+            this.response_id.Name = "response_id";
+            this.response_id.ReadOnly = true;
+            this.response_id.Visible = false;
+            // 
+            // question_id_response
+            // 
+            this.question_id_response.DataPropertyName = "question_id";
+            this.question_id_response.HeaderText = "question_id";
+            this.question_id_response.Name = "question_id_response";
+            this.question_id_response.ReadOnly = true;
+            this.question_id_response.Visible = false;
+            // 
+            // correct_response
+            // 
+            this.correct_response.DataPropertyName = "correct_response";
+            this.correct_response.HeaderText = "Правильна відповідь";
+            this.correct_response.Name = "correct_response";
+            this.correct_response.ReadOnly = true;
+            this.correct_response.Width = 450;
+            // 
             // panel_sequence
             // 
             this.panel_sequence.Controls.Add(this.dataGridView_sequence);
@@ -204,7 +228,7 @@
             // 
             this.dataGridView_sequence.AllowUserToAddRows = false;
             this.dataGridView_sequence.AllowUserToDeleteRows = false;
-            this.dataGridView_sequence.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridView_sequence.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(251)))), ((int)(((byte)(233)))));
             this.dataGridView_sequence.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dataGridView_sequence.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView_sequence.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -219,6 +243,38 @@
             this.dataGridView_sequence.TabIndex = 56;
             this.dataGridView_sequence.DoubleClick += new System.EventHandler(this.dataGridView_sequence_DoubleClick);
             // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "response_id";
+            this.dataGridViewTextBoxColumn2.HeaderText = "response_id";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Visible = false;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "question_id";
+            this.Column2.HeaderText = "question_id";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Visible = false;
+            // 
+            // sequence_number
+            // 
+            this.sequence_number.DataPropertyName = "sequence_number";
+            this.sequence_number.HeaderText = "Порядок";
+            this.sequence_number.Name = "sequence_number";
+            this.sequence_number.ReadOnly = true;
+            this.sequence_number.Width = 60;
+            // 
+            // sequence_text
+            // 
+            this.sequence_text.DataPropertyName = "sequence_text";
+            this.sequence_text.HeaderText = "Текст послідовності";
+            this.sequence_text.Name = "sequence_text";
+            this.sequence_text.ReadOnly = true;
+            this.sequence_text.Width = 390;
+            // 
             // panel_matching
             // 
             this.panel_matching.Controls.Add(this.dataGridView_matching);
@@ -231,7 +287,7 @@
             // 
             this.dataGridView_matching.AllowUserToAddRows = false;
             this.dataGridView_matching.AllowUserToDeleteRows = false;
-            this.dataGridView_matching.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridView_matching.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(251)))), ((int)(((byte)(233)))));
             this.dataGridView_matching.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dataGridView_matching.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView_matching.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -299,7 +355,7 @@
             // 
             this.dataGridView_answer_options.AllowUserToAddRows = false;
             this.dataGridView_answer_options.AllowUserToDeleteRows = false;
-            this.dataGridView_answer_options.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridView_answer_options.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(251)))), ((int)(((byte)(233)))));
             this.dataGridView_answer_options.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dataGridView_answer_options.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView_answer_options.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -314,6 +370,46 @@
             this.dataGridView_answer_options.Size = new System.Drawing.Size(493, 183);
             this.dataGridView_answer_options.TabIndex = 55;
             this.dataGridView_answer_options.DoubleClick += new System.EventHandler(this.dataGridView_answer_options_DoubleClick);
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "response_id";
+            this.dataGridViewTextBoxColumn1.HeaderText = "response_id";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Visible = false;
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "question_id";
+            this.Column1.HeaderText = "question_id";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Visible = false;
+            // 
+            // option_number
+            // 
+            this.option_number.DataPropertyName = "option_number";
+            this.option_number.HeaderText = "Номер";
+            this.option_number.Name = "option_number";
+            this.option_number.ReadOnly = true;
+            this.option_number.Width = 50;
+            // 
+            // correct_option
+            // 
+            this.correct_option.DataPropertyName = "correct_option";
+            this.correct_option.HeaderText = "Правильний варіант";
+            this.correct_option.Name = "correct_option";
+            this.correct_option.ReadOnly = true;
+            this.correct_option.Width = 75;
+            // 
+            // option_text
+            // 
+            this.option_text.DataPropertyName = "option_text";
+            this.option_text.HeaderText = "Текст варіанту";
+            this.option_text.Name = "option_text";
+            this.option_text.ReadOnly = true;
+            this.option_text.Width = 325;
             // 
             // buttonBack
             // 
@@ -362,70 +458,6 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // response_id
-            // 
-            this.response_id.DataPropertyName = "response_id";
-            this.response_id.HeaderText = "response_id";
-            this.response_id.Name = "response_id";
-            this.response_id.ReadOnly = true;
-            this.response_id.Visible = false;
-            // 
-            // question_id_response
-            // 
-            this.question_id_response.DataPropertyName = "question_id";
-            this.question_id_response.HeaderText = "question_id";
-            this.question_id_response.Name = "question_id_response";
-            this.question_id_response.ReadOnly = true;
-            this.question_id_response.Visible = false;
-            // 
-            // correct_response
-            // 
-            this.correct_response.DataPropertyName = "correct_response";
-            this.correct_response.HeaderText = "Правильна відповідь";
-            this.correct_response.Name = "correct_response";
-            this.correct_response.ReadOnly = true;
-            this.correct_response.Width = 450;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "response_id";
-            this.dataGridViewTextBoxColumn1.HeaderText = "response_id";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Visible = false;
-            // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "question_id";
-            this.Column1.HeaderText = "question_id";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Visible = false;
-            // 
-            // option_number
-            // 
-            this.option_number.DataPropertyName = "option_number";
-            this.option_number.HeaderText = "Номер";
-            this.option_number.Name = "option_number";
-            this.option_number.ReadOnly = true;
-            this.option_number.Width = 50;
-            // 
-            // correct_option
-            // 
-            this.correct_option.DataPropertyName = "correct_option";
-            this.correct_option.HeaderText = "Правильний варіант";
-            this.correct_option.Name = "correct_option";
-            this.correct_option.ReadOnly = true;
-            this.correct_option.Width = 75;
-            // 
-            // option_text
-            // 
-            this.option_text.DataPropertyName = "option_text";
-            this.option_text.HeaderText = "Текст варіанту";
-            this.option_text.Name = "option_text";
-            this.option_text.ReadOnly = true;
-            this.option_text.Width = 325;
-            // 
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(252)))), ((int)(((byte)(222)))));
@@ -438,42 +470,11 @@
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "response_id";
-            this.dataGridViewTextBoxColumn2.HeaderText = "response_id";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Visible = false;
-            // 
-            // Column2
-            // 
-            this.Column2.DataPropertyName = "question_id";
-            this.Column2.HeaderText = "question_id";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Visible = false;
-            // 
-            // sequence_number
-            // 
-            this.sequence_number.DataPropertyName = "sequence_number";
-            this.sequence_number.HeaderText = "Порядок";
-            this.sequence_number.Name = "sequence_number";
-            this.sequence_number.ReadOnly = true;
-            this.sequence_number.Width = 60;
-            // 
-            // sequence_text
-            // 
-            this.sequence_text.DataPropertyName = "sequence_text";
-            this.sequence_text.HeaderText = "Текст послідовності";
-            this.sequence_text.Name = "sequence_text";
-            this.sequence_text.ReadOnly = true;
-            this.sequence_text.Width = 390;
-            // 
             // add_question_show
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(251)))), ((int)(((byte)(233)))));
             this.ClientSize = new System.Drawing.Size(884, 243);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.panel_sequence);

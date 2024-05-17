@@ -39,6 +39,16 @@
             subject_idLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
+            // subject_idLabel
+            // 
+            subject_idLabel.AutoSize = true;
+            subject_idLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            subject_idLabel.Location = new System.Drawing.Point(12, 24);
+            subject_idLabel.Name = "subject_idLabel";
+            subject_idLabel.Size = new System.Drawing.Size(132, 20);
+            subject_idLabel.TabIndex = 45;
+            subject_idLabel.Text = "Обери предмет:";
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -60,16 +70,6 @@
             this.comboBox_subject.TabIndex = 46;
             this.comboBox_subject.ValueMember = "subject_id";
             this.comboBox_subject.SelectionChangeCommitted += new System.EventHandler(this.comboBox_subject_SelectionChangeCommitted);
-            // 
-            // subject_idLabel
-            // 
-            subject_idLabel.AutoSize = true;
-            subject_idLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            subject_idLabel.Location = new System.Drawing.Point(12, 24);
-            subject_idLabel.Name = "subject_idLabel";
-            subject_idLabel.Size = new System.Drawing.Size(132, 20);
-            subject_idLabel.TabIndex = 45;
-            subject_idLabel.Text = "Обери предмет:";
             // 
             // button_test
             // 
@@ -138,6 +138,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(251)))), ((int)(((byte)(233)))));
             this.ClientSize = new System.Drawing.Size(429, 372);
             this.Controls.Add(this.comboBox_theme);
             this.Controls.Add(this.button3);

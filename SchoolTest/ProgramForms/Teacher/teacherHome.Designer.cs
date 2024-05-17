@@ -36,7 +36,7 @@
             // button4
             // 
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button4.Location = new System.Drawing.Point(114, 135);
+            this.button4.Location = new System.Drawing.Point(33, 60);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(235, 47);
             this.button4.TabIndex = 5;
@@ -49,9 +49,9 @@
             this.button8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(252)))), ((int)(((byte)(222)))));
             this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button8.Location = new System.Drawing.Point(96, 282);
+            this.button8.Location = new System.Drawing.Point(33, 166);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(192, 47);
+            this.button8.Size = new System.Drawing.Size(235, 47);
             this.button8.TabIndex = 32;
             this.button8.Text = "Вихід";
             this.button8.UseVisualStyleBackColor = false;
@@ -62,11 +62,11 @@
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(252)))), ((int)(((byte)(222)))));
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(114, 188);
+            this.button1.Location = new System.Drawing.Point(33, 113);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(235, 47);
             this.button1.TabIndex = 33;
-            this.button1.Text = "Статистика";
+            this.button1.Text = "Статистика учнів";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 

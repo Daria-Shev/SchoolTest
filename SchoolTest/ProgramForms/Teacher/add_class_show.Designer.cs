@@ -41,31 +41,31 @@
             // class_nameLabel
             // 
             class_nameLabel.AutoSize = true;
-            class_nameLabel.Location = new System.Drawing.Point(35, 43);
+            class_nameLabel.Location = new System.Drawing.Point(33, 25);
             class_nameLabel.Name = "class_nameLabel";
             class_nameLabel.Size = new System.Drawing.Size(75, 13);
             class_nameLabel.TabIndex = 7;
             class_nameLabel.Text = "Назва класа:";
             // 
-            // class_nameTextBox
-            // 
-            this.class_nameTextBox.Location = new System.Drawing.Point(113, 40);
-            this.class_nameTextBox.Name = "class_nameTextBox";
-            this.class_nameTextBox.Size = new System.Drawing.Size(100, 20);
-            this.class_nameTextBox.TabIndex = 8;
-            // 
             // class_numberLabel
             // 
             class_numberLabel.AutoSize = true;
-            class_numberLabel.Location = new System.Drawing.Point(35, 69);
+            class_numberLabel.Location = new System.Drawing.Point(33, 51);
             class_numberLabel.Name = "class_numberLabel";
             class_numberLabel.Size = new System.Drawing.Size(35, 13);
             class_numberLabel.TabIndex = 9;
             class_numberLabel.Text = "Клас:";
             // 
+            // class_nameTextBox
+            // 
+            this.class_nameTextBox.Location = new System.Drawing.Point(111, 22);
+            this.class_nameTextBox.Name = "class_nameTextBox";
+            this.class_nameTextBox.Size = new System.Drawing.Size(100, 20);
+            this.class_nameTextBox.TabIndex = 8;
+            // 
             // class_numberTextBox
             // 
-            this.class_numberTextBox.Location = new System.Drawing.Point(113, 66);
+            this.class_numberTextBox.Location = new System.Drawing.Point(111, 48);
             this.class_numberTextBox.Name = "class_numberTextBox";
             this.class_numberTextBox.Size = new System.Drawing.Size(100, 20);
             this.class_numberTextBox.TabIndex = 10;
@@ -74,7 +74,7 @@
             // 
             this.buttonBack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(252)))), ((int)(((byte)(222)))));
             this.buttonBack.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonBack.Location = new System.Drawing.Point(128, 98);
+            this.buttonBack.Location = new System.Drawing.Point(126, 80);
             this.buttonBack.Name = "buttonBack";
             this.buttonBack.Size = new System.Drawing.Size(75, 23);
             this.buttonBack.TabIndex = 19;
@@ -86,7 +86,7 @@
             // 
             this.buttonAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(252)))), ((int)(((byte)(222)))));
             this.buttonAdd.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonAdd.Location = new System.Drawing.Point(35, 98);
+            this.buttonAdd.Location = new System.Drawing.Point(33, 80);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(75, 23);
             this.buttonAdd.TabIndex = 18;
@@ -98,7 +98,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(249, 140);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(251)))), ((int)(((byte)(233)))));
+            this.ClientSize = new System.Drawing.Size(249, 116);
             this.Controls.Add(this.buttonBack);
             this.Controls.Add(this.buttonAdd);
             this.Controls.Add(class_nameLabel);

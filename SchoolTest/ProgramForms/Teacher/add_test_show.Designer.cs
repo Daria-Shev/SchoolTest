@@ -109,6 +109,15 @@
             subject_idLabel.TabIndex = 40;
             subject_idLabel.Text = "Предмет:";
             // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new System.Drawing.Point(4, 110);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(94, 13);
+            label3.TabIndex = 45;
+            label3.Text = "Кількість питань:";
+            // 
             // comboBox_class
             // 
             this.comboBox_class.DisplayMember = "class_name";
@@ -208,15 +217,6 @@
             this.label2.TabIndex = 44;
             this.label2.Text = "Тема:";
             // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new System.Drawing.Point(4, 110);
-            label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(94, 13);
-            label3.TabIndex = 45;
-            label3.Text = "Кількість питань:";
-            // 
             // textBox_question_count
             // 
             this.textBox_question_count.Location = new System.Drawing.Point(104, 107);
@@ -228,6 +228,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(251)))), ((int)(((byte)(233)))));
             this.ClientSize = new System.Drawing.Size(382, 234);
             this.Controls.Add(label3);
             this.Controls.Add(this.textBox_question_count);

@@ -77,17 +77,18 @@
             // 
             // option_textTextBox
             // 
-            this.option_textTextBox.Location = new System.Drawing.Point(62, 49);
+            this.option_textTextBox.Location = new System.Drawing.Point(62, 52);
             this.option_textTextBox.Multiline = true;
             this.option_textTextBox.Name = "option_textTextBox";
-            this.option_textTextBox.Size = new System.Drawing.Size(213, 74);
+            this.option_textTextBox.Size = new System.Drawing.Size(213, 16);
             this.option_textTextBox.TabIndex = 13;
+            this.option_textTextBox.TextChanged += new System.EventHandler(this.option_textTextBox_TextChanged);
             // 
             // buttonBack
             // 
             this.buttonBack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(252)))), ((int)(((byte)(222)))));
             this.buttonBack.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonBack.Location = new System.Drawing.Point(153, 138);
+            this.buttonBack.Location = new System.Drawing.Point(153, 83);
             this.buttonBack.Name = "buttonBack";
             this.buttonBack.Size = new System.Drawing.Size(75, 23);
             this.buttonBack.TabIndex = 44;
@@ -99,7 +100,7 @@
             // 
             this.buttonAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(252)))), ((int)(((byte)(222)))));
             this.buttonAdd.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonAdd.Location = new System.Drawing.Point(66, 138);
+            this.buttonAdd.Location = new System.Drawing.Point(66, 83);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(75, 23);
             this.buttonAdd.TabIndex = 43;
@@ -122,7 +123,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(293, 180);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(251)))), ((int)(((byte)(233)))));
+            this.ClientSize = new System.Drawing.Size(293, 118);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.buttonBack);
             this.Controls.Add(this.buttonAdd);

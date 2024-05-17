@@ -41,16 +41,16 @@
             this.buttonDelete = new System.Windows.Forms.Button();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.dataGridView_teacher = new System.Windows.Forms.DataGridView();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPageTeacher = new System.Windows.Forms.TabPage();
-            this.tabPageStudent = new System.Windows.Forms.TabPage();
-            this.dataGridView_student = new System.Windows.Forms.DataGridView();
             this.user_account_id_teacher = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nickname_teacher = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.password_teacher = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.user_account_type_teacher = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.full_name_teacher = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.email_address_teacher = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPageTeacher = new System.Windows.Forms.TabPage();
+            this.tabPageStudent = new System.Windows.Forms.TabPage();
+            this.dataGridView_student = new System.Windows.Forms.DataGridView();
             this.user_account_id_student = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nickname_student = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.password_student = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -194,7 +194,7 @@
             // 
             this.dataGridView_teacher.AllowUserToAddRows = false;
             this.dataGridView_teacher.AllowUserToDeleteRows = false;
-            this.dataGridView_teacher.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridView_teacher.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(251)))), ((int)(((byte)(233)))));
             this.dataGridView_teacher.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dataGridView_teacher.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView_teacher.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -210,63 +210,6 @@
             this.dataGridView_teacher.Size = new System.Drawing.Size(627, 282);
             this.dataGridView_teacher.TabIndex = 27;
             this.dataGridView_teacher.DoubleClick += new System.EventHandler(this.dataGridView_teacher_DoubleClick);
-            // 
-            // tabControl1
-            // 
-            this.tabControl1.Controls.Add(this.tabPageTeacher);
-            this.tabControl1.Controls.Add(this.tabPageStudent);
-            this.tabControl1.Location = new System.Drawing.Point(4, 12);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(663, 320);
-            this.tabControl1.TabIndex = 40;
-            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
-            // 
-            // tabPageTeacher
-            // 
-            this.tabPageTeacher.Controls.Add(this.dataGridView_teacher);
-            this.tabPageTeacher.Location = new System.Drawing.Point(4, 22);
-            this.tabPageTeacher.Name = "tabPageTeacher";
-            this.tabPageTeacher.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageTeacher.Size = new System.Drawing.Size(655, 294);
-            this.tabPageTeacher.TabIndex = 0;
-            this.tabPageTeacher.Text = "Вчитель";
-            this.tabPageTeacher.UseVisualStyleBackColor = true;
-            // 
-            // tabPageStudent
-            // 
-            this.tabPageStudent.Controls.Add(this.dataGridView_student);
-            this.tabPageStudent.Location = new System.Drawing.Point(4, 22);
-            this.tabPageStudent.Name = "tabPageStudent";
-            this.tabPageStudent.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageStudent.Size = new System.Drawing.Size(655, 294);
-            this.tabPageStudent.TabIndex = 1;
-            this.tabPageStudent.Text = "Учень";
-            this.tabPageStudent.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView_student
-            // 
-            this.dataGridView_student.AllowUserToAddRows = false;
-            this.dataGridView_student.AllowUserToDeleteRows = false;
-            this.dataGridView_student.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView_student.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dataGridView_student.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView_student.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.user_account_id_student,
-            this.nickname_student,
-            this.password_student,
-            this.user_account_type_student,
-            this.full_name_student,
-            this.student_email_student,
-            this.parent_email_student,
-            this.class_id,
-            this.class_name_student});
-            this.dataGridView_student.Location = new System.Drawing.Point(3, 6);
-            this.dataGridView_student.Name = "dataGridView_student";
-            this.dataGridView_student.ReadOnly = true;
-            this.dataGridView_student.Size = new System.Drawing.Size(646, 282);
-            this.dataGridView_student.TabIndex = 28;
-            this.dataGridView_student.DoubleClick += new System.EventHandler(this.dataGridView_student_DoubleClick);
             // 
             // user_account_id_teacher
             // 
@@ -313,6 +256,66 @@
             this.email_address_teacher.Name = "email_address_teacher";
             this.email_address_teacher.ReadOnly = true;
             this.email_address_teacher.Width = 150;
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPageTeacher);
+            this.tabControl1.Controls.Add(this.tabPageStudent);
+            this.tabControl1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.tabControl1.Location = new System.Drawing.Point(4, 12);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(663, 320);
+            this.tabControl1.TabIndex = 40;
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
+            // 
+            // tabPageTeacher
+            // 
+            this.tabPageTeacher.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(251)))), ((int)(((byte)(233)))));
+            this.tabPageTeacher.Controls.Add(this.dataGridView_teacher);
+            this.tabPageTeacher.ForeColor = System.Drawing.Color.White;
+            this.tabPageTeacher.Location = new System.Drawing.Point(4, 22);
+            this.tabPageTeacher.Name = "tabPageTeacher";
+            this.tabPageTeacher.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageTeacher.Size = new System.Drawing.Size(655, 294);
+            this.tabPageTeacher.TabIndex = 0;
+            this.tabPageTeacher.Text = "Вчитель";
+            this.tabPageTeacher.Click += new System.EventHandler(this.tabPageTeacher_Click);
+            // 
+            // tabPageStudent
+            // 
+            this.tabPageStudent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(251)))), ((int)(((byte)(233)))));
+            this.tabPageStudent.Controls.Add(this.dataGridView_student);
+            this.tabPageStudent.Location = new System.Drawing.Point(4, 22);
+            this.tabPageStudent.Name = "tabPageStudent";
+            this.tabPageStudent.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageStudent.Size = new System.Drawing.Size(655, 294);
+            this.tabPageStudent.TabIndex = 1;
+            this.tabPageStudent.Text = "Учень";
+            // 
+            // dataGridView_student
+            // 
+            this.dataGridView_student.AllowUserToAddRows = false;
+            this.dataGridView_student.AllowUserToDeleteRows = false;
+            this.dataGridView_student.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(251)))), ((int)(((byte)(233)))));
+            this.dataGridView_student.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dataGridView_student.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_student.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.user_account_id_student,
+            this.nickname_student,
+            this.password_student,
+            this.user_account_type_student,
+            this.full_name_student,
+            this.student_email_student,
+            this.parent_email_student,
+            this.class_id,
+            this.class_name_student});
+            this.dataGridView_student.Location = new System.Drawing.Point(3, 6);
+            this.dataGridView_student.Name = "dataGridView_student";
+            this.dataGridView_student.ReadOnly = true;
+            this.dataGridView_student.Size = new System.Drawing.Size(646, 282);
+            this.dataGridView_student.TabIndex = 28;
+            this.dataGridView_student.DoubleClick += new System.EventHandler(this.dataGridView_student_DoubleClick);
             // 
             // user_account_id_student
             // 
@@ -386,6 +389,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(251)))), ((int)(((byte)(233)))));
             this.ClientSize = new System.Drawing.Size(929, 343);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.label4);

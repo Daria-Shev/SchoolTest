@@ -43,7 +43,6 @@
             this.label_question_text = new System.Windows.Forms.Label();
             this.label_type_text = new System.Windows.Forms.Label();
             this.label_count_question = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.panel_matching = new System.Windows.Forms.Panel();
             this.comboBox6 = new System.Windows.Forms.ComboBox();
             this.comboBox5 = new System.Windows.Forms.ComboBox();
@@ -74,6 +73,7 @@
             this.label15 = new System.Windows.Forms.Label();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.timer = new System.Windows.Forms.Timer(this.components);
+            this.button3 = new System.Windows.Forms.Button();
             this.panel_answer_options.SuspendLayout();
             this.panel_matching.SuspendLayout();
             this.panel_sequence.SuspendLayout();
@@ -232,17 +232,6 @@
             this.label_count_question.Size = new System.Drawing.Size(75, 20);
             this.label_count_question.TabIndex = 7;
             this.label_count_question.Text = "Питання";
-            // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(243, 12);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(168, 29);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Наступне питання";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // panel_matching
             // 
@@ -543,16 +532,30 @@
             // 
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(252)))), ((int)(((byte)(222)))));
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button3.Location = new System.Drawing.Point(242, 12);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(169, 29);
+            this.button3.TabIndex = 69;
+            this.button3.Text = "Наступне питання";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // Test
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(251)))), ((int)(((byte)(233)))));
             this.ClientSize = new System.Drawing.Size(728, 523);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.panel_matching);
             this.Controls.Add(this.panel_answer_options);
             this.Controls.Add(this.panel_sequence);
             this.Controls.Add(this.panel_open_response);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.label_count_question);
             this.Controls.Add(this.label_type_text);
             this.Controls.Add(this.label_question_text);
@@ -581,7 +584,6 @@
         private System.Windows.Forms.Label label_question_text;
         private System.Windows.Forms.Label label_type_text;
         private System.Windows.Forms.Label label_count_question;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.CheckBox checkBox8;
         private System.Windows.Forms.CheckBox checkBox7;
         private System.Windows.Forms.CheckBox checkBox6;
@@ -620,5 +622,6 @@
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Timer timer;
+        private System.Windows.Forms.Button button3;
     }
 }

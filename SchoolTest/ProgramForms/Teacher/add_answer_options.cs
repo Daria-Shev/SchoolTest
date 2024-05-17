@@ -46,6 +46,11 @@ namespace SchoolTest.ProgramForms.Teacher
             this.Close();
         }
 
+        private void option_textTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
         private void add_answer_options_FormClosed(object sender, FormClosedEventArgs e)
         {
             buttonBack_Click(sender, e);

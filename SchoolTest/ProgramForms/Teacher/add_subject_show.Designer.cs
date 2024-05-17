@@ -41,7 +41,7 @@
             // subject_nameLabel
             // 
             subject_nameLabel.AutoSize = true;
-            subject_nameLabel.Location = new System.Drawing.Point(34, 66);
+            subject_nameLabel.Location = new System.Drawing.Point(31, 31);
             subject_nameLabel.Name = "subject_nameLabel";
             subject_nameLabel.Size = new System.Drawing.Size(55, 13);
             subject_nameLabel.TabIndex = 12;
@@ -50,7 +50,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(34, 92);
+            label1.Location = new System.Drawing.Point(31, 57);
             label1.Name = "label1";
             label1.Size = new System.Drawing.Size(35, 13);
             label1.TabIndex = 14;
@@ -58,14 +58,14 @@
             // 
             // subject_nameTextBox
             // 
-            this.subject_nameTextBox.Location = new System.Drawing.Point(95, 63);
+            this.subject_nameTextBox.Location = new System.Drawing.Point(92, 28);
             this.subject_nameTextBox.Name = "subject_nameTextBox";
             this.subject_nameTextBox.Size = new System.Drawing.Size(100, 20);
             this.subject_nameTextBox.TabIndex = 13;
             // 
             // ClassTextBox
             // 
-            this.ClassTextBox.Location = new System.Drawing.Point(95, 89);
+            this.ClassTextBox.Location = new System.Drawing.Point(92, 54);
             this.ClassTextBox.Name = "ClassTextBox";
             this.ClassTextBox.Size = new System.Drawing.Size(100, 20);
             this.ClassTextBox.TabIndex = 15;
@@ -74,7 +74,7 @@
             // 
             this.buttonBack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(252)))), ((int)(((byte)(222)))));
             this.buttonBack.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonBack.Location = new System.Drawing.Point(130, 129);
+            this.buttonBack.Location = new System.Drawing.Point(127, 94);
             this.buttonBack.Name = "buttonBack";
             this.buttonBack.Size = new System.Drawing.Size(75, 23);
             this.buttonBack.TabIndex = 17;
@@ -86,7 +86,7 @@
             // 
             this.buttonAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(252)))), ((int)(((byte)(222)))));
             this.buttonAdd.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonAdd.Location = new System.Drawing.Point(37, 129);
+            this.buttonAdd.Location = new System.Drawing.Point(34, 94);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(75, 23);
             this.buttonAdd.TabIndex = 16;
@@ -98,7 +98,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(248, 193);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(251)))), ((int)(((byte)(233)))));
+            this.ClientSize = new System.Drawing.Size(238, 134);
             this.Controls.Add(this.buttonBack);
             this.Controls.Add(this.buttonAdd);
             this.Controls.Add(label1);

@@ -320,5 +320,10 @@ namespace SchoolTest.ProgramForms.Teacher
             }
             return data;
         }
+
+        private void tabPageTeacher_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

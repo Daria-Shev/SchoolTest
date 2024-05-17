@@ -44,6 +44,42 @@
             literature_linkLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
+            // subject_idLabel
+            // 
+            subject_idLabel.AutoSize = true;
+            subject_idLabel.Location = new System.Drawing.Point(16, 125);
+            subject_idLabel.Name = "subject_idLabel";
+            subject_idLabel.Size = new System.Drawing.Size(55, 13);
+            subject_idLabel.TabIndex = 24;
+            subject_idLabel.Text = "Предмет:";
+            // 
+            // theme_idLabel
+            // 
+            theme_idLabel.AutoSize = true;
+            theme_idLabel.Location = new System.Drawing.Point(16, 152);
+            theme_idLabel.Name = "theme_idLabel";
+            theme_idLabel.Size = new System.Drawing.Size(37, 13);
+            theme_idLabel.TabIndex = 26;
+            theme_idLabel.Text = "Тема:";
+            // 
+            // literature_nameLabel
+            // 
+            literature_nameLabel.AutoSize = true;
+            literature_nameLabel.Location = new System.Drawing.Point(16, 27);
+            literature_nameLabel.Name = "literature_nameLabel";
+            literature_nameLabel.Size = new System.Drawing.Size(65, 13);
+            literature_nameLabel.TabIndex = 28;
+            literature_nameLabel.Text = "Література:";
+            // 
+            // literature_linkLabel
+            // 
+            literature_linkLabel.AutoSize = true;
+            literature_linkLabel.Location = new System.Drawing.Point(15, 86);
+            literature_linkLabel.Name = "literature_linkLabel";
+            literature_linkLabel.Size = new System.Drawing.Size(66, 13);
+            literature_linkLabel.TabIndex = 30;
+            literature_linkLabel.Text = "Посилання:";
+            // 
             // buttonBack
             // 
             this.buttonBack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(252)))), ((int)(((byte)(222)))));
@@ -79,15 +115,6 @@
             this.comboBox_subject.ValueMember = "subject_id";
             this.comboBox_subject.SelectionChangeCommitted += new System.EventHandler(this.comboBox_subject_SelectionChangeCommitted);
             // 
-            // subject_idLabel
-            // 
-            subject_idLabel.AutoSize = true;
-            subject_idLabel.Location = new System.Drawing.Point(16, 125);
-            subject_idLabel.Name = "subject_idLabel";
-            subject_idLabel.Size = new System.Drawing.Size(55, 13);
-            subject_idLabel.TabIndex = 24;
-            subject_idLabel.Text = "Предмет:";
-            // 
             // comboBox_theme
             // 
             this.comboBox_theme.DisplayMember = "theme_name";
@@ -98,24 +125,6 @@
             this.comboBox_theme.TabIndex = 27;
             this.comboBox_theme.ValueMember = "theme_id";
             // 
-            // theme_idLabel
-            // 
-            theme_idLabel.AutoSize = true;
-            theme_idLabel.Location = new System.Drawing.Point(16, 152);
-            theme_idLabel.Name = "theme_idLabel";
-            theme_idLabel.Size = new System.Drawing.Size(37, 13);
-            theme_idLabel.TabIndex = 26;
-            theme_idLabel.Text = "Тема:";
-            // 
-            // literature_nameLabel
-            // 
-            literature_nameLabel.AutoSize = true;
-            literature_nameLabel.Location = new System.Drawing.Point(16, 27);
-            literature_nameLabel.Name = "literature_nameLabel";
-            literature_nameLabel.Size = new System.Drawing.Size(65, 13);
-            literature_nameLabel.TabIndex = 28;
-            literature_nameLabel.Text = "Література:";
-            // 
             // literature_nameTextBox
             // 
             this.literature_nameTextBox.Location = new System.Drawing.Point(89, 8);
@@ -123,15 +132,6 @@
             this.literature_nameTextBox.Name = "literature_nameTextBox";
             this.literature_nameTextBox.Size = new System.Drawing.Size(227, 46);
             this.literature_nameTextBox.TabIndex = 29;
-            // 
-            // literature_linkLabel
-            // 
-            literature_linkLabel.AutoSize = true;
-            literature_linkLabel.Location = new System.Drawing.Point(15, 86);
-            literature_linkLabel.Name = "literature_linkLabel";
-            literature_linkLabel.Size = new System.Drawing.Size(66, 13);
-            literature_linkLabel.TabIndex = 30;
-            literature_linkLabel.Text = "Посилання:";
             // 
             // literature_linkTextBox
             // 
@@ -145,6 +145,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(251)))), ((int)(((byte)(233)))));
             this.ClientSize = new System.Drawing.Size(355, 232);
             this.Controls.Add(literature_nameLabel);
             this.Controls.Add(this.literature_nameTextBox);

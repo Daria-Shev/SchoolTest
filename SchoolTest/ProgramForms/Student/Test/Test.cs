@@ -292,22 +292,7 @@ namespace SchoolTest.ProgramForms.Student.Test
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            response_sent_to_server();
-            question_count_now++;
-            if (question_count_now == question_count)
-            {
-                button1.Text = "Завершити тестування";
-            }
-            if (question_count_now > question_count)
-            {
-                exit_test();
 
-            }
-            question_form();
-
-        }
         private void response_sent_to_server()
         {
             var quest = a.questionResponce.ElementAt(question_count_now).Value;
@@ -484,6 +469,22 @@ namespace SchoolTest.ProgramForms.Student.Test
         private void label4_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            response_sent_to_server();
+            question_count_now++;
+            if (question_count_now == question_count)
+            {
+                button3.Text = "Завершити тестування";
+            }
+            if (question_count_now > question_count)
+            {
+                exit_test();
+
+            }
+            question_form();
         }
 
         private void timer_Tick(object sender, EventArgs e)
