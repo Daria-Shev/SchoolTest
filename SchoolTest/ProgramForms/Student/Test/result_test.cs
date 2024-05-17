@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using SchoolTest.Helpers;
+using SchoolTest.Info;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -33,12 +34,33 @@ namespace SchoolTest.ProgramForms.Student.Test
             ApiClass authApi = new ApiClass();
 
             authApi.path = "result_table";
+            authApi.path = "lit_add";
+
+            var classObject = new
+            {
+                test_id = test_id,
+                test_attempt = test_attempt,
+                user_account_id = User.id,
+            };
+            var json = JsonConvert.SerializeObject(classObject);
+
+
+
+            // старий варіант
+            authApi.query.Add("jsonData", json);
             authApi.uriCreate();
 
             var Stream = authApi.ServerAuthorization();
 
             var info = JsonHelpers.ReadFromJsonStream<string>(Stream);
             dataGridView1.DataSource = JsonConvert.DeserializeObject(info, typeof(DataTable)) as DataTable;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Form ifrm = new test_info(test_id);
+            ifrm.Show();
+            this.Close();
         }
     }
 }

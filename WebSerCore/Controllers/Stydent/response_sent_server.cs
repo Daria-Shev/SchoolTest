@@ -397,6 +397,9 @@ FROM            dbo.matching INNER JOIN
             return Ok(message);
 
         }
+
+
+
         private string grade_number_string(int grade_number)
         {
             string grade = "";
@@ -455,5 +458,46 @@ FROM            dbo.matching INNER JOIN
             public List<string> matching_text = new List<string>();
 
         }
+        [HttpGet, Route("result_table")]
+        [Authorize]
+        public object result_table(string jsonData)
+        {
+            var classData = JsonConvert.DeserializeObject<response>(jsonData);
+            BD bd = new BD();
+            bd.connectionBD();
+            DataTable dataTable = new DataTable();
+
+            string sqlExpression = @"
+            SELECT sa.user_account_id, sa.test_attempt, sa.answer_id, 
+                   CASE 
+                       WHEN sa.correctness = 1 THEN 'Правильно'
+                       WHEN sa.correctness = 0 THEN 'Неправильно'
+                       WHEN sa.correctness > 0 AND sa.correctness < 1 THEN 'Частично правильно'
+                   END AS correctness,
+                   sa.question_id, q.question_text, sa.test_id
+            FROM dbo.student_answers AS sa
+            INNER JOIN dbo.question AS q ON sa.question_id = q.question_id
+            WHERE sa.test_attempt = @test_attempt AND sa.user_account_id = @user_account_id AND sa.test_id = @test_id;
+            ";
+
+            using (SqlCommand command = new SqlCommand(sqlExpression, bd.connection))
+            {
+                command.Parameters.AddWithValue("@test_attempt", classData.test_attempt);
+                command.Parameters.AddWithValue("@user_account_id", classData.user_account_id);
+                command.Parameters.AddWithValue("@test_id", classData.test_id);
+
+                using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                {
+                    adapter.Fill(dataTable);
+                }
+            }
+
+            // Преобразование DataTable в JSON строку
+            string json = JsonConvert.SerializeObject(dataTable);
+
+            bd.closeBD();
+            return json;
+        }
+
     }
 }
