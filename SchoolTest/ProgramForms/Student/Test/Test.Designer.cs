@@ -90,7 +90,7 @@
             this.panel_answer_options.Controls.Add(this.checkBox3);
             this.panel_answer_options.Controls.Add(this.checkBox2);
             this.panel_answer_options.Controls.Add(this.checkBox1);
-            this.panel_answer_options.Location = new System.Drawing.Point(16, 146);
+            this.panel_answer_options.Location = new System.Drawing.Point(12, 142);
             this.panel_answer_options.Name = "panel_answer_options";
             this.panel_answer_options.Size = new System.Drawing.Size(701, 270);
             this.panel_answer_options.TabIndex = 2;
@@ -258,7 +258,7 @@
             this.panel_matching.Controls.Add(this.label3);
             this.panel_matching.Controls.Add(this.label2);
             this.panel_matching.Controls.Add(this.label1);
-            this.panel_matching.Location = new System.Drawing.Point(751, 157);
+            this.panel_matching.Location = new System.Drawing.Point(12, 142);
             this.panel_matching.Name = "panel_matching";
             this.panel_matching.Size = new System.Drawing.Size(747, 363);
             this.panel_matching.TabIndex = 7;
@@ -392,7 +392,7 @@
             this.panel_sequence.Controls.Add(this.label10);
             this.panel_sequence.Controls.Add(this.label11);
             this.panel_sequence.Controls.Add(this.label12);
-            this.panel_sequence.Location = new System.Drawing.Point(651, 480);
+            this.panel_sequence.Location = new System.Drawing.Point(16, 142);
             this.panel_sequence.Name = "panel_sequence";
             this.panel_sequence.Size = new System.Drawing.Size(689, 237);
             this.panel_sequence.TabIndex = 18;
@@ -515,7 +515,7 @@
             // 
             this.panel_open_response.Controls.Add(this.label15);
             this.panel_open_response.Controls.Add(this.richTextBox1);
-            this.panel_open_response.Location = new System.Drawing.Point(16, 439);
+            this.panel_open_response.Location = new System.Drawing.Point(16, 142);
             this.panel_open_response.Name = "panel_open_response";
             this.panel_open_response.Size = new System.Drawing.Size(569, 236);
             this.panel_open_response.TabIndex = 19;
@@ -547,8 +547,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1426, 764);
+            this.ClientSize = new System.Drawing.Size(728, 523);
             this.Controls.Add(this.panel_matching);
+            this.Controls.Add(this.panel_answer_options);
             this.Controls.Add(this.panel_sequence);
             this.Controls.Add(this.panel_open_response);
             this.Controls.Add(this.button1);
@@ -557,7 +558,6 @@
             this.Controls.Add(this.label_question_text);
             this.Controls.Add(this.label_time);
             this.Controls.Add(this.label_time22);
-            this.Controls.Add(this.panel_answer_options);
             this.Name = "Test";
             this.Text = "Test";
             this.Load += new System.EventHandler(this.Test_Load);

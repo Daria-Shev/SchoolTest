@@ -34,8 +34,6 @@ namespace SchoolTest.ProgramForms.Student.Test
             ApiClass authApi = new ApiClass();
 
             authApi.path = "result_table";
-            authApi.path = "lit_add";
-
             var classObject = new
             {
                 test_id = test_id,

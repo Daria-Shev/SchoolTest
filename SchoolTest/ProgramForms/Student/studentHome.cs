@@ -1,4 +1,5 @@
-﻿using SchoolTest.ProgramForms.Teacher;
+﻿using SchoolTest.ProgramForms.Statistics;
+using SchoolTest.ProgramForms.Teacher;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -29,6 +30,13 @@ namespace SchoolTest.ProgramForms.Student
         private void button4_Click(object sender, EventArgs e)
         {
             Form ifrm = new menuTest();
+            ifrm.Show();
+            this.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Form ifrm = new Statistics_student();
             ifrm.Show();
             this.Close();
         }

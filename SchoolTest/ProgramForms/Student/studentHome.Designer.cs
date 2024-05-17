@@ -39,7 +39,7 @@
             this.button8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(252)))), ((int)(((byte)(222)))));
             this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button8.Location = new System.Drawing.Point(60, 216);
+            this.button8.Location = new System.Drawing.Point(46, 207);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(192, 47);
             this.button8.TabIndex = 31;
@@ -52,18 +52,19 @@
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(252)))), ((int)(((byte)(222)))));
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(60, 163);
+            this.button1.Location = new System.Drawing.Point(46, 154);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(192, 47);
             this.button1.TabIndex = 25;
             this.button1.Text = "Результати навчання";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(58, 49);
+            this.label1.Location = new System.Drawing.Point(44, 40);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(194, 31);
             this.label1.TabIndex = 24;
@@ -75,7 +76,7 @@
             this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(252)))), ((int)(((byte)(222)))));
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button4.Location = new System.Drawing.Point(60, 109);
+            this.button4.Location = new System.Drawing.Point(46, 100);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(192, 47);
             this.button4.TabIndex = 23;
@@ -87,7 +88,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(416, 321);
+            this.ClientSize = new System.Drawing.Size(311, 285);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
