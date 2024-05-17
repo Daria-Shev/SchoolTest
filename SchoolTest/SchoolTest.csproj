@@ -62,6 +62,12 @@
     <Compile Include="Info\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="ProgramForms\Message.cs" />
+    <Compile Include="ProgramForms\Statistics\StatisticsTeacher.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProgramForms\Statistics\StatisticsTeacher.Designer.cs">
+      <DependentUpon>StatisticsTeacher.cs</DependentUpon>
+    </Compile>
     <Compile Include="ProgramForms\Statistics\Statistics_student.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -228,6 +234,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProgramForms\Statistics\StatisticsTeacher.resx">
+      <DependentUpon>StatisticsTeacher.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProgramForms\Statistics\Statistics_student.resx">
       <DependentUpon>Statistics_student.cs</DependentUpon>

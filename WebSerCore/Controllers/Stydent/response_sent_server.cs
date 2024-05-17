@@ -393,7 +393,7 @@ FROM            dbo.matching INNER JOIN
             catch
             {            }
             bd.closeBD();
-            var message = new Message { message = "Вітаю! Ви пройшли тест. Ваш рівень володіння темою: " + grade_number_string(grade) };
+            var message = new Message { message =  grade_number_string(grade) };
             return Ok(message);
 
         }
@@ -406,16 +406,16 @@ FROM            dbo.matching INNER JOIN
             switch (grade_number)
             {
                 case 1:
-                    grade = "П (початковий рівень)";
+                    grade = "Старайся.";
                     break;
                 case 2:
-                    grade = "С (середній рівень)";
+                    grade = "Будь уважніше.";
                     break;
                 case 3:
-                    grade = "Д (достатній рівень)";
+                    grade = "Добре.";
                     break;
                 case 4:
-                    grade = "В (високий рівень)";
+                    grade = "Молодець!";
                     break;
             }
             return grade;

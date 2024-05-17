@@ -31,5 +31,12 @@ namespace SchoolTest.ProgramForms.Teacher
             api.exit();
             this.Close();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Form ifrm = new StatisticsTeacher();
+            ifrm.Show();
+            this.Close();
+        }
     }
 }
