@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using SchoolTest.Helpers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -23,7 +25,20 @@ namespace SchoolTest.ProgramForms.Student.Test
 
         private void result_test_Load(object sender, EventArgs e)
         {
+            Table();
 
+        }
+        public void Table()
+        {
+            ApiClass authApi = new ApiClass();
+
+            authApi.path = "result_table";
+            authApi.uriCreate();
+
+            var Stream = authApi.ServerAuthorization();
+
+            var info = JsonHelpers.ReadFromJsonStream<string>(Stream);
+            dataGridView1.DataSource = JsonConvert.DeserializeObject(info, typeof(DataTable)) as DataTable;
         }
     }
 }
