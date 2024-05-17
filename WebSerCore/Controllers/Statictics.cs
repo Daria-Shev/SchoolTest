@@ -83,5 +83,79 @@ WHERE
             public int user_account_id { get; set; }
             public int class_id { get; set; }
         }
+
+        [HttpGet, Route("statistics_teacher")]
+        [Authorize]
+        public object statistics_teacher()
+        {
+            BD bd = new BD();
+            bd.connectionBD();
+            DataTable dataTable = new DataTable();
+
+            string sqlExpression = @"
+WITH MaxGradePerTest AS (
+    SELECT 
+        sr.test_id, 
+        sr.user_account_id,
+        sr.grade,
+        ROW_NUMBER() OVER (PARTITION BY sr.user_account_id, sr.test_id ORDER BY sr.grade DESC) AS row_num
+    FROM 
+        dbo.student_result AS sr
+)
+SELECT 
+    c.class_id, 
+    s.user_account_id, 
+    ua.full_name, 
+    c.class_name, 
+    sr.result_id, 
+    CASE 
+        WHEN sr.grade = 1 THEN 'П'
+        WHEN sr.grade = 2 THEN 'С'
+        WHEN sr.grade = 3 THEN 'Д'
+        WHEN sr.grade = 4 THEN 'В'
+        ELSE 'Помилка'
+    END AS grade,
+    su.subject_name,
+    su.subject_id,
+    th.theme_name,
+    th.theme_id,
+    t.test_id
+FROM 
+    dbo.theme AS th
+INNER JOIN 
+    dbo.subject AS su ON th.subject_id = su.subject_id
+INNER JOIN 
+    dbo.test AS t ON th.theme_id = t.theme_id
+INNER JOIN 
+    dbo.class AS c ON t.class_id = c.class_id
+INNER JOIN 
+    dbo.student AS s ON c.class_id = s.class_id
+INNER JOIN 
+    dbo.user_account AS ua ON s.user_account_id = ua.user_account_id
+INNER JOIN 
+    dbo.student_result AS sr ON s.user_account_id = sr.user_account_id AND t.test_id = sr.test_id
+INNER JOIN 
+    MaxGradePerTest AS mg ON sr.test_id = mg.test_id AND sr.user_account_id = mg.user_account_id AND sr.grade = mg.grade
+WHERE
+    mg.row_num = 1;
+    ";
+
+            using (SqlCommand command = new SqlCommand(sqlExpression, bd.connection))
+            {
+               
+
+                using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                {
+                    adapter.Fill(dataTable);
+                }
+            }
+
+            // Преобразование DataTable в JSON строку
+            string json = JsonConvert.SerializeObject(dataTable);
+
+            bd.closeBD();
+            return json;
+        }
+
     }
 }

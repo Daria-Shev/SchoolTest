@@ -34,23 +34,10 @@ namespace SchoolTest.ProgramForms.Statistics
         {
             Table();
             combo_Load();
+
         }
         private void combo_Load()
         {
-            //List<KeyValuePair<string, string>> items = new List<KeyValuePair<string, string>>();
-            //string[] specificColumns = { "subject_name" }; // Замените на имена ваших колонок
-
-            //foreach (string columnName in specificColumns)
-            //{
-            //    DataGridViewColumn column = dataGridView1.Columns[columnName];
-            //    if (column != null)
-            //    {
-            //        items.Add(new KeyValuePair<string, string>(column.DataPropertyName, column.HeaderText));
-            //    }
-            //}
-            //comboBox1.DataSource = new BindingSource(items, null);
-            //comboBox1.DisplayMember = "Value"; // Отображаемый текст
-            //comboBox1.ValueMember = "Key"; // Значение
             (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = "";
             // Получаем выбранное значение из comboBox1
             string selectedColumnName = "subject_name";
