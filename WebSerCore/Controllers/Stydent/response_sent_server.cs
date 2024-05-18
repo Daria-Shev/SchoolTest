@@ -8,6 +8,8 @@ using System;
 using System.Data.SqlClient;
 using System.Net.Mail;
 using static System.Net.Mime.MediaTypeNames;
+using static WebSerCore.Controllers.addData.Class_school;
+
 namespace WebSerCore.Controllers.Stydent
 {
     public class response_sent_server : Controller
@@ -394,6 +396,7 @@ FROM            dbo.matching INNER JOIN
             {            }
             bd.closeBD();
             var message = new Message { message =  grade_number_string(grade) };
+            mail.mail_send_parent(classData.test_id, classData.user_account_id);
             return Ok(message);
 
         }

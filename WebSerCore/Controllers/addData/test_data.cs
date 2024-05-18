@@ -7,6 +7,9 @@ using Newtonsoft.Json;
 using System;
 using System.Data.SqlClient;
 using System.Net.Mail;
+using static System.Net.Mime.MediaTypeNames;
+using System.Web.Helpers;
+
 namespace WebSerCore.Controllers.addData
 {
     public class test_data : Controller
@@ -85,7 +88,7 @@ FROM            dbo.test INNER JOIN
             try
             {
                 string sqlExpression = @"
-    MERGE INTO [test].[dbo].[recommended_literature] AS target
+    MERGE INTO [test].[dbo].[test] AS target
     USING (
         VALUES (@test_id, @class_id, @test_name, @theme_id, @creation_date, @execution_time, @attempt_count, @user_account_id, @test_type, @question_count)
     ) AS source (test_id, class_id, test_name, theme_id, creation_date, execution_time, attempt_count, user_account_id, test_type, question_count)
@@ -116,6 +119,8 @@ FROM            dbo.test INNER JOIN
                     sqlCommand.Parameters.AddWithValue("@test_type", classData.test_type);
                     sqlCommand.Parameters.AddWithValue("@creation_date", classData.creation_date);
                     sqlCommand.Parameters.AddWithValue("@question_count", classData.question_count);
+                    sqlCommand.Parameters.AddWithValue("@class_id", classData.class_id);
+
 
                     sqlCommand.ExecuteNonQuery();
                 }
@@ -126,9 +131,11 @@ FROM            dbo.test INNER JOIN
             }
             bd.closeBD();
             var message = new Message { message = "Операція успішна" };
+            mail.mail_send_student(classData.class_id, classData.test_name);
             return Ok(message);
 
         }
+
         private class tableTestData
         {
             public int test_id { get; set; }
@@ -142,6 +149,8 @@ FROM            dbo.test INNER JOIN
             public int question_count { get; set; }
 
             public string test_type { get; set; }
+            public int class_id { get; set; }
+
             public DateTime creation_date { get; set; }
         }
 
