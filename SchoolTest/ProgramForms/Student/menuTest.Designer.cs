@@ -149,7 +149,7 @@
             this.Controls.Add(this.comboBox_subject);
             this.Controls.Add(subject_idLabel);
             this.Name = "menuTest";
-            this.Text = "menuTest";
+            this.Text = "Меню тестів";
             this.Load += new System.EventHandler(this.menuTest_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

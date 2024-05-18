@@ -107,7 +107,7 @@
             this.Controls.Add(subject_nameLabel);
             this.Controls.Add(this.subject_nameTextBox);
             this.Name = "add_subject_show";
-            this.Text = "add_subject_Show";
+            this.Text = "Додавання предметів";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.add_subject_show_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.add_subject_show_FormClosed);
             this.Load += new System.EventHandler(this.add_subject_show_Load);

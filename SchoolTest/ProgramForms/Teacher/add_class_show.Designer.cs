@@ -107,7 +107,7 @@
             this.Controls.Add(class_numberLabel);
             this.Controls.Add(this.class_numberTextBox);
             this.Name = "add_class_show";
-            this.Text = "add_class_show";
+            this.Text = "Додавання класу";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.add_class_show_FormClosed);
             this.Load += new System.EventHandler(this.add_class_show_Load);
             this.ResumeLayout(false);

@@ -38,7 +38,7 @@
             // correct_responseLabel
             // 
             correct_responseLabel.AutoSize = true;
-            correct_responseLabel.Location = new System.Drawing.Point(34, 30);
+            correct_responseLabel.Location = new System.Drawing.Point(33, 24);
             correct_responseLabel.Name = "correct_responseLabel";
             correct_responseLabel.Size = new System.Drawing.Size(57, 13);
             correct_responseLabel.TabIndex = 4;
@@ -46,17 +46,17 @@
             // 
             // correct_responseTextBox
             // 
-            this.correct_responseTextBox.Location = new System.Drawing.Point(97, 12);
+            this.correct_responseTextBox.Location = new System.Drawing.Point(96, 21);
             this.correct_responseTextBox.Multiline = true;
             this.correct_responseTextBox.Name = "correct_responseTextBox";
-            this.correct_responseTextBox.Size = new System.Drawing.Size(195, 50);
+            this.correct_responseTextBox.Size = new System.Drawing.Size(195, 23);
             this.correct_responseTextBox.TabIndex = 5;
             // 
             // buttonBack
             // 
             this.buttonBack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(252)))), ((int)(((byte)(222)))));
             this.buttonBack.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonBack.Location = new System.Drawing.Point(163, 74);
+            this.buttonBack.Location = new System.Drawing.Point(167, 60);
             this.buttonBack.Name = "buttonBack";
             this.buttonBack.Size = new System.Drawing.Size(75, 23);
             this.buttonBack.TabIndex = 46;
@@ -68,7 +68,7 @@
             // 
             this.buttonAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(252)))), ((int)(((byte)(222)))));
             this.buttonAdd.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonAdd.Location = new System.Drawing.Point(76, 74);
+            this.buttonAdd.Location = new System.Drawing.Point(80, 60);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(75, 23);
             this.buttonAdd.TabIndex = 45;
@@ -81,13 +81,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(251)))), ((int)(((byte)(233)))));
-            this.ClientSize = new System.Drawing.Size(334, 109);
+            this.ClientSize = new System.Drawing.Size(334, 104);
             this.Controls.Add(this.buttonBack);
             this.Controls.Add(this.buttonAdd);
             this.Controls.Add(correct_responseLabel);
             this.Controls.Add(this.correct_responseTextBox);
             this.Name = "add_open_response";
-            this.Text = "add_response";
+            this.Text = "Додавання відповіді";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.add_open_response_FormClosed);
             this.Load += new System.EventHandler(this.add_open_response_Load);
             this.ResumeLayout(false);

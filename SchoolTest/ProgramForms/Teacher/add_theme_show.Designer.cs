@@ -111,7 +111,7 @@
             this.Controls.Add(this.theme_nameTextBox);
             this.Controls.Add(subject_idLabel);
             this.Name = "add_theme_show";
-            this.Text = "add_theme_show";
+            this.Text = "Додавання тем";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.add_theme_show_FormClosed);
             this.Load += new System.EventHandler(this.add_theme_show_Load);
             this.ResumeLayout(false);

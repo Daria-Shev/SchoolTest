@@ -244,6 +244,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(251)))), ((int)(((byte)(233)))));
             this.ClientSize = new System.Drawing.Size(616, 164);
             this.Controls.Add(this.buttonBack);
             this.Controls.Add(this.buttonAdd);
@@ -258,7 +259,7 @@
             this.Controls.Add(this.full_nameTextBox);
             this.Controls.Add(this.panelStudent);
             this.Name = "add_user_show";
-            this.Text = "add_user_show";
+            this.Text = "Додавання користувачів";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.add_user_show_FormClosed);
             this.Load += new System.EventHandler(this.add_user_show_Load);
             this.panelStudent.ResumeLayout(false);

@@ -158,7 +158,7 @@
             this.Controls.Add(this.buttonBack);
             this.Controls.Add(this.buttonAdd);
             this.Name = "add_literature_show";
-            this.Text = "add_literature_show";
+            this.Text = "Додавання літератури";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.add_literature_show_FormClosed);
             this.Load += new System.EventHandler(this.add_literature_show_Load);
             this.ResumeLayout(false);

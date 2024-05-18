@@ -234,7 +234,7 @@
             this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.dataGridView1);
             this.Name = "add_subject";
-            this.Text = "add_subject";
+            this.Text = "Предмети";
             this.Load += new System.EventHandler(this.add_subject_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

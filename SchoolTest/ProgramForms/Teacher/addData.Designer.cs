@@ -158,6 +158,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(251)))), ((int)(((byte)(233)))));
             this.ClientSize = new System.Drawing.Size(333, 503);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.button7);
@@ -169,7 +170,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button4);
             this.Name = "addData";
-            this.Text = "addData";
+            this.Text = "Меню введення даних";
             this.ResumeLayout(false);
             this.PerformLayout();
 

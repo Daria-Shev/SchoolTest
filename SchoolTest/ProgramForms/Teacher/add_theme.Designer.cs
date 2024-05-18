@@ -242,7 +242,7 @@
             this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.dataGridView1);
             this.Name = "add_theme";
-            this.Text = "add_theme";
+            this.Text = "Теми";
             this.Load += new System.EventHandler(this.add_theme_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

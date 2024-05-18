@@ -131,7 +131,7 @@
             this.Controls.Add(matching_textLabel);
             this.Controls.Add(this.matching_textTextBox);
             this.Name = "add_matching";
-            this.Text = "matching";
+            this.Text = "Додавання відповіді";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.add_matching_FormClosed);
             this.Load += new System.EventHandler(this.add_matching_Load);
             this.ResumeLayout(false);

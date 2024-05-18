@@ -495,7 +495,7 @@
             this.Controls.Add(pointsLabel);
             this.Controls.Add(this.pointsTextBox);
             this.Name = "add_question_show";
-            this.Text = "add_question_show";
+            this.Text = "Додавання питання";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.add_question_show_FormClosed);
             this.Load += new System.EventHandler(this.add_question_show_Load);
             this.panel_open_response.ResumeLayout(false);

@@ -35,9 +35,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.buttonBack = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label6 = new System.Windows.Forms.Label();
-            this.comboBox_student = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.subject_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.theme_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.subject_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,6 +46,9 @@
             this.full_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grade = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.test_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label6 = new System.Windows.Forms.Label();
+            this.comboBox_student = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -139,33 +139,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(663, 241);
             this.dataGridView1.TabIndex = 73;
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(687, 128);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(38, 13);
-            this.label6.TabIndex = 86;
-            this.label6.Text = "Учень";
-            // 
-            // comboBox_student
-            // 
-            this.comboBox_student.FormattingEnabled = true;
-            this.comboBox_student.Location = new System.Drawing.Point(745, 125);
-            this.comboBox_student.Name = "comboBox_student";
-            this.comboBox_student.Size = new System.Drawing.Size(114, 21);
-            this.comboBox_student.TabIndex = 87;
-            this.comboBox_student.SelectedIndexChanged += new System.EventHandler(this.comboBox_student_SelectedIndexChanged);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(742, 23);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(66, 13);
-            this.label4.TabIndex = 85;
-            this.label4.Text = "Фільтрація:";
-            // 
             // subject_name
             // 
             this.subject_name.DataPropertyName = "subject_name";
@@ -254,6 +227,33 @@
             this.test_id.ReadOnly = true;
             this.test_id.Visible = false;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(687, 128);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(38, 13);
+            this.label6.TabIndex = 86;
+            this.label6.Text = "Учень";
+            // 
+            // comboBox_student
+            // 
+            this.comboBox_student.FormattingEnabled = true;
+            this.comboBox_student.Location = new System.Drawing.Point(745, 125);
+            this.comboBox_student.Name = "comboBox_student";
+            this.comboBox_student.Size = new System.Drawing.Size(114, 21);
+            this.comboBox_student.TabIndex = 87;
+            this.comboBox_student.SelectedIndexChanged += new System.EventHandler(this.comboBox_student_SelectedIndexChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(742, 23);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(66, 13);
+            this.label4.TabIndex = 85;
+            this.label4.Text = "Фільтрація:";
+            // 
             // StatisticsTeacher
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -271,7 +271,7 @@
             this.Controls.Add(this.buttonBack);
             this.Controls.Add(this.dataGridView1);
             this.Name = "StatisticsTeacher";
-            this.Text = "Статистика учнів";
+            this.Text = "Результати навчання учнів";
             this.Load += new System.EventHandler(this.StatisticsTeacher_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

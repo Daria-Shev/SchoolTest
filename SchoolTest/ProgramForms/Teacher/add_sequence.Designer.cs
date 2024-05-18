@@ -108,7 +108,7 @@
             this.Controls.Add(sequence_textLabel);
             this.Controls.Add(this.sequence_textTextBox);
             this.Name = "add_sequence";
-            this.Text = "add_sequence";
+            this.Text = "Додавання відповіді";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.add_sequence_FormClosed);
             this.Load += new System.EventHandler(this.add_sequence_Load);
             this.ResumeLayout(false);

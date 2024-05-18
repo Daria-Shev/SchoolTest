@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -39,6 +40,12 @@ namespace SchoolTest.ProgramForms.Student
             Form ifrm = new Statistics_student();
             ifrm.Show();
             this.Close();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Process.Start(@"Інструкція_учня.docx");
+
         }
     }
 }

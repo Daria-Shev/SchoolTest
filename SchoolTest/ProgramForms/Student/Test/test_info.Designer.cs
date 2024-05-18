@@ -204,7 +204,7 @@
             this.Controls.Add(label1);
             this.Controls.Add(subject_idLabel);
             this.Name = "test_info";
-            this.Text = "test_info";
+            this.Text = "Тестова довідка";
             this.Load += new System.EventHandler(this.test_info_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

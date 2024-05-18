@@ -134,7 +134,7 @@
             this.Controls.Add(option_textLabel);
             this.Controls.Add(this.option_textTextBox);
             this.Name = "add_answer_options";
-            this.Text = "add_answer_options";
+            this.Text = "Додавання відповіді";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.add_answer_options_FormClosed);
             this.Load += new System.EventHandler(this.add_answer_options_Load);
             this.ResumeLayout(false);

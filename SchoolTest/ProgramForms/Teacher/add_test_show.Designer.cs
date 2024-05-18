@@ -249,7 +249,7 @@
             this.Controls.Add(attempt_countLabel);
             this.Controls.Add(this.attempt_countTextBox);
             this.Name = "add_test_show";
-            this.Text = "add_test_show";
+            this.Text = "Додавання тестів";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.add_test_show_FormClosed);
             this.Load += new System.EventHandler(this.add_test_show_Load);
             this.ResumeLayout(false);

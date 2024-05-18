@@ -110,7 +110,7 @@
             this.Controls.Add(this.button3);
             this.Controls.Add(this.dataGridView1);
             this.Name = "student_literature";
-            this.Text = "student_literature";
+            this.Text = "Рекомендована література";
             this.Load += new System.EventHandler(this.student_literature_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

@@ -405,7 +405,7 @@
             this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.buttonAdd);
             this.Name = "add_user";
-            this.Text = "add_teacher";
+            this.Text = "Користувачі";
             this.Load += new System.EventHandler(this.add_user_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_teacher)).EndInit();
             this.tabControl1.ResumeLayout(false);

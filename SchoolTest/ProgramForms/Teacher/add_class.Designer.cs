@@ -232,7 +232,7 @@
             this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.dataGridView1);
             this.Name = "add_class";
-            this.Text = "add_clas";
+            this.Text = "Класи";
             this.Load += new System.EventHandler(this.add_clas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
