@@ -108,6 +108,43 @@ namespace SchoolTest
         {
 
         }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            api.exit();
+            this.Close();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            string nicname = textBox1.Text;
+            string password = textBox2.Text;
+            ApiClass authApi = new ApiClass();
+
+            authApi.path = "login";
+            authApi.query.Add("nickname", nicname);
+            authApi.query.Add("password", password);
+            authApi.uriCreate();
+
+            var Stream = authApi.ServerAuthorization();
+
+            MessageString message = new MessageString();
+            message = JsonHelpers.ReadFromJsonStream<MessageString>(Stream);
+            //потом включить сообщение что закоментила
+            //SchoolTest.ProgramForms.Message.MessageInfo(message.message);
+            if ((message.message == "Авторизація успішна"))
+            {
+                Form ifrm = new studentHome();
+                getInfo(nicname);
+                if (User.user_account_type.StartsWith("teacher"))
+                {
+                    ifrm = new teacherHome();
+                }
+
+                ifrm.Show();
+                this.Hide();
+            }
+        }
         //void Exit()
         //{
         //    ApiClass api = new ApiClass();
