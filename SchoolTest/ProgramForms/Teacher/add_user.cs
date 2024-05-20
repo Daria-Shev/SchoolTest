@@ -46,7 +46,10 @@ namespace SchoolTest.ProgramForms.Teacher
 
             var info = JsonHelpers.ReadFromJsonStream<string>(Stream);
             dataGridView_teacher.DataSource = JsonConvert.DeserializeObject(info, typeof(DataTable)) as DataTable;
-            
+
+            //dataGridView_teacher.DataSource = JsonConvert.DeserializeObject(info, typeof(DataTable)) as DataTable;
+            dataGridView_teacher.Refresh();
+
 
             authApi.path = "user_table_student";
             authApi.uriCreate();
@@ -324,6 +327,18 @@ namespace SchoolTest.ProgramForms.Teacher
         private void tabPageTeacher_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void dataGridView_teacher_DoubleClick_1(object sender, EventArgs e)
+        {
+            if (tabControl1.SelectedTab.Name == "tabPageTeacher" && dataGridView_teacher.SelectedRows.Count != 1)
+            {
+                return;
+            }
+            var data = data_dedicated();
+
+            Form ifrm = new add_user_show(data);
+            ifrm.ShowDialog();
         }
     }
 }

@@ -130,8 +130,7 @@ namespace SchoolTest
 
             MessageString message = new MessageString();
             message = JsonHelpers.ReadFromJsonStream<MessageString>(Stream);
-            //потом включить сообщение что закоментила
-            //SchoolTest.ProgramForms.Message.MessageInfo(message.message);
+            SchoolTest.ProgramForms.Message.MessageInfo(message.message);
             if ((message.message == "Авторизація успішна"))
             {
                 Form ifrm = new studentHome();

@@ -111,7 +111,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button8);
             this.Name = "teacherHome";
-            this.Text = "teacherHome";
+            this.Text = "Головне меню";
             this.Load += new System.EventHandler(this.teacherHome_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -126,7 +126,6 @@ UserAccount InfoUser(string nickname, string password)
 
         }
     }
-
     bd.closeBD();
     return userAccount;
 }

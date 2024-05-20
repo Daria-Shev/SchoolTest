@@ -107,56 +107,47 @@ namespace SchoolTest.ProgramForms.Statistics
             //comboBox1_SelectedIndexChanged(sender, e);
         }
 
-        private void comboBox_class_SelectedIndexChanged(object sender, EventArgs e)
+        private void ApplyFilters()
         {
-            string filteredText = comboBox_class.Text.Replace("'", "''");
-            string columnName = "class_name";
+            string classFilter = GetFilter("class_name", comboBox_class.Text);
+            string subjectFilter = GetFilter("subject_name", comboBox_subject.Text);
+            string studentFilter = GetFilter("full_name", comboBox_student.Text);
 
-            // Экранирование специальных символов, таких как '%', '[', и ']'
-            filteredText = filteredText.Replace("%", "[%]").Replace("[", "[[]").Replace("]", "[]]");
+            string combinedFilter = $"{classFilter} AND {subjectFilter} AND {studentFilter}";
 
             try
             {
-                // Используйте кавычки вокруг значения в фильтре
-                (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = $"{columnName} LIKE '%{filteredText}%'";
+                (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = combinedFilter;
             }
             catch { }
+        }
+
+        private string GetFilter(string columnName, string filteredText)
+        {
+            // Екранування спеціальних символів
+            filteredText = filteredText.Replace("'", "''");
+            filteredText = filteredText.Replace("%", "[%]").Replace("[", "[[]").Replace("]", "[]]");
+
+            // Повернення умови фільтрації для відповідної колонки
+            return $"{columnName} LIKE '%{filteredText}%'";
+        }
+
+        private void comboBox_class_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ApplyFilters();
             combo_student_Load();
             combo_subject_Load();
         }
 
         private void comboBox_subject_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string filteredText = comboBox_subject.Text.Replace("'", "''");
-            string columnName = "subject_name";
-
-            // Экранирование специальных символов, таких как '%', '[', и ']'
-            filteredText = filteredText.Replace("%", "[%]").Replace("[", "[[]").Replace("]", "[]]");
-
-            try
-            {
-                // Используйте кавычки вокруг значения в фильтре
-                (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = $"{columnName} LIKE '%{filteredText}%'";
-            }
-            catch { }
+            ApplyFilters();
         }
 
         private void comboBox_student_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string filteredText = comboBox_student.Text.Replace("'", "''");
-            string columnName = "full_name";
-
-            // Экранирование специальных символов, таких как '%', '[', и ']'
-            filteredText = filteredText.Replace("%", "[%]").Replace("[", "[[]").Replace("]", "[]]");
-
-            try
-            {
-                // Используйте кавычки вокруг значения в фильтре
-                (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = $"{columnName} LIKE '%{filteredText}%'";
-            }
-            catch { }
+            ApplyFilters();
         }
-
         private void buttonBack_Click(object sender, EventArgs e)
         {
             Form ifrm = new teacherHome();

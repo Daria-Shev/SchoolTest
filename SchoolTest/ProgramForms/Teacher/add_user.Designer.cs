@@ -40,13 +40,6 @@
             this.buttonBack = new System.Windows.Forms.Button();
             this.buttonDelete = new System.Windows.Forms.Button();
             this.buttonAdd = new System.Windows.Forms.Button();
-            this.dataGridView_teacher = new System.Windows.Forms.DataGridView();
-            this.user_account_id_teacher = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nickname_teacher = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.password_teacher = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.user_account_type_teacher = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.full_name_teacher = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.email_address_teacher = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageTeacher = new System.Windows.Forms.TabPage();
             this.tabPageStudent = new System.Windows.Forms.TabPage();
@@ -60,11 +53,18 @@
             this.parent_email_student = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.class_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.class_name_student = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_teacher)).BeginInit();
+            this.dataGridView_teacher = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.email_address = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPageTeacher.SuspendLayout();
             this.tabPageStudent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_student)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_teacher)).BeginInit();
             this.SuspendLayout();
             // 
             // label4
@@ -189,73 +189,6 @@
             this.buttonAdd.Text = "Додати";
             this.buttonAdd.UseVisualStyleBackColor = false;
             this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
-            // 
-            // dataGridView_teacher
-            // 
-            this.dataGridView_teacher.AllowUserToAddRows = false;
-            this.dataGridView_teacher.AllowUserToDeleteRows = false;
-            this.dataGridView_teacher.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(251)))), ((int)(((byte)(233)))));
-            this.dataGridView_teacher.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dataGridView_teacher.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView_teacher.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.user_account_id_teacher,
-            this.nickname_teacher,
-            this.password_teacher,
-            this.user_account_type_teacher,
-            this.full_name_teacher,
-            this.email_address_teacher});
-            this.dataGridView_teacher.Location = new System.Drawing.Point(6, 6);
-            this.dataGridView_teacher.Name = "dataGridView_teacher";
-            this.dataGridView_teacher.ReadOnly = true;
-            this.dataGridView_teacher.Size = new System.Drawing.Size(627, 282);
-            this.dataGridView_teacher.TabIndex = 27;
-            this.dataGridView_teacher.DoubleClick += new System.EventHandler(this.dataGridView_teacher_DoubleClick);
-            // 
-            // user_account_id_teacher
-            // 
-            this.user_account_id_teacher.DataPropertyName = "user_account_id";
-            this.user_account_id_teacher.HeaderText = "user_account_id";
-            this.user_account_id_teacher.Name = "user_account_id_teacher";
-            this.user_account_id_teacher.ReadOnly = true;
-            this.user_account_id_teacher.Visible = false;
-            // 
-            // nickname_teacher
-            // 
-            this.nickname_teacher.DataPropertyName = "nickname";
-            this.nickname_teacher.HeaderText = "Нікнейм";
-            this.nickname_teacher.Name = "nickname_teacher";
-            this.nickname_teacher.ReadOnly = true;
-            // 
-            // password_teacher
-            // 
-            this.password_teacher.DataPropertyName = "password";
-            this.password_teacher.HeaderText = "Пароль";
-            this.password_teacher.Name = "password_teacher";
-            this.password_teacher.ReadOnly = true;
-            // 
-            // user_account_type_teacher
-            // 
-            this.user_account_type_teacher.DataPropertyName = "user_account_type";
-            this.user_account_type_teacher.HeaderText = "user_account_type";
-            this.user_account_type_teacher.Name = "user_account_type_teacher";
-            this.user_account_type_teacher.ReadOnly = true;
-            this.user_account_type_teacher.Visible = false;
-            // 
-            // full_name_teacher
-            // 
-            this.full_name_teacher.DataPropertyName = "full_name";
-            this.full_name_teacher.HeaderText = "ФІО";
-            this.full_name_teacher.Name = "full_name_teacher";
-            this.full_name_teacher.ReadOnly = true;
-            this.full_name_teacher.Width = 200;
-            // 
-            // email_address_teacher
-            // 
-            this.email_address_teacher.DataPropertyName = "email_address";
-            this.email_address_teacher.HeaderText = "Пошта";
-            this.email_address_teacher.Name = "email_address_teacher";
-            this.email_address_teacher.ReadOnly = true;
-            this.email_address_teacher.Width = 150;
             // 
             // tabControl1
             // 
@@ -385,12 +318,79 @@
             this.class_name_student.ReadOnly = true;
             this.class_name_student.Width = 36;
             // 
+            // dataGridView_teacher
+            // 
+            this.dataGridView_teacher.AllowUserToAddRows = false;
+            this.dataGridView_teacher.AllowUserToDeleteRows = false;
+            this.dataGridView_teacher.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(251)))), ((int)(((byte)(233)))));
+            this.dataGridView_teacher.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dataGridView_teacher.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_teacher.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5,
+            this.email_address});
+            this.dataGridView_teacher.Location = new System.Drawing.Point(-1, 6);
+            this.dataGridView_teacher.Name = "dataGridView_teacher";
+            this.dataGridView_teacher.ReadOnly = true;
+            this.dataGridView_teacher.Size = new System.Drawing.Size(656, 282);
+            this.dataGridView_teacher.TabIndex = 41;
+            this.dataGridView_teacher.DoubleClick += new System.EventHandler(this.dataGridView_teacher_DoubleClick_1);
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "user_account_id";
+            this.dataGridViewTextBoxColumn1.HeaderText = "user_account_id";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "nickname";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Нікнейм";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "password";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Пароль";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "user_account_type";
+            this.dataGridViewTextBoxColumn4.HeaderText = "user_account_type";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "full_name";
+            this.dataGridViewTextBoxColumn5.HeaderText = "ФІО";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            this.dataGridViewTextBoxColumn5.Width = 200;
+            // 
+            // email_address
+            // 
+            this.email_address.DataPropertyName = "email_address";
+            this.email_address.HeaderText = "Пошта";
+            this.email_address.Name = "email_address";
+            this.email_address.ReadOnly = true;
+            this.email_address.Width = 190;
+            // 
             // add_user
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(251)))), ((int)(((byte)(233)))));
-            this.ClientSize = new System.Drawing.Size(929, 343);
+            this.ClientSize = new System.Drawing.Size(929, 341);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.comboBox2);
@@ -407,11 +407,11 @@
             this.Name = "add_user";
             this.Text = "Користувачі";
             this.Load += new System.EventHandler(this.add_user_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_teacher)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPageTeacher.ResumeLayout(false);
             this.tabPageStudent.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_student)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_teacher)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -431,17 +431,10 @@
         private System.Windows.Forms.Button buttonBack;
         private System.Windows.Forms.Button buttonDelete;
         private System.Windows.Forms.Button buttonAdd;
-        private System.Windows.Forms.DataGridView dataGridView_teacher;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPageTeacher;
         private System.Windows.Forms.TabPage tabPageStudent;
         private System.Windows.Forms.DataGridView dataGridView_student;
-        private System.Windows.Forms.DataGridViewTextBoxColumn user_account_id_teacher;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nickname_teacher;
-        private System.Windows.Forms.DataGridViewTextBoxColumn password_teacher;
-        private System.Windows.Forms.DataGridViewTextBoxColumn user_account_type_teacher;
-        private System.Windows.Forms.DataGridViewTextBoxColumn full_name_teacher;
-        private System.Windows.Forms.DataGridViewTextBoxColumn email_address_teacher;
         private System.Windows.Forms.DataGridViewTextBoxColumn user_account_id_student;
         private System.Windows.Forms.DataGridViewTextBoxColumn nickname_student;
         private System.Windows.Forms.DataGridViewTextBoxColumn password_student;
@@ -451,5 +444,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn parent_email_student;
         private System.Windows.Forms.DataGridViewTextBoxColumn class_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn class_name_student;
+        private System.Windows.Forms.DataGridView dataGridView_teacher;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn email_address;
     }
 }
