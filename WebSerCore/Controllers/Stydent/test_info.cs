@@ -153,9 +153,9 @@ namespace WebSerCore.Controllers.Stydent
                 dbo.student_result.user_account_id,
                 dbo.student_result.grade,
                 -- Получаем количество записей для заданного test_id
-                (SELECT COUNT(*) FROM dbo.student_result WHERE test_id = @test_id) AS count_of_records,
+                (SELECT COUNT(*) FROM dbo.student_result WHERE test_id = @test_id AND dbo.student_result.user_account_id = @user_account_id) AS count_of_records,
                 -- Получаем максимальное значение grade для заданного test_id
-                (SELECT MAX(grade) FROM dbo.student_result WHERE test_id = @test_id) AS max_grade
+                (SELECT MAX(grade) FROM dbo.student_result WHERE test_id = @test_id AND dbo.student_result.user_account_id = @user_account_id) AS max_grade
             FROM
                 dbo.test
             INNER JOIN

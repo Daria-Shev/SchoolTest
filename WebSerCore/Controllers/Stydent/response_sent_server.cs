@@ -322,23 +322,23 @@ FROM            dbo.matching INNER JOIN
 
             try
             {
-                int test_points=0;
-                int user_points=0;
+                decimal test_points = 0;
+                decimal user_points = 0;
                 string question_id_list = string.Join(",", classData.question_id.Select(id => "@question_id" + id)); // Создаем список параметров вида "@questionId1,@questionId2,@questionId3,..."
 
                 string sqlExpression = @"
-        SELECT 
-            q.question_id,
-            SUM(q.points) AS test_points,
-            SUM(q.points * sa.correctness) AS user_points
-        FROM 
-            dbo.question q
-            JOIN dbo.student_answers sa ON q.question_id = sa.question_id
-        WHERE 
-        q.question_id IN (" + question_id_list + @")
-        GROUP BY 
-            q.question_id;
-    ";
+            SELECT 
+                q.question_id,
+                SUM(q.points) AS test_points,
+                SUM(q.points * sa.correctness) AS user_points
+            FROM 
+                dbo.question q
+                JOIN dbo.student_answers sa ON q.question_id = sa.question_id
+            WHERE 
+                q.question_id IN (" + question_id_list + @")
+            GROUP BY 
+                q.question_id;
+        ";
 
                 using (SqlCommand command = new SqlCommand(sqlExpression, bd.connection))
                 {
@@ -350,14 +350,13 @@ FROM            dbo.matching INNER JOIN
                     {
                         while (reader.Read())
                         {
-                             test_points = (int)reader["test_points"];
-                             user_points = (int)reader["user_points"];
-
+                            test_points += Convert.ToDecimal(reader["test_points"]);
+                            user_points += Convert.ToDecimal(reader["user_points"]);
                         }
                     }
                 }
-                double ratio = (double)user_points / test_points;
 
+                double ratio = (double)user_points / (double)test_points;
 
                 switch (ratio)
                 {
@@ -375,15 +374,13 @@ FROM            dbo.matching INNER JOIN
                         break;
                 }
 
-
                 sqlExpression = @"
-                INSERT INTO [test].[dbo].[student_result] (test_id, grade, test_end, user_account_id, test_attempt)
-                VALUES ( @test_id, @grade, GETDATE(), @user_account_id, @test_attempt);
+            INSERT INTO [test].[dbo].[student_result] (test_id, grade, test_end, user_account_id, test_attempt)
+            VALUES ( @test_id, @grade, GETDATE(), @user_account_id, @test_attempt);
+        ";
 
-                ";
                 using (SqlCommand sqlCommand = new SqlCommand(sqlExpression, bd.connection))
                 {
-
                     sqlCommand.Parameters.AddWithValue("@test_id", classData.test_id);
                     sqlCommand.Parameters.AddWithValue("@grade", grade);
                     sqlCommand.Parameters.AddWithValue("@user_account_id", classData.user_account_id);
@@ -395,8 +392,8 @@ FROM            dbo.matching INNER JOIN
             catch
             {            }
             bd.closeBD();
-            var message = new Message { message =  grade_number_string(grade) };
-            mail.mail_send_parent(classData.test_id, classData.user_account_id);
+            var message = new Message { message =  grade_number_string(grade) };                                                                                                                                                                                                                                                                                   
+            //mail.mail_send_parent(classData.test_id, classData.user_account_id);
             return Ok(message);
 
         }

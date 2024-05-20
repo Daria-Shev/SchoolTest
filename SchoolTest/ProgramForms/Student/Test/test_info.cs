@@ -86,6 +86,7 @@ namespace SchoolTest.ProgramForms.Student.Test
             {
                 int grade_number = int.Parse(info.max_grade);
                 string grade = grade_number_string(grade_number);
+                label_text.Location= new Point(61, 221);
                 label_text.Text = "Ви вже проходили цей тест, ваш рівень володіння темою: "+ grade;
             }
         }

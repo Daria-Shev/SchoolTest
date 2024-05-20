@@ -27,10 +27,7 @@ namespace SchoolTest.ProgramForms.Student
         {
             if (e.RowIndex >= 0 && e.ColumnIndex == dataGridView1.Columns["literature_name"].Index)
             {
-                // Получаем скрытое значение с гиперссылкой
                 string literature_link = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Tag as string;
-
-                // Открываем гиперссылку
                 if (!string.IsNullOrEmpty(literature_link))
                 {
                     Process.Start(literature_link);

@@ -131,7 +131,7 @@ FROM            dbo.test INNER JOIN
             }
             bd.closeBD();
             var message = new Message { message = "Операція успішна" };
-            mail.mail_send_student(classData.class_id, classData.test_name);
+            //mail.mail_send_student(classData.class_id, classData.test_name);
             return Ok(message);
 
         }

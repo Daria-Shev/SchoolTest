@@ -52,7 +52,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(12, 24);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(666, 279);
+            this.dataGridView1.Size = new System.Drawing.Size(666, 163);
             this.dataGridView1.TabIndex = 54;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -93,7 +93,7 @@
             this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(252)))), ((int)(((byte)(222)))));
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button3.Location = new System.Drawing.Point(270, 309);
+            this.button3.Location = new System.Drawing.Point(271, 202);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(136, 36);
             this.button3.TabIndex = 55;
@@ -106,7 +106,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(251)))), ((int)(((byte)(233)))));
-            this.ClientSize = new System.Drawing.Size(693, 354);
+            this.ClientSize = new System.Drawing.Size(693, 250);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.dataGridView1);
             this.Name = "student_literature";

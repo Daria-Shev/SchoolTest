@@ -31,18 +31,20 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.button3 = new System.Windows.Forms.Button();
             this.answer_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.user_account_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.test_id123 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.test_attempt123 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.question_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.question_text = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.correctness = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(251)))), ((int)(((byte)(233)))));
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -56,6 +58,9 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.answer_id,
+            this.user_account_id,
+            this.test_id123,
+            this.test_attempt123,
             this.question_id,
             this.question_text,
             this.correctness});
@@ -69,41 +74,8 @@
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Location = new System.Drawing.Point(12, 12);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(695, 279);
             this.dataGridView1.TabIndex = 54;
-            // 
-            // answer_id
-            // 
-            this.answer_id.DataPropertyName = "answer_id";
-            this.answer_id.HeaderText = "answer_id";
-            this.answer_id.Name = "answer_id";
-            this.answer_id.ReadOnly = true;
-            this.answer_id.Visible = false;
-            // 
-            // question_id
-            // 
-            this.question_id.DataPropertyName = "question_id";
-            this.question_id.HeaderText = "question_id";
-            this.question_id.Name = "question_id";
-            this.question_id.ReadOnly = true;
-            this.question_id.Visible = false;
-            // 
-            // question_text
-            // 
-            this.question_text.DataPropertyName = "question_text";
-            this.question_text.HeaderText = "Питання";
-            this.question_text.Name = "question_text";
-            this.question_text.ReadOnly = true;
-            this.question_text.Width = 500;
-            // 
-            // correctness
-            // 
-            this.correctness.DataPropertyName = "correctness";
-            this.correctness.HeaderText = "Правильність";
-            this.correctness.Name = "correctness";
-            this.correctness.ReadOnly = true;
-            this.correctness.Width = 150;
             // 
             // button3
             // 
@@ -117,6 +89,55 @@
             this.button3.Text = "Завершити перегляд";
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // answer_id
+            // 
+            this.answer_id.DataPropertyName = "answer_id";
+            this.answer_id.HeaderText = "answer_id";
+            this.answer_id.Name = "answer_id";
+            this.answer_id.Visible = false;
+            // 
+            // user_account_id
+            // 
+            this.user_account_id.DataPropertyName = "user_account_id";
+            this.user_account_id.HeaderText = "user_account_id";
+            this.user_account_id.Name = "user_account_id";
+            this.user_account_id.Visible = false;
+            // 
+            // test_id123
+            // 
+            this.test_id123.DataPropertyName = "test_id";
+            this.test_id123.HeaderText = "test_id";
+            this.test_id123.Name = "test_id123";
+            this.test_id123.Visible = false;
+            // 
+            // test_attempt123
+            // 
+            this.test_attempt123.DataPropertyName = "test_attempt";
+            this.test_attempt123.HeaderText = "test_attempt";
+            this.test_attempt123.Name = "test_attempt123";
+            this.test_attempt123.Visible = false;
+            // 
+            // question_id
+            // 
+            this.question_id.DataPropertyName = "question_id";
+            this.question_id.HeaderText = "question_id";
+            this.question_id.Name = "question_id";
+            this.question_id.Visible = false;
+            // 
+            // question_text
+            // 
+            this.question_text.DataPropertyName = "question_text";
+            this.question_text.HeaderText = "Питання";
+            this.question_text.Name = "question_text";
+            this.question_text.Width = 500;
+            // 
+            // correctness
+            // 
+            this.correctness.DataPropertyName = "correctness";
+            this.correctness.HeaderText = "Правильність";
+            this.correctness.Name = "correctness";
+            this.correctness.Width = 150;
             // 
             // result_test
             // 
@@ -137,10 +158,13 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.DataGridViewTextBoxColumn answer_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn user_account_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn test_id123;
+        private System.Windows.Forms.DataGridViewTextBoxColumn test_attempt123;
         private System.Windows.Forms.DataGridViewTextBoxColumn question_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn question_text;
         private System.Windows.Forms.DataGridViewTextBoxColumn correctness;
-        private System.Windows.Forms.Button button3;
     }
 }

@@ -9,7 +9,7 @@ namespace WebSerCore.Class
     {
         static public void mail_send(string text, string email)
         {
-            MailAddress fromMailAddress = new MailAddress("school61.distance.tests@gmail.com", "school61.distance.tests");
+            MailAddress fromMailAddress = new MailAddress("DashaSchev@gmail.com", "school61.distance.tests");
             MailAddress toAdress = new MailAddress(email);
 
 

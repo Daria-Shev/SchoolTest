@@ -475,16 +475,18 @@ namespace SchoolTest.ProgramForms.Student.Test
         {
             response_sent_to_server();
             question_count_now++;
-            if (question_count_now == question_count)
+            if (question_count_now == question_count-1)
             {
                 button3.Text = "Завершити тестування";
             }
-            if (question_count_now > question_count)
+            if (question_count_now == question_count)
             {
                 exit_test();
-
             }
-            question_form();
+            else
+            {
+                question_form();
+            }
         }
 
         private void timer_Tick(object sender, EventArgs e)
